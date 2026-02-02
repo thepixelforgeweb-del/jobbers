@@ -2955,70 +2955,37 @@
             font-size: 1rem !important;
         }
 
-        /* Job Cards Grid - 1 card per row on mobile */
+        /* Job Cards Grid - responsive layout */
         .ja-job-list {
-            grid-template-columns: 1fr !important;
-            grid-gap: 0.8rem !important;
-            padding: 0 0.5rem !important;
-            max-width: 100% !important;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
+            grid-gap: 1.2rem !important;
+            padding: 0 1rem !important;
         }
 
         .ja-job-list .job {
-            aspect-ratio: 1/1 !important;
-            max-width: 100% !important;
+            aspect-ratio: auto !important;
         }
 
         .ja-job-list .job .title {
-            padding: 0.4rem 0.5rem !important;
-            flex-shrink: 0 !important;
+            padding: 0 !important;
         }
 
         .ja-job-list .job .title a {
-            font-size: 1.1rem !important;
-            padding: 0.2rem !important;
-            line-height: 1.1 !important;
+            font-size: 1.2rem !important;
+            padding: 0.8rem 0.8rem !important;
         }
 
         .ja-job-list .job .meta {
-            padding: 0.4rem 0.5rem !important;
-            gap: 0.15rem !important;
-            justify-content: flex-start !important;
+            padding: 0.8rem 1rem !important;
+            gap: 0.4rem !important;
+            justify-content: space-between !important;
         }
 
-        .ja-job-list .job .meta .date-posted {
-            font-size: 0.75rem !important;
-            flex-shrink: 0 !important;
-            margin: 0 !important;
+        .ja-job-list .job .meta p {
+            font-size: 1rem !important;
         }
 
-        .ja-job-list .job .meta .designation p {
-            font-size: 0.95rem !important;
-            line-height: 1 !important;
-            margin: 0 !important;
-        }
-
-        .ja-job-list .job .meta .card-seperator {
-            margin: 0.2rem 0 !important;
-            height: 0.15rem !important;
-        }
-
-        .ja-job-list .job .meta .card-desc p {
-            font-size: 0.8rem !important;
-            max-height: 1.8rem !important;
-            line-height: 0.9 !important;
-            margin: 0 !important;
-        }
-
-        .ja-job-list .job .meta .card-link {
-            margin-top: 0.2rem !important;
-            padding-top: 0.2rem !important;
-        }
-
-        .ja-job-list .job .meta .card-link a {
-            font-size: 0.8rem !important;
-            flex-shrink: 0 !important;
-        }
-    }
+	    }
 
     @media screen and (max-width: 480px) {
         /* Extra small devices */
@@ -3043,68 +3010,7 @@
             font-size: 0.95rem !important;
         }
 
-        /* Job Cards Grid - 1 card per row on extra small devices */
-        .ja-job-list {
-            grid-template-columns: 1fr !important;
-            grid-gap: 0.6rem !important;
-            padding: 0 0.4rem !important;
-        }
-
-        .ja-job-list .job {
-            aspect-ratio: 1/1 !important;
-        }
-
-        .ja-job-list .job .title {
-            padding: 0.3rem 0.4rem !important;
-            flex-shrink: 0 !important;
-        }
-
-        .ja-job-list .job .title a {
-            font-size: 1rem !important;
-            padding: 0.15rem !important;
-            line-height: 1 !important;
-        }
-
-        .ja-job-list .job .meta {
-            padding: 0.3rem 0.4rem !important;
-            gap: 0.1rem !important;
-            justify-content: flex-start !important;
-        }
-
-        .ja-job-list .job .meta .date-posted {
-            font-size: 0.7rem !important;
-            flex-shrink: 0 !important;
-            margin: 0 !important;
-        }
-
-        .ja-job-list .job .meta .designation p {
-            font-size: 0.85rem !important;
-            line-height: 0.95 !important;
-            margin: 0 !important;
-        }
-
-        .ja-job-list .job .meta .card-seperator {
-            margin: 0.1rem 0 !important;
-            height: 0.1rem !important;
-        }
-
-        .ja-job-list .job .meta .card-desc p {
-            font-size: 0.7rem !important;
-            max-height: 1.5rem !important;
-            line-height: 0.75 !important;
-            margin: 0 !important;
-        }
-
-        .ja-job-list .job .meta .card-link {
-            margin-top: 0.1rem !important;
-            padding-top: 0.1rem !important;
-        }
-
-        .ja-job-list .job .meta .card-link a {
-            font-size: 0.7rem !important;
-            flex-shrink: 0 !important;
-        }
-    }
+	    }
 
     /* ===== END BOXRECRRUITMENTGROUP STYLING ===== */
 </style>
