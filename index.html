@@ -496,13 +496,20 @@
 	        }
 
 	        var sector = '';
+	        var jobTitle = '';
 
-	        // Try to detect sector from the job details that should be visible
+	        // Try to detect sector and job title from the job details that should be visible
 	        var detailsContainer = document.querySelector('.ja-job-details');
 	        if (detailsContainer) {
 	            var detailsSector = detailsContainer.getAttribute('data-sector');
 	            if (detailsSector) {
 	                sector = detailsSector.toLowerCase();
+	            }
+
+	            // Get job title from details
+	            var titleEl = detailsContainer.querySelector('h1, h2, .ja-job-title, .title');
+	            if (titleEl) {
+	                jobTitle = titleEl.textContent.trim();
 	            }
 	        }
 
@@ -530,6 +537,7 @@
 	        var capitalised = sector.charAt(0).toUpperCase() + sector.slice(1);
 	        iframeContainer.setAttribute('data-category', capitalised);
 	        iframeContainer.setAttribute('data-sector', capitalised);
+	        iframeContainer.setAttribute('data-job-title', jobTitle || 'Apply Now');
 	        iframeContainer.classList.add(sector.toLowerCase());
 
 	        iframeContainer.setAttribute('data-enhanced', 'true');
@@ -2040,8 +2048,27 @@
         background: #fff !important;
         border: 3px solid var(--color-hospitality) !important;
         border-radius: 1.5rem !important;
-        overflow: hidden !important;
+        overflow: visible !important;
         display: block !important;
+        position: relative !important;
+    }
+
+    /* Header bar with job title */
+    .ja-apply-iframe::before {
+        content: attr(data-job-title) !important;
+        display: block !important;
+        background: var(--color-hospitality) !important;
+        color: white !important;
+        padding: 1.2rem 1.5rem !important;
+        font-size: 1.4rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        text-align: center !important;
+        letter-spacing: 0.05rem !important;
+        margin: -3px -3px 0 -3px !important;
+        border-radius: 1.2rem 1.2rem 0 0 !important;
+        width: calc(100% + 6px) !important;
+        box-sizing: border-box !important;
     }
 
     /* Hospitality (Default) */
@@ -2049,9 +2076,17 @@
         border-color: var(--color-hospitality) !important;
     }
 
+    .ja-apply-iframe.hospitality::before {
+        background: var(--color-hospitality) !important;
+    }
+
     /* Healthcare */
     .ja-apply-iframe.healthcare {
         border-color: var(--color-healthcare) !important;
+    }
+
+    .ja-apply-iframe.healthcare::before {
+        background: var(--color-healthcare) !important;
     }
 
     /* Business */
@@ -2059,14 +2094,26 @@
         border-color: var(--color-businessSolution) !important;
     }
 
+    .ja-apply-iframe.business::before {
+        background: var(--color-businessSolution) !important;
+    }
+
     /* Leisure */
     .ja-apply-iframe.leisure {
         border-color: var(--color-leisure) !important;
     }
 
+    .ja-apply-iframe.leisure::before {
+        background: var(--color-leisure) !important;
+    }
+
     /* Travel */
     .ja-apply-iframe.travel {
         border-color: var(--color-travel) !important;
+    }
+
+    .ja-apply-iframe.travel::before {
+        background: var(--color-travel) !important;
     }
 
     /* Apply CSS filters to iframe to tint colors */
