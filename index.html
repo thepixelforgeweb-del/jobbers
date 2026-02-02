@@ -2665,6 +2665,163 @@
         border-bottom-color: var(--color-travel) !important;
     }
 
+    /* ===== MOBILE RESPONSIVE STYLING ===== */
+
+    @media screen and (max-width: 768px) {
+        /* Header/Navigation */
+        .body-spacing {
+            padding: 2rem 1rem !important;
+        }
+
+        .navigation-container nav {
+            flex-direction: column !important;
+            gap: 0.5rem !important;
+        }
+
+        .navigation-container a {
+            font-size: 1.2rem !important;
+            padding: 0.8rem 2rem !important;
+            width: 100% !important;
+            text-align: center !important;
+        }
+
+        /* Form Styling */
+        .ja-form {
+            margin-top: 3rem !important;
+            margin-bottom: 3rem !important;
+            padding: 1.5rem 1rem !important;
+        }
+
+        .ja-form::before {
+            font-size: 2.5rem !important;
+            margin-bottom: 2rem !important;
+        }
+
+        .ja-form .ja-search-form {
+            flex-direction: column !important;
+            gap: 1rem !important;
+            row-gap: 1rem !important;
+        }
+
+        .ja-form .ja-field-container {
+            width: 100% !important;
+            display: flex !important;
+            margin-bottom: 0.5rem !important;
+        }
+
+        .ja-form .ja-field-container select,
+        .ja-form .ja-field-container input[type="text"] {
+            width: 100% !important;
+            padding: 0.8rem 1rem !important;
+            font-size: 1rem !important;
+            min-width: unset !important;
+        }
+
+        .ja-form .ja-field-container:has(select)::after {
+            right: 1rem !important;
+        }
+
+        .ja-form .ja-submit {
+            width: 100% !important;
+            flex: 1 !important;
+            margin-top: 1rem !important;
+        }
+
+        .ja-form .ja-submit .ja-button {
+            width: 100% !important;
+            padding: 0.8rem 1.5rem !important;
+            font-size: 1rem !important;
+        }
+
+        /* Job Cards Grid */
+        .ja-job-list {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
+            grid-gap: 1rem !important;
+            padding: 0 0.5rem !important;
+        }
+
+        .ja-job-list .job {
+            aspect-ratio: 1/1 !important;
+        }
+
+        .ja-job-list .job .meta {
+            padding: 0.8rem 1rem !important;
+            gap: 0.3rem !important;
+        }
+
+        .ja-job-list .job .meta .job-title {
+            font-size: 1rem !important;
+        }
+
+        .ja-job-list .job .meta .designation p {
+            font-size: 1.1rem !important;
+        }
+
+        .ja-job-list .job .meta .card-desc p {
+            font-size: 0.9rem !important;
+        }
+
+        .ja-job-list .job .meta .card-link a {
+            font-size: 0.9rem !important;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        /* Extra small devices */
+        .body-spacing {
+            padding: 1rem 0.5rem !important;
+        }
+
+        .navigation-container a {
+            font-size: 1rem !important;
+            padding: 0.6rem 1rem !important;
+        }
+
+        .ja-form {
+            margin-top: 2rem !important;
+            margin-bottom: 2rem !important;
+            padding: 1rem 0.8rem !important;
+        }
+
+        .ja-form::before {
+            font-size: 2rem !important;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .ja-form .ja-field-container select,
+        .ja-form .ja-field-container input[type="text"] {
+            padding: 0.7rem 0.8rem !important;
+            font-size: 0.95rem !important;
+        }
+
+        .ja-job-list {
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
+            grid-gap: 0.8rem !important;
+            padding: 0 0.3rem !important;
+        }
+
+        .ja-job-list .job .meta {
+            padding: 0.6rem 0.8rem !important;
+            gap: 0.2rem !important;
+        }
+
+        .ja-job-list .job .meta .job-title {
+            font-size: 0.9rem !important;
+        }
+
+        .ja-job-list .job .meta .designation p {
+            font-size: 1rem !important;
+        }
+
+        .ja-job-list .job .meta .card-desc p {
+            font-size: 0.8rem !important;
+        }
+
+        .ja-job-list .job .meta .card-link a {
+            font-size: 0.8rem !important;
+        }
+    }
+
     /* ===== END BOXRECRRUITMENTGROUP STYLING ===== */
 </style>
 
