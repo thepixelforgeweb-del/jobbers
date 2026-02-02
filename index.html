@@ -64,7 +64,7 @@
 
         applicationFormSettings: {
 
-            useExternalApplicationForm: true,
+            useExternalApplicationForm: false,
 
             showExternalApplicationFormInNewWindow: false
 
@@ -486,16 +486,17 @@
 		    }
 
 	    function styleApplicationForm() {
-	        // Style the iframe container
-	        var iframeContainer = document.querySelector('.ja-apply-iframe');
-	        if (!iframeContainer) return;
+	        // Style the internal application form
+	        var applyForm = document.querySelector('.ja-apply-form');
+	        if (!applyForm) return;
 
 	        // Only enhance once per render
-	        if (iframeContainer.getAttribute('data-enhanced') === 'true') {
+	        if (applyForm.getAttribute('data-enhanced') === 'true') {
 	            return;
 	        }
 
 	        var sector = '';
+	        var jobTitle = '';
 
 	        // Try to detect sector from the job details that should be visible
 	        var detailsContainer = document.querySelector('.ja-job-details');
@@ -504,20 +505,26 @@
 	            if (detailsSector) {
 	                sector = detailsSector.toLowerCase();
 	            }
+
+	            // Get job title from details
+	            var titleEl = detailsContainer.querySelector('.ja-job-title, .title, h1, h2');
+	            if (titleEl) {
+	                jobTitle = titleEl.textContent.trim();
+	            }
 	        }
 
-	        // Fallback: check the iframe container text for keywords
+	        // Fallback: check the form text for keywords
 	        if (!sector) {
-	            var containerText = iframeContainer.textContent.toLowerCase();
-	            if (containerText.includes('healthcare') || containerText.includes('health')) {
+	            var formText = applyForm.textContent.toLowerCase();
+	            if (formText.includes('healthcare') || formText.includes('health')) {
 	                sector = 'healthcare';
-	            } else if (containerText.includes('hospitality')) {
+	            } else if (formText.includes('hospitality')) {
 	                sector = 'hospitality';
-	            } else if (containerText.includes('leisure')) {
+	            } else if (formText.includes('leisure')) {
 	                sector = 'leisure';
-	            } else if (containerText.includes('travel')) {
+	            } else if (formText.includes('travel')) {
 	                sector = 'travel';
-	            } else if (containerText.includes('business')) {
+	            } else if (formText.includes('business')) {
 	                sector = 'business';
 	            }
 	        }
@@ -528,11 +535,12 @@
 	        }
 
 	        var capitalised = sector.charAt(0).toUpperCase() + sector.slice(1);
-	        iframeContainer.setAttribute('data-category', capitalised);
-	        iframeContainer.setAttribute('data-sector', capitalised);
-	        iframeContainer.classList.add(sector.toLowerCase());
+	        applyForm.setAttribute('data-category', capitalised);
+	        applyForm.setAttribute('data-sector', capitalised);
+	        applyForm.setAttribute('data-job-title', jobTitle || 'Apply Now');
+	        applyForm.classList.add(sector.toLowerCase());
 
-	        iframeContainer.setAttribute('data-enhanced', 'true');
+	        applyForm.setAttribute('data-enhanced', 'true');
 	    }
 
 	    setInterval(function () {
@@ -2028,6 +2036,357 @@
 
     .ja-form .ja-submit .ja-button:active {
         transform: translateY(1px) !important;
+    }
+
+    /* ===== INTERNAL APPLICATION FORM STYLING ===== */
+
+    /* Form Container */
+    .ja-apply-form {
+        max-width: 700px !important;
+        margin: 4rem auto !important;
+        padding: 0 !important;
+        background: #fff !important;
+        border: 3px solid var(--color-hospitality) !important;
+        border-radius: 1.5rem !important;
+        overflow: hidden !important;
+    }
+
+    /* Form Header with Job Title */
+    .ja-apply-form::before {
+        content: attr(data-job-title) !important;
+        display: block !important;
+        background: var(--color-hospitality) !important;
+        color: white !important;
+        padding: 1.5rem !important;
+        font-size: 1.8rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        text-align: center !important;
+        letter-spacing: 0.05rem !important;
+    }
+
+    /* Form Content */
+    .ja-apply-form .ja-form-content {
+        padding: 2rem !important;
+    }
+
+    /* Form Fields */
+    .ja-apply-form .ja-field-wrapper {
+        margin-bottom: 1.5rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .ja-apply-form .ja-field-wrapper label {
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        color: #333 !important;
+        margin-bottom: 0.5rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.02rem !important;
+    }
+
+    /* Text Inputs */
+    .ja-apply-form input[type="text"],
+    .ja-apply-form input[type="email"],
+    .ja-apply-form input[type="tel"],
+    .ja-apply-form textarea {
+        width: 100% !important;
+        padding: 0.8rem 1rem !important;
+        border: none !important;
+        border-bottom: 2px solid var(--color-hospitality) !important;
+        font-size: 1rem !important;
+        font-family: "Inter", sans-serif !important;
+        background: #fff !important;
+        color: #000 !important;
+        transition: border-color 0.3s ease !important;
+        box-sizing: border-box !important;
+    }
+
+    .ja-apply-form input[type="text"]:focus,
+    .ja-apply-form input[type="email"]:focus,
+    .ja-apply-form input[type="tel"]:focus,
+    .ja-apply-form textarea:focus {
+        outline: none !important;
+        border-bottom-color: var(--color-hospitality) !important;
+        box-shadow: 0 2px 4px rgba(243, 146, 0, 0.1) !important;
+    }
+
+    .ja-apply-form input::placeholder {
+        color: #999 !important;
+    }
+
+    /* File Upload */
+    .ja-apply-form input[type="file"] {
+        display: none !important;
+    }
+
+    .ja-apply-form .ja-file-upload-wrapper {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .ja-apply-form .ja-file-upload-label {
+        display: inline-block !important;
+        background: var(--color-hospitality) !important;
+        color: white !important;
+        padding: 0.8rem 2rem !important;
+        border-radius: 0.3rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        cursor: pointer !important;
+        font-size: 1rem !important;
+        transition: background 0.3s ease !important;
+    }
+
+    .ja-apply-form .ja-file-upload-label:hover {
+        background: #e68a00 !important;
+    }
+
+    /* Buttons */
+    .ja-apply-form button,
+    .ja-apply-form input[type="submit"],
+    .ja-apply-form input[type="button"] {
+        background: var(--color-hospitality) !important;
+        color: white !important;
+        border: none !important;
+        padding: 0.8rem 2rem !important;
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        border-radius: 0.3rem !important;
+        cursor: pointer !important;
+        transition: background 0.3s ease !important;
+        margin-right: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .ja-apply-form button:hover,
+    .ja-apply-form input[type="submit"]:hover,
+    .ja-apply-form input[type="button"]:hover {
+        background: #e68a00 !important;
+    }
+
+    /* Checkboxes and Radio Buttons */
+    .ja-apply-form input[type="checkbox"],
+    .ja-apply-form input[type="radio"] {
+        accent-color: var(--color-hospitality) !important;
+        margin-right: 0.5rem !important;
+    }
+
+    .ja-apply-form .ja-checkbox-wrapper,
+    .ja-apply-form .ja-radio-wrapper {
+        margin-bottom: 1rem !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .ja-apply-form .ja-checkbox-wrapper label,
+    .ja-apply-form .ja-radio-wrapper label {
+        margin-bottom: 0 !important;
+        margin-left: 0.5rem !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+    }
+
+    /* Back Link */
+    .ja-apply-form .ja-back-link {
+        display: block !important;
+        text-align: center !important;
+        margin-top: 2rem !important;
+        color: var(--color-hospitality) !important;
+        text-decoration: none !important;
+        font-size: 0.9rem !important;
+        transition: color 0.3s ease !important;
+    }
+
+    .ja-apply-form .ja-back-link:hover {
+        color: #e68a00 !important;
+    }
+
+    /* Sector-Specific Form Colors */
+
+    /* Healthcare */
+    .ja-apply-form.healthcare {
+        border-color: var(--color-healthcare) !important;
+    }
+
+    .ja-apply-form.healthcare::before {
+        background: var(--color-healthcare) !important;
+    }
+
+    .ja-apply-form.healthcare input[type="text"],
+    .ja-apply-form.healthcare input[type="email"],
+    .ja-apply-form.healthcare input[type="tel"],
+    .ja-apply-form.healthcare textarea {
+        border-bottom-color: var(--color-healthcare) !important;
+    }
+
+    .ja-apply-form.healthcare input[type="text"]:focus,
+    .ja-apply-form.healthcare input[type="email"]:focus,
+    .ja-apply-form.healthcare input[type="tel"]:focus,
+    .ja-apply-form.healthcare textarea:focus {
+        box-shadow: 0 2px 4px rgba(84, 43, 116, 0.1) !important;
+    }
+
+    .ja-apply-form.healthcare button,
+    .ja-apply-form.healthcare input[type="submit"],
+    .ja-apply-form.healthcare input[type="button"],
+    .ja-apply-form.healthcare .ja-file-upload-label {
+        background: var(--color-healthcare) !important;
+    }
+
+    .ja-apply-form.healthcare button:hover,
+    .ja-apply-form.healthcare input[type="submit"]:hover,
+    .ja-apply-form.healthcare input[type="button"]:hover,
+    .ja-apply-form.healthcare .ja-file-upload-label:hover {
+        background: #3d1f52 !important;
+    }
+
+    .ja-apply-form.healthcare input[type="checkbox"],
+    .ja-apply-form.healthcare input[type="radio"] {
+        accent-color: var(--color-healthcare) !important;
+    }
+
+    .ja-apply-form.healthcare .ja-back-link {
+        color: var(--color-healthcare) !important;
+    }
+
+    /* Business */
+    .ja-apply-form.business {
+        border-color: var(--color-businessSolution) !important;
+    }
+
+    .ja-apply-form.business::before {
+        background: var(--color-businessSolution) !important;
+    }
+
+    .ja-apply-form.business input[type="text"],
+    .ja-apply-form.business input[type="email"],
+    .ja-apply-form.business input[type="tel"],
+    .ja-apply-form.business textarea {
+        border-bottom-color: var(--color-businessSolution) !important;
+    }
+
+    .ja-apply-form.business input[type="text"]:focus,
+    .ja-apply-form.business input[type="email"]:focus,
+    .ja-apply-form.business input[type="tel"]:focus,
+    .ja-apply-form.business textarea:focus {
+        box-shadow: 0 2px 4px rgba(112, 191, 31, 0.1) !important;
+    }
+
+    .ja-apply-form.business button,
+    .ja-apply-form.business input[type="submit"],
+    .ja-apply-form.business input[type="button"],
+    .ja-apply-form.business .ja-file-upload-label {
+        background: var(--color-businessSolution) !important;
+    }
+
+    .ja-apply-form.business button:hover,
+    .ja-apply-form.business input[type="submit"]:hover,
+    .ja-apply-form.business input[type="button"]:hover,
+    .ja-apply-form.business .ja-file-upload-label:hover {
+        background: #5a9618 !important;
+    }
+
+    .ja-apply-form.business input[type="checkbox"],
+    .ja-apply-form.business input[type="radio"] {
+        accent-color: var(--color-businessSolution) !important;
+    }
+
+    .ja-apply-form.business .ja-back-link {
+        color: var(--color-businessSolution) !important;
+    }
+
+    /* Leisure */
+    .ja-apply-form.leisure {
+        border-color: var(--color-leisure) !important;
+    }
+
+    .ja-apply-form.leisure::before {
+        background: var(--color-leisure) !important;
+    }
+
+    .ja-apply-form.leisure input[type="text"],
+    .ja-apply-form.leisure input[type="email"],
+    .ja-apply-form.leisure input[type="tel"],
+    .ja-apply-form.leisure textarea {
+        border-bottom-color: var(--color-leisure) !important;
+    }
+
+    .ja-apply-form.leisure input[type="text"]:focus,
+    .ja-apply-form.leisure input[type="email"]:focus,
+    .ja-apply-form.leisure input[type="tel"]:focus,
+    .ja-apply-form.leisure textarea:focus {
+        box-shadow: 0 2px 4px rgba(227, 6, 19, 0.1) !important;
+    }
+
+    .ja-apply-form.leisure button,
+    .ja-apply-form.leisure input[type="submit"],
+    .ja-apply-form.leisure input[type="button"],
+    .ja-apply-form.leisure .ja-file-upload-label {
+        background: var(--color-leisure) !important;
+    }
+
+    .ja-apply-form.leisure button:hover,
+    .ja-apply-form.leisure input[type="submit"]:hover,
+    .ja-apply-form.leisure input[type="button"]:hover,
+    .ja-apply-form.leisure .ja-file-upload-label:hover {
+        background: #b80410 !important;
+    }
+
+    .ja-apply-form.leisure input[type="checkbox"],
+    .ja-apply-form.leisure input[type="radio"] {
+        accent-color: var(--color-leisure) !important;
+    }
+
+    .ja-apply-form.leisure .ja-back-link {
+        color: var(--color-leisure) !important;
+    }
+
+    /* Travel */
+    .ja-apply-form.travel {
+        border-color: var(--color-travel) !important;
+    }
+
+    .ja-apply-form.travel::before {
+        background: var(--color-travel) !important;
+    }
+
+    .ja-apply-form.travel input[type="text"],
+    .ja-apply-form.travel input[type="email"],
+    .ja-apply-form.travel input[type="tel"],
+    .ja-apply-form.travel textarea {
+        border-bottom-color: var(--color-travel) !important;
+    }
+
+    .ja-apply-form.travel input[type="text"]:focus,
+    .ja-apply-form.travel input[type="email"]:focus,
+    .ja-apply-form.travel input[type="tel"]:focus,
+    .ja-apply-form.travel textarea:focus {
+        box-shadow: 0 2px 4px rgba(0, 113, 188, 0.1) !important;
+    }
+
+    .ja-apply-form.travel button,
+    .ja-apply-form.travel input[type="submit"],
+    .ja-apply-form.travel input[type="button"],
+    .ja-apply-form.travel .ja-file-upload-label {
+        background: var(--color-travel) !important;
+    }
+
+    .ja-apply-form.travel button:hover,
+    .ja-apply-form.travel input[type="submit"]:hover,
+    .ja-apply-form.travel input[type="button"]:hover,
+    .ja-apply-form.travel .ja-file-upload-label:hover {
+        background: #005a94 !important;
+    }
+
+    .ja-apply-form.travel input[type="checkbox"],
+    .ja-apply-form.travel input[type="radio"] {
+        accent-color: var(--color-travel) !important;
+    }
+
+    .ja-apply-form.travel .ja-back-link {
+        color: var(--color-travel) !important;
     }
 
     /* ===== JOB LIST STYLING ===== */
