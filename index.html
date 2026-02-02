@@ -64,7 +64,7 @@
 
         applicationFormSettings: {
 
-            useExternalApplicationForm: true,
+            useExternalApplicationForm: false,
 
             showExternalApplicationFormInNewWindow: false
 
@@ -2288,7 +2288,7 @@
 	        display: grid !important;
 	        /* Fixed-ish card width so cards don't grow when there are fewer
 	           results. Extra space stays empty on the right, and cards stay
-	           left-aligned. */
+	           centered. */
 	        grid-template-columns: repeat(auto-fill, minmax(220px, 260px)) !important;
 	        grid-gap: 1.5rem !important; /* spacing between cards */
 	        margin-bottom: 3em !important;
@@ -2296,7 +2296,7 @@
 	        padding: 0 1.5rem !important;
 	        width: 100% !important;
 	        float: none !important;
-	        justify-content: flex-start !important; /* keep grid left-aligned */
+	        justify-content: center !important; /* center the grid */
 	    }
 
 	    /* Hide JobAdder pager so jobs appear in a single scrolling list */
