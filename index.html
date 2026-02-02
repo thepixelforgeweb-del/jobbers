@@ -2116,22 +2116,8 @@
         background: var(--color-travel) !important;
     }
 
-    /* Apply CSS filters to iframe to tint colors */
-    .ja-apply-iframe.healthcare {
-        filter: hue-rotate(280deg) saturate(1.2) !important;
-    }
-
-    .ja-apply-iframe.business {
-        filter: hue-rotate(90deg) saturate(1.1) !important;
-    }
-
-    .ja-apply-iframe.leisure {
-        filter: hue-rotate(350deg) saturate(1.3) !important;
-    }
-
-    .ja-apply-iframe.travel {
-        filter: hue-rotate(200deg) saturate(1.2) !important;
-    }
+    /* Remove filters - let the header bar show the correct color */
+    /* The header bar (::before) will display the sector color properly */
 
     /* ===== JOB LIST STYLING ===== */
 
