@@ -556,6 +556,38 @@
 <script src="https://apps.jobadder.com/widgets/v1/jobs.min.js"></script>
 
 <style>
+    /* ===== HEADER/NAVIGATION STYLING ===== */
+
+    .navigation-container nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .navigation-container a {
+        color: var(--color-body);
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: normal;
+        padding: 1rem 4rem;
+        text-transform: uppercase;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .navigation-container a.active {
+        background-color: var(--color-healthcare);
+        color: var(--body-bg);
+    }
+
+    .navigation-container a:hover {
+        background-color: var(--color-healthcare);
+        color: var(--body-bg);
+    }
+
+    /* ===== END HEADER/NAVIGATION STYLING ===== */
+
     html {
         overflow: scroll;
     }
@@ -1791,6 +1823,10 @@
 
     a {
         text-decoration: none;
+    }
+
+    .body-spacing {
+        padding: 4rem 4rem;
     }
 
     #ja-jobs-widget {
