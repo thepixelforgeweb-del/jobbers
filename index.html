@@ -1,0 +1,2584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobbers - Box Recruitment Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="BOXRECRRUITMENTGROUP/style.css">
+</head>
+<body>
+
+<div class="body-main-container">
+    <main class="body-container body-spacing">
+        <section class="navigation-container">
+            <nav>
+                <a href="#">Home</a><a href="#">Employers</a><a href="#">Candidates</a><a class="active" href="#">Vacancies</a><a href="#">Sectors</a><a href="#">Contact</a><a href="#">Policies</a>
+            </nav>
+        </section>
+
+        <div id="ja-jobs-widget"></div>
+    </main>
+</div>
+
+<script>
+
+    var _jaJobsSettings = {
+
+        key: "EU2_3pgjze45lgle3kkulh6ljkw5ra",
+
+	        jobSearchSettings: {
+
+            showSearchForm: true,
+
+            searchButtonText: "SEARCH JOBS",
+
+            fields: ["category", "subCategory", "keywords"],
+
+            categories: [
+                { name: "Business", value: "Business" },
+                { name: "Healthcare", value: "Healthcare" },
+                { name: "Hospitality", value: "Hospitality" },
+                { name: "Leisure", value: "Leisure" },
+                { name: "Travel", value: "Travel" }
+            ],
+
+            categoryLabel: "CATEGORY",
+
+            subCategoryLabel: "SECTION",
+
+	            keywordsLabel: "KEYWORDS"
+	
+	        },
+
+	        // Control how many jobs are shown per page in the list
+	        // The widget defaults to 5; we override to a high number so
+	        // effectively all results appear on a single page.
+	        jobListSettings: {
+	            jobsPerPage: 100,
+	            alwaysShowPager: false,
+	            showPagerSummary: false
+	        },
+
+        applicationFormSettings: {
+
+            useExternalApplicationForm: true,
+
+            showExternalApplicationFormInNewWindow: false
+
+        }
+
+    };
+    
+	    function enhanceJobCard(job, capitalisedSector) {
+	        var meta = job.querySelector('.meta');
+	        var titleEl = job.querySelector('.title');
+	        if (!meta || meta.getAttribute('data-enhanced') === 'true') {
+	            return;
+	        }
+
+		    var titleLink = job.querySelector('.title a');
+		    var originalTitle = titleLink ? titleLink.textContent.trim() : '';
+		    var originalHref = titleLink ? titleLink.href : '#';
+		    var dateEl = meta.querySelector('.date-posted');
+		    var dateText = dateEl ? dateEl.textContent.trim() : '';
+		    // Look for the summary anywhere inside the job (not just inside .meta)
+		    var summaryEl = job.querySelector('.summary');
+		    var summaryText = summaryEl ? summaryEl.textContent.trim() : '';
+		    // Shorten description so all boxes show a small teaser + "..."
+		    if (summaryText && summaryText.length > 90) {
+		        summaryText = summaryText.substring(0, 90).trim();
+		        // Remove trailing punctuation before adding ellipsis
+		        summaryText = summaryText.replace(/[.,;:!?]+$/, '');
+		        summaryText += '...';
+		    }
+	        var classificationsEl = meta.querySelector('.classifications');
+	        var classificationsText = classificationsEl ? classificationsEl.textContent.replace(/\s+/g, ' ').trim() : '';
+	        var viewDetailsEl = meta.querySelector('.view-details') || job.querySelector('.view-details');
+	        var salaryEl = meta.querySelector('.salary');
+	        var salaryText = salaryEl ? salaryEl.textContent.trim() : '';
+
+	        // Update title to show SECTOR name instead of job title
+	        if (titleLink && capitalisedSector) {
+	            titleLink.textContent = capitalisedSector.toUpperCase();
+	            titleLink.href = originalHref;
+	        }
+
+		    // Hide all original elements that we are going to rebuild
+		    if (dateEl) dateEl.style.display = 'none';
+		    if (summaryEl) summaryEl.style.display = 'none';
+		    if (classificationsEl) classificationsEl.style.display = 'none';
+	        if (salaryEl) salaryEl.style.display = 'none';
+
+	        // Clear meta and rebuild with reference structure
+	        meta.innerHTML = '';
+
+	        // Create date element with <p> tag
+	        if (dateText) {
+	            var dateDiv = document.createElement('div');
+	            dateDiv.className = 'date';
+	            var dateP = document.createElement('p');
+	            dateP.textContent = dateText;
+	            dateDiv.appendChild(dateP);
+	            meta.appendChild(dateDiv);
+	        }
+
+	        // Create designation (job title) element with <p> tag
+	        if (originalTitle) {
+	            var designationDiv = document.createElement('div');
+	            designationDiv.className = 'designation';
+	            var designationP = document.createElement('p');
+	            designationP.textContent = originalTitle;
+	            designationDiv.appendChild(designationP);
+	            meta.appendChild(designationDiv);
+	        }
+
+	        // Create separator line
+	        var sepDiv = document.createElement('div');
+	        sepDiv.className = 'card-seperator';
+	        meta.appendChild(sepDiv);
+
+	        // Create job-type element - combine classifications and salary
+	        var jobTypeText = '';
+	        if (classificationsText && salaryText) {
+	            jobTypeText = classificationsText + ' ' + salaryText;
+	        } else if (classificationsText) {
+	            jobTypeText = classificationsText;
+	        } else if (salaryText) {
+	            jobTypeText = salaryText;
+	        }
+
+	        if (jobTypeText) {
+	            var jobTypeDiv = document.createElement('div');
+	            jobTypeDiv.className = 'job-type';
+	            var jobTypeP = document.createElement('p');
+	            jobTypeP.textContent = jobTypeText;
+	            jobTypeDiv.appendChild(jobTypeP);
+	            meta.appendChild(jobTypeDiv);
+	        }
+
+	        // Create description element with <p> tag
+	        if (summaryText) {
+	            var descDiv = document.createElement('div');
+	            descDiv.className = 'card-desc';
+	            var descP = document.createElement('p');
+	            descP.textContent = summaryText;
+	            descDiv.appendChild(descP);
+	            meta.appendChild(descDiv);
+	        }
+
+	        // Create card-link with READ MORE button
+	        if (viewDetailsEl) {
+	            // Re-use JobAdder's original element so any built-in
+	            // click handlers / data attributes keep working.
+	            var linkDiv = document.createElement('div');
+	            linkDiv.className = 'card-link';
+	
+	            // Make sure text looks right and the element is visible
+	            viewDetailsEl.textContent = 'READ MORE';
+	            viewDetailsEl.style.display = 'block';
+	            viewDetailsEl.style.padding = '0';
+	
+	            linkDiv.appendChild(viewDetailsEl);
+	            meta.appendChild(linkDiv);
+	        } else if (originalHref && originalHref !== '#') {
+	            // Fallback: build a simple anchor that links to the job details page
+	            var fallbackDiv = document.createElement('div');
+	            fallbackDiv.className = 'card-link';
+	            var fallbackLink = document.createElement('a');
+	            fallbackLink.href = originalHref;
+	            fallbackLink.textContent = 'READ MORE';
+	            fallbackLink.target = '_blank';
+	            fallbackDiv.appendChild(fallbackLink);
+	            meta.appendChild(fallbackDiv);
+	        }
+
+	        meta.setAttribute('data-enhanced', 'true');
+	    }
+
+	    function styleJobCards() {
+	        var jobs = document.querySelectorAll('.ja-job-list .job');
+	        var sectors = ['Leisure', 'Healthcare', 'Hospitality', 'Travel', 'Business'];
+	        var sectorIndex = 0;
+
+	        jobs.forEach(function (job, index) {
+	            var sector = '';
+
+	            // Prefer classifications text to determine sector
+	            var classifications = job.querySelector('.classifications');
+	            if (classifications) {
+	                var classText = classifications.textContent.toLowerCase();
+	                console.log('Classifications text:', classText);
+	                if (classText.includes('healthcare') || classText.includes('health')) {
+	                    sector = 'healthcare';
+	                } else if (classText.includes('hospitality')) {
+	                    sector = 'hospitality';
+	                } else if (classText.includes('leisure')) {
+	                    sector = 'leisure';
+	                } else if (classText.includes('travel')) {
+	                    sector = 'travel';
+	                } else if (classText.includes('business')) {
+	                    sector = 'business';
+	                }
+	            }
+
+	            // Fallback: try job title text if we still don't have a sector
+	            if (!sector) {
+	                var titleLink = job.querySelector('.title a');
+	                if (titleLink) {
+	                    var titleText = titleLink.textContent.toLowerCase();
+	                    console.log('Title text:', titleText);
+	                    if (titleText.includes('healthcare') || titleText.includes('health')) {
+	                        sector = 'healthcare';
+	                    } else if (titleText.includes('hospitality')) {
+	                        sector = 'hospitality';
+	                    } else if (titleText.includes('leisure')) {
+	                        sector = 'leisure';
+	                    } else if (titleText.includes('travel')) {
+	                        sector = 'travel';
+	                    } else if (titleText.includes('business')) {
+	                        sector = 'business';
+	                    }
+	                }
+	            }
+
+	            // Final fallback: check entire job element text
+	            if (!sector) {
+	                var jobText = job.textContent.toLowerCase();
+	                console.log('Full job text:', jobText);
+	                if (jobText.includes('healthcare') || jobText.includes('health')) {
+	                    sector = 'healthcare';
+	                } else if (jobText.includes('hospitality')) {
+	                    sector = 'hospitality';
+	                } else if (jobText.includes('leisure')) {
+	                    sector = 'leisure';
+	                } else if (jobText.includes('travel')) {
+	                    sector = 'travel';
+	                } else if (jobText.includes('business')) {
+	                    sector = 'business';
+	                }
+	            }
+
+	            // TEMPORARY: If still no sector detected, assign one cyclically for testing
+	            if (!sector) {
+	                console.log('No sector detected - assigning cyclically for testing');
+	                var capitalised = sectors[sectorIndex % sectors.length];
+	                sector = capitalised.toLowerCase();
+	                sectorIndex++;
+	            }
+
+	            if (sector) {
+	                console.log('Detected sector:', sector);
+	                // Capitalised value so it matches the CSS selectors like [data-category="Business"]
+	                var capitalised = sector.charAt(0).toUpperCase() + sector.slice(1);
+	                job.setAttribute('data-category', capitalised);
+	                job.setAttribute('data-sector', capitalised);
+	                job.classList.add(sector.toLowerCase());
+	                console.log('Applied sector class:', sector.toLowerCase(), 'and data attributes:', capitalised);
+	                console.log('Job element classes:', job.className);
+	                console.log('Job element getAttribute data-category:', job.getAttribute('data-category'));
+	                console.log('Job element getAttribute data-sector:', job.getAttribute('data-sector'));
+
+	                enhanceJobCard(job, capitalised);
+	            } else {
+	                console.log('No sector detected for job');
+	            }
+	        });
+	    }
+
+	    function styleJobDetails() {
+	        var details = document.querySelector('.ja-job-details');
+	        if (!details) return;
+
+	        // Only enhance once per render
+	        if (details.getAttribute('data-enhanced') === 'true') {
+	            return;
+	        }
+
+	        var sector = '';
+
+	        // Prefer classifications text inside the details meta block
+	        var classifications = details.querySelector('.meta .classifications');
+	        if (classifications) {
+	            var classText = classifications.textContent.toLowerCase();
+	            if (classText.includes('healthcare') || classText.includes('health')) {
+	                sector = 'healthcare';
+	            } else if (classText.includes('hospitality')) {
+	                sector = 'hospitality';
+	            } else if (classText.includes('leisure')) {
+	                sector = 'leisure';
+	            } else if (classText.includes('travel')) {
+	                sector = 'travel';
+	            } else if (classText.includes('business')) {
+	                sector = 'business';
+	            }
+	        }
+
+	        // Fallback: look at the main title text
+	        if (!sector) {
+	            var titleEl = details.querySelector('.title, .title a');
+	            if (titleEl) {
+	                var titleText = titleEl.textContent.toLowerCase();
+	                if (titleText.includes('healthcare') || titleText.includes('health')) {
+	                    sector = 'healthcare';
+	                } else if (titleText.includes('hospitality')) {
+	                    sector = 'hospitality';
+	                } else if (titleText.includes('leisure')) {
+	                    sector = 'leisure';
+	                } else if (titleText.includes('travel')) {
+	                    sector = 'travel';
+	                } else if (titleText.includes('business')) {
+	                    sector = 'business';
+	                }
+	            }
+	        }
+
+	        // Final fallback: check the entire job details text
+	        if (!sector) {
+	            var detailsText = details.textContent.toLowerCase();
+	            if (detailsText.includes('healthcare') || detailsText.includes('health')) {
+	                sector = 'healthcare';
+	            } else if (detailsText.includes('hospitality')) {
+	                sector = 'hospitality';
+	            } else if (detailsText.includes('leisure')) {
+	                sector = 'leisure';
+	            } else if (detailsText.includes('travel')) {
+	                sector = 'travel';
+	            } else if (detailsText.includes('business')) {
+	                sector = 'business';
+	            }
+	        }
+
+	        // If still nothing detected, default to Hospitality so details match
+	        if (!sector) {
+	            sector = 'hospitality';
+	        }
+
+	        var capitalised = sector.charAt(0).toUpperCase() + sector.slice(1);
+	        details.setAttribute('data-category', capitalised);
+	        details.setAttribute('data-sector', capitalised);
+	        details.classList.add(sector.toLowerCase());
+
+	        // Normalise action labels to match design
+	        var backLink = details.querySelector('.apply .back-link');
+	        if (backLink) {
+	            backLink.textContent = '<< BACK TO SEARCH RESULTS';
+	        }
+	        var applyBtn = details.querySelector('.apply .ja-button');
+	        if (applyBtn) {
+	            applyBtn.textContent = 'APPLY';
+	        }
+
+	        details.setAttribute('data-enhanced', 'true');
+	    }
+
+	    function filterCategoryDropdown() {
+	        var categorySelect = document.querySelector('.ja-form select[name="category"]');
+	        if (categorySelect && !categorySelect.getAttribute('data-filtered')) {
+	            console.log('Found category select, normalising options...');
+	
+	            // Map our 5 display categories to keywords that may appear
+	            // in JobAdder's option text/value. This way labels become
+	            // exactly Business / Healthcare / Hospitality / Leisure / Travel
+	            // while underlying values from JobAdder stay intact.
+	            var categoryMap = {
+	                'Business': ['business'],
+	                'Healthcare': ['healthcare', 'health'],
+	                'Hospitality': ['hospitality'],
+	                'Leisure': ['leisure'],
+	                'Travel': ['travel']
+	            };
+	
+	            var seenLabels = {};
+	            var options = Array.prototype.slice.call(categorySelect.options);
+	
+	            options.forEach(function (option, index) {
+	                var optionText = (option.textContent || '').trim();
+	                var optionValue = (option.value || '').trim();
+	                var textLower = optionText.toLowerCase();
+	                var valueLower = optionValue.toLowerCase();
+	
+	                // Keep the first option (usually "All" / placeholder)
+	                if (index === 0 || optionValue === '' || textLower === 'sector' || textLower === 'all') {
+	                    return;
+	                }
+	
+	                var matchedLabel = null;
+	                Object.keys(categoryMap).some(function (label) {
+	                    var keywords = categoryMap[label];
+	                    var found = keywords.some(function (kw) {
+	                        return textLower.indexOf(kw) !== -1 || valueLower.indexOf(kw) !== -1;
+	                    });
+	                    if (found) {
+	                        matchedLabel = label;
+	                        return true;
+	                    }
+	                    return false;
+	                });
+	
+	                if (matchedLabel) {
+	                    // Only keep one option per label
+	                    if (seenLabels[matchedLabel]) {
+	                        option.remove();
+	                    } else {
+	                        option.textContent = matchedLabel;
+	                        // Leave option.value as-is so JobAdder receives
+	                        // the real underlying category value.
+	                        seenLabels[matchedLabel] = true;
+	                    }
+	                } else {
+	                    option.remove();
+	                    console.log('Removed non-mapped option:', optionText);
+	                }
+	            });
+	
+	            categorySelect.setAttribute('data-filtered', 'true');
+	        }
+	    }
+
+		    function setKeywordPlaceholder() {
+		        var form = document.querySelector('.ja-form');
+		        if (!form) return;
+		
+		        // Find the keyword text/search input (labels are hidden, so use placeholder)
+		        var input = form.querySelector('.ja-field-container input[type="text"], .ja-field-container input[type="search"]');
+		        if (input && !input.getAttribute('data-placeholder-set')) {
+		            input.placeholder = 'KEYWORDS';
+		            input.setAttribute('data-placeholder-set', 'true');
+		        }
+		    }
+
+		    function hideUnwantedFormFields() {
+		        // Only keep CATEGORY, SUB CATEGORY/SECTION and KEYWORD text filters (+ the Search button)
+		        var form = document.querySelector('.ja-form');
+		        if (!form) return;
+		
+		        // Get all visible field containers in DOM order
+		        var formFields = Array.prototype.slice.call(
+		            form.querySelectorAll('.ja-field-container')
+		        );
+		        if (!formFields.length) return;
+		
+		        formFields.forEach(function (field, index) {
+		            // Always keep the Search button container if it happens to be in a field container
+		            var hasButton = field.querySelector('.ja-button, button, input[type="submit"]');
+		            if (hasButton) {
+		                field.style.setProperty('display', 'inline-block', 'important');
+		                return;
+		            }
+		
+		            // Identify the keyword text field (text/search input)
+		            var isKeywordField = !!field.querySelector('input[type="text"], input[type="search"]');
+		
+		            // Keep only:
+		            //  - the first select field  (CATEGORY)
+		            //  - the second select field (SUB CATEGORY / SECTION)
+		            //  - the text input field (KEYWORDS)
+		            // Hide any other select fields (e.g. LOCATION, WORK TYPE)
+		            if (index === 0 || index === 1 || isKeywordField) {
+		                field.style.setProperty('display', 'inline-block', 'important');
+		            } else {
+		                field.style.setProperty('display', 'none', 'important');
+		            }
+		        });
+		    }
+
+	    setInterval(function () {
+	        var myClasses = document.getElementsByClassName("view-details");
+	
+	        for (var i = 0; i < myClasses.length; i++) {
+	            if (myClasses[i].innerText !== "READ MORE") {
+	                myClasses[i].innerText = "READ MORE";
+	            }
+	        }
+	        styleJobCards();
+	        styleJobDetails();
+	        filterCategoryDropdown();
+	        setKeywordPlaceholder();
+	        hideUnwantedFormFields();
+	    }, 1);
+
+</script>
+
+<script src="https://apps.jobadder.com/widgets/v1/jobs.min.js"></script>
+
+<style>
+    html {
+        overflow: scroll;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+        /* make scrollbar transparent */
+    }
+
+    #ja-jobs-widget {
+
+        position: relative;
+
+    }
+
+
+
+    .ja-loading {
+
+        position: absolute;
+
+        top: 10px;
+
+        right: 10px;
+
+    }
+
+
+
+    .ja-loading.left {
+
+        left: 10px;
+
+        right: auto;
+
+    }
+
+
+
+
+
+    /* Forms - Match custom design */
+
+    .ja-form {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        flex-wrap: wrap;
+        margin-top: 8rem;
+        margin-bottom: 8rem;
+        padding: 1rem 4rem;
+        position: relative;
+    }
+
+    .ja-form::before {
+        content: "VACANCIES";
+        color: var(--color-healthcare);
+        font-size: 3.5rem;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+        text-align: center;
+        display: block;
+        margin-bottom: 3rem;
+    }
+
+    .ja-form .ja-search-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .ja-form .ja-field-container {
+        margin-bottom: 0;
+        display: inline-block;
+        position: relative;
+    }
+
+    .ja-form .ja-field-container label {
+        display: none;
+    }
+
+
+
+    .ja-form .ja-field-container select,
+    .ja-form .ja-field-container input {
+        border: 2px solid #000;
+        font-weight: bold;
+        padding: 1rem 3rem;
+        text-transform: uppercase;
+        font-family: "Inter", sans-serif;
+        font-size: 1.4rem;
+        color: #000;
+        background: #fff;
+    }
+
+    .ja-form .ja-field-container input {
+        text-align: center;
+        min-width: 250px;
+    }
+
+    .ja-form .ja-field-container select {
+        background: #fff;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+        padding-right: 4rem;
+        min-width: 200px;
+    }
+
+    /* Custom chevron for select */
+    .ja-form .ja-field-container:has(select)::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 1.5rem;
+        width: 8px;
+        height: 8px;
+        border-right: 2px solid #000;
+        border-bottom: 2px solid #000;
+        transform: translateY(-50%) rotate(45deg);
+        pointer-events: none;
+    }
+
+    .ja-form .ja-field-container input:focus-visible,
+    .ja-form .ja-field-container select:focus-visible {
+        outline: 0;
+    }
+
+    .ja-form .ja-field-container input::placeholder {
+        color: #000;
+    }
+
+    /* Placeholder for old selectors - will be overridden */
+    .ja-form .ja-field-container textarea {
+
+        width: 230px;
+
+        padding: 3px 4px;
+
+    }
+
+
+
+    .ja-form .ja-field-container .checkbox:after {
+
+        content: ".";
+
+        display: block;
+
+        height: 0;
+
+        clear: both;
+
+        visibility: hidden;
+
+    }
+
+
+
+    .ja-form .ja-field-container .checkbox {
+
+        display: block;
+
+        margin-left: 95px;
+
+    }
+
+
+
+    .ja-form .ja-field-container .checkbox br {
+
+        clear: left;
+
+    }
+
+
+
+    .ja-form .ja-field-container .checkbox input {
+
+        width: 15px;
+
+        height: 19px;
+
+        float: left;
+
+    }
+
+
+
+    .ja-form .ja-field-container .checkbox label {
+
+        height: 21px;
+
+        width: auto;
+
+        line-height: 21px;
+
+        float: left;
+
+        padding: 2px 12px 0 5px;
+
+    }
+
+
+
+
+
+    .ja-form .ja-submit {
+
+        margin-top: 1em;
+
+        margin-left: 100px;
+
+        vertical-align: middle;
+
+    }
+
+
+
+    .ja-form .ja-submit .ja-loading {
+
+        position: relative;
+
+        top: 0;
+
+        left: 0;
+
+        margin-left: 10px;
+
+        vertical-align: middle;
+
+    }
+
+
+
+    .ja-button {
+        border: 2px solid #000;
+        font-weight: bold;
+        padding: 1rem 3rem;
+        text-transform: uppercase;
+        background-color: #fff;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+        font-size: 1.4rem;
+        color: #000;
+        text-align: center;
+        outline: 0;
+        border-radius: 0;
+        display: inline-block;
+        width: auto;
+        min-width: 200px;
+    }
+
+
+
+    .ja-button:hover {
+
+        cursor: pointer !important;
+
+    }
+
+
+
+    .ja-button:active {
+
+        position: relative;
+
+        top: 1px;
+
+    }
+
+
+
+    .ja-form .ja-field-container .error {
+
+        color: #990000;
+
+        border-color: #990000;
+
+    }
+
+
+
+    .ja-form .ja-field-container .validation-error {
+
+        display: block;
+
+        clear: both;
+
+        margin-top: 5px;
+
+        color: #aa0000;
+
+    }
+
+
+
+    .ja-form .ja-error-container {
+
+        color: #aa0000;
+
+        margin-top: 2em;
+
+        margin-left: 100px;
+
+    }
+
+
+
+    .ja-form .ja-error-container p {
+
+        margin-bottom: 0;
+
+    }
+
+
+
+    /* End forms */
+
+
+
+
+
+    /* Job list - Card Grid Layout */
+
+	    .ja-job-list-container {
+	        /* Slight side padding, but leave room for 4 cards */
+	        padding: 0 2rem;
+	        /* Center the overall cards container on the page */
+	        max-width: 1200px;
+	        margin-left: auto;
+	        margin-right: auto;
+	    }
+
+    .ja-job-list-container .no-jobs-content {
+        text-align: center;
+        font-size: 1.6rem;
+        color: var(--color-body);
+        padding: 4rem;
+    }
+
+    .ja-job-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 3.5rem;
+        margin-bottom: 3em;
+    }
+
+    .ja-job-list .job {
+        border: 2px solid #000;
+        border-radius: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        float: none;
+        width: 100%;
+        background: #fff;
+        overflow: hidden;
+    }
+
+    .ja-job-list .job.alt {
+        background-color: #fff;
+        width: 100%;
+        border-top: solid;
+        border-color: #000000;
+        padding-bottom: 30px;
+        border-width: 1px;
+    }
+
+
+    .ja-job-list .job.hot {
+        border-color: var(--color-leisure);
+    }
+
+    /* Card title */
+    .ja-job-list .job .title {
+        padding: 1rem 2rem;
+        width: 100%;
+        background: #000;
+        margin: 0;
+    }
+
+    .ja-job-list .job .title,
+    .ja-job-list .job .title a {
+        color: var(--body-bg);
+        font-size: 2rem;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: uppercase;
+        text-align: center;
+        font-family: "Inter", sans-serif;
+        text-decoration: none;
+    }
+
+    .ja-job-list .job .title a {
+        display: block;
+    }
+
+    /* Card inner content */
+    .ja-job-list .job .meta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 2rem;
+        width: 100%;
+        font-family: "Inter", sans-serif;
+    }
+
+
+
+    .ja-job-list .job .meta:before,
+
+    .ja-job-list .job .meta:after {
+
+
+        display: table;
+
+    }
+
+
+
+    .ja-job-list .job .meta:after {
+
+        clear: both;
+
+    }
+
+
+
+    .ja-job-list .job .meta {
+
+        zoom: 1;
+
+    }
+
+
+
+    .ja-job-list .job .meta p {
+        margin: 0.3rem 0;
+        text-align: center;
+    }
+
+    /* Date */
+    .ja-job-list .job .meta .date-posted,
+    .ja-job-list .job .meta .date-posted p {
+        color: #000;
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-align: center;
+        font-family: "Inter", sans-serif;
+    }
+
+    /* Classifications - Hidden, used for sector detection */
+    .ja-job-list .job .meta .classifications {
+        display: none !important;
+    }
+
+    .ja-job-list .job .meta .classifications li {
+        display: none;
+    }
+
+    /* Salary/Designation */
+    .ja-job-list .job .meta .salary {
+        color: var(--color-body);
+        font-size: 1.5rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+
+    .ja-job-list .job .meta .reference {
+        display: none;
+    }
+
+    /* Summary/Description - hide original JobAdder summary, we rebuild our own */
+    .ja-job-list .job .summary {
+        display: none !important;
+    }
+
+    /* View Details Link */
+    .ja-job-list .job .view-details {
+        color: #000;
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-align: center;
+        font-family: "Inter", sans-serif;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        margin: 1rem auto;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+        color: #666666 !important;
+    }
+
+
+
+    .ja-job-list .job .meta .salary {
+
+        clear: left;
+
+        float: left;
+
+    }
+
+
+
+    .ja-job-list .job .meta .reference {
+
+        float: right;
+
+        text-align: right;
+
+    }
+
+
+
+    .ja-job-list .job .summary {
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        line-height: 24px;
+        font-size: 14px;
+        font-family: "Open Sans", sans-serif;
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+        color: #000000 !important;
+    }
+
+
+
+    .ja-job-list .job .view-details {
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        box-sizing: border-box;
+        text-decoration: none;
+        touch-action: manipulation;
+        cursor: pointer;
+        border: 1px solid transparent;
+        white-space: nowrap;
+        user-select: none;
+        color: #fff;
+        font: 500 14px/26px "Open Sans", sans-serif;
+        text-transform: capitalize;
+        padding: 6px 29px;
+        box-shadow: none;
+        transition: none !important;
+        background: #42195f !important;
+        border-radius: 0px;
+        text-align: center;
+        display: block;
+        width: 152px;
+        margin: 40px auto 0px;
+        display: inline-grid;
+        font-weight: bold;
+    }
+
+    /*     
+    .ja-job-list .job .view-details:after {
+        content: "READ MORE";
+    } */
+
+
+    .ja-job-list .job .view-details:hover {
+
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, #e9e9e9), color-stop(100%, #f9f9f9));
+
+        background: -moz-linear-gradient(center top, #e9e9e9 5%, #f9f9f9 100%);
+
+        background: -ms-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9');
+
+        background-color: #e9e9e9;
+
+        cursor: pointer !important;
+
+    }
+
+
+
+    .ja-job-list .job .view-details:active {
+
+        position: relative;
+
+        top: 1px;
+
+    }
+
+    /* Sector-specific card colors */
+    .ja-job-list .job[data-category*="business"],
+    .ja-job-list .job.business {
+        border: 0.5rem solid var(--color-businessSolution) !important;
+    }
+
+    .ja-job-list .job[data-category*="business"] .title,
+    .ja-job-list .job.business .title {
+        background: var(--color-businessSolution) !important;
+        color: white !important;
+    }
+
+    .ja-job-list .job[data-category*="business"] .date-posted,
+    .ja-job-list .job[data-category*="business"] .date-posted p,
+    .ja-job-list .job[data-category*="business"] .view-details,
+    .ja-job-list .job.business .date-posted,
+    .ja-job-list .job.business .date-posted p,
+    .ja-job-list .job.business .view-details {
+        color: var(--color-businessSolution) !important;
+    }
+
+    .ja-job-list .job.business .card-seperator {
+        background-color: var(--color-businessSolution) !important;
+    }
+
+    .ja-job-list .job[data-category*="healthcare"],
+    .ja-job-list .job.healthcare {
+        border: 0.5rem solid var(--color-healthcare) !important;
+    }
+
+    .ja-job-list .job[data-category*="healthcare"] .title,
+    .ja-job-list .job.healthcare .title {
+        background: var(--color-healthcare) !important;
+        color: white !important;
+    }
+
+    .ja-job-list .job[data-category*="healthcare"] .date-posted,
+    .ja-job-list .job[data-category*="healthcare"] .date-posted p,
+    .ja-job-list .job[data-category*="healthcare"] .view-details,
+    .ja-job-list .job.healthcare .date-posted,
+    .ja-job-list .job.healthcare .date-posted p,
+    .ja-job-list .job.healthcare .view-details {
+        color: var(--color-healthcare) !important;
+    }
+
+    .ja-job-list .job.healthcare .card-seperator {
+        background-color: var(--color-healthcare) !important;
+    }
+
+    .ja-job-list .job[data-category*="hospitality"],
+    .ja-job-list .job.hospitality {
+        border: 0.5rem solid var(--color-hospitality);
+    }
+
+    .ja-job-list .job[data-category*="hospitality"] .title,
+    .ja-job-list .job.hospitality .title {
+        background: var(--color-hospitality) !important;
+        color: white !important;
+    }
+
+    .ja-job-list .job[data-category*="hospitality"] .date-posted,
+    .ja-job-list .job[data-category*="hospitality"] .date-posted p,
+    .ja-job-list .job[data-category*="hospitality"] .view-details,
+    .ja-job-list .job.hospitality .date-posted,
+    .ja-job-list .job.hospitality .date-posted p,
+    .ja-job-list .job.hospitality .view-details {
+        color: var(--color-hospitality) !important;
+    }
+
+    .ja-job-list .job.hospitality .card-seperator {
+        background-color: var(--color-hospitality) !important;
+    }
+
+    .ja-job-list .job[data-category*="leisure"],
+    .ja-job-list .job.leisure {
+        border: 0.5rem solid var(--color-leisure) !important;
+    }
+
+    .ja-job-list .job[data-category*="leisure"] .title,
+    .ja-job-list .job.leisure .title {
+        background: var(--color-leisure) !important;
+        color: white !important;
+    }
+
+    .ja-job-list .job[data-category*="leisure"] .date-posted,
+    .ja-job-list .job[data-category*="leisure"] .date-posted p,
+    .ja-job-list .job[data-category*="leisure"] .view-details,
+    .ja-job-list .job.leisure .date-posted,
+    .ja-job-list .job.leisure .date-posted p,
+    .ja-job-list .job.leisure .view-details {
+        color: var(--color-leisure) !important;
+    }
+
+    .ja-job-list .job.leisure .card-seperator {
+        background-color: var(--color-leisure) !important;
+    }
+
+    .ja-job-list .job[data-category*="travel"],
+    .ja-job-list .job.travel {
+        border: 0.5rem solid var(--color-travel) !important;
+    }
+
+    .ja-job-list .job[data-category*="travel"] .title,
+    .ja-job-list .job.travel .title {
+        background: var(--color-travel) !important;
+        color: white !important;
+    }
+
+    .ja-job-list .job[data-category*="travel"] .date-posted,
+    .ja-job-list .job[data-category*="travel"] .date-posted p,
+    .ja-job-list .job[data-category*="travel"] .view-details,
+    .ja-job-list .job.travel .date-posted,
+    .ja-job-list .job.travel .date-posted p,
+    .ja-job-list .job.travel .view-details {
+        color: var(--color-travel) !important;
+    }
+
+    .ja-job-list .job.travel .card-seperator {
+        background-color: var(--color-travel) !important;
+    }
+
+
+    /* End job list */
+
+
+
+
+
+    /* Pager */
+
+
+
+    .ja-pager-container {}
+
+
+
+    .ja-pager-container:before,
+
+    .ja-pager-container:after {
+
+        content: "";
+
+        display: table;
+
+    }
+
+
+
+    .ja-pager-container:after {
+
+        clear: both;
+
+    }
+
+
+
+    .ja-pager-container {
+
+        zoom: 1;
+
+    }
+
+
+
+    .ja-pager {
+
+        float: left;
+
+        font-size: 0.9em;
+        font-family: "Open Sans", sans-serif;
+
+    }
+
+
+
+    .ja-pager:before,
+
+    .ja-pager:after {
+
+        content: "";
+
+        display: table;
+
+    }
+
+
+
+    .ja-pager:after {
+
+        clear: both;
+
+    }
+
+
+
+    .ja-pager {
+
+        zoom: 1;
+
+    }
+
+
+
+    .ja-pager span,
+
+    .ja-pager a {
+
+        display: block;
+
+        float: left;
+
+        line-height: 23px;
+
+        padding: 0 8px;
+
+        margin-right: 3px;
+
+        color: #333;
+
+        background-color: #f3f3f3;
+
+        border: solid 1px #ddd;
+
+    }
+
+
+
+    .ja-pager a:hover,
+
+    .ja-pager .current-page {
+
+        color: #fff;
+
+        background-color: #bbb;
+
+        border-color: #999;
+
+        text-decoration: none;
+        font-family: "Open Sans", sans-serif;
+
+    }
+
+
+
+    .ja-pager .previous,
+
+    .ja-pager .next {
+        font-family: "Open Sans", sans-serif;
+
+    }
+
+
+
+    .ja-pager .first-page,
+
+    .ja-pager .last-page {
+        font-family: "Open Sans", sans-serif;
+
+    }
+
+
+
+    .ja-pager .previous-ellipsis,
+
+    .ja-pager .next-ellipsis {
+        font-family: "Open Sans", sans-serif;
+
+    }
+
+
+
+
+
+    .ja-pager-summary {
+
+        float: right;
+
+        line-height: 25px;
+
+        font-size: 0.9em;
+
+    }
+
+
+
+    /* End pager */
+
+
+
+
+
+	    /* Job details */
+
+	    .ja-job-details {
+	        max-width: 1000px;
+	        margin: 4rem auto 6rem;
+	        border-radius: 1.5rem;
+	        border: 0.5rem solid #f39200;
+	        background-color: #ffffff;
+	        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+	        overflow: hidden;
+	        position: relative;
+	        font-family: "Open Sans", sans-serif;
+	    }
+
+	    .ja-job-details .title {
+	        margin: 0;
+	        padding: 1.8rem 2.4rem;
+	        font: 600 2.2rem/1.3 "Open Sans", sans-serif;
+	        text-transform: uppercase;
+	        letter-spacing: 0.08em;
+	        box-sizing: border-box;
+	        background-color: #f39200;
+	        color: #ffffff !important;
+	        text-align: left;
+	    }
+
+	    .ja-job-details .title a {
+	        color: inherit !important;
+	        text-decoration: none !important;
+	        display: block;
+	    }
+
+	    .ja-job-details .meta {
+	        margin: 0;
+	        padding: 2.4rem 2.4rem 1.2rem;
+	        font-family: "Open Sans", sans-serif;
+	        font-size: 1.4rem;
+	        color: #333333;
+	        display: flex;
+	        flex-wrap: wrap;
+	        gap: 0.4rem 2rem;
+	    }
+
+	    .ja-job-details .meta p {
+	        margin: 0;
+	        font-size: 1.4rem;
+	    }
+
+	    .ja-job-details .meta .classifications,
+	    .ja-job-details .meta .salary,
+	    .ja-job-details .meta .reference,
+	    .ja-job-details .meta .date-posted {
+	        float: none;
+	        width: auto;
+	    }
+
+	    .ja-job-details .meta .classifications {
+	        list-style: none;
+	        padding: 0;
+	        margin: 0;
+	        font-weight: 600;
+	    }
+
+	    .ja-job-details .meta .classifications li {
+	        display: inline;
+	        margin-right: 0.75rem;
+	    }
+
+	    .ja-job-details .meta .date-posted {
+	        margin-left: auto;
+	        text-align: right;
+	        font-weight: 600;
+	    }
+
+	    .ja-job-details .description {
+	        padding: 0 2.4rem 2.4rem;
+	        font-family: "Open Sans", sans-serif;
+	        font-size: 1.5rem;
+	        color: #666666;
+	    }
+
+	    .ja-job-details .description p {
+	        margin: 0 0 1.2rem;
+	    }
+
+	    .ja-job-details .description h3,
+	    .ja-job-details .description h4 {
+	        margin: 2rem 0 0.8rem;
+	        font-size: 1.6rem;
+	        font-weight: 700;
+	        text-transform: none;
+	        color: #333333;
+	    }
+
+	    .ja-job-details .description ul {
+	        padding-left: 2rem;
+	        margin: 0 0 1.5rem;
+	    }
+
+	    .ja-job-details .description ul li {
+	        margin-bottom: 0.5rem;
+	    }
+
+	    .ja-job-details .description ul ::marker {
+	        unicode-bidi: isolate;
+	        font-variant-numeric: tabular-nums;
+	        text-transform: none;
+	        text-indent: 0px !important;
+	        text-align: start !important;
+	        text-align-last: start !important;
+	        color: #e30613;
+	    }
+
+	    .ja-job-details .apply {
+	        margin: 0;
+	        padding: 2rem 2.4rem 2.4rem;
+	        border-top: 1px solid #e5e5e5;
+	        display: flex;
+	        align-items: center;
+	        justify-content: space-between;
+	        flex-wrap: wrap;
+	        gap: 1.5rem;
+	    }
+
+	    .ja-job-details .apply .back-link {
+	        font-family: "Open Sans", sans-serif;
+	        font-size: 1.3rem;
+	        text-transform: uppercase;
+	        letter-spacing: 0.08em;
+	        margin-right: 1em;
+	        padding: 0.9rem 1.6rem;
+	        border-radius: 999px;
+	        border: 2px solid #d0d0d0;
+	        background-color: #ffffff;
+	        color: #333333;
+	        text-decoration: none;
+	        white-space: nowrap;
+	    }
+
+	    .ja-job-details .apply .ja-button {
+	        font-family: "Open Sans", sans-serif;
+	        font-size: 1.4rem;
+	        text-transform: uppercase;
+	        letter-spacing: 0.1em;
+	        padding: 1rem 2.4rem;
+	        border-radius: 999px;
+	        border: 2px solid #f39200;
+	        background-color: #f39200;
+	        color: #ffffff;
+	        min-width: 140px;
+	    }
+
+	    .ja-job-details .apply .ja-button:hover {
+	        opacity: 0.9;
+	    }
+
+	    /* Job details – sector colours */
+	    .ja-job-details.business {
+	        border-color: var(--color-businessSolution);
+	    }
+
+	    .ja-job-details.business .title,
+	    .ja-job-details.business .apply .ja-button {
+	        background-color: var(--color-businessSolution);
+	        border-color: var(--color-businessSolution);
+	    }
+
+	    .ja-job-details.healthcare {
+	        border-color: var(--color-healthcare);
+	    }
+
+	    .ja-job-details.healthcare .title,
+	    .ja-job-details.healthcare .apply .ja-button {
+	        background-color: var(--color-healthcare);
+	        border-color: var(--color-healthcare);
+	    }
+
+	    .ja-job-details.hospitality {
+	        border-color: var(--color-hospitality);
+	    }
+
+	    .ja-job-details.hospitality .title,
+	    .ja-job-details.hospitality .apply .ja-button {
+	        background-color: var(--color-hospitality);
+	        border-color: var(--color-hospitality);
+	    }
+
+	    .ja-job-details.leisure {
+	        border-color: var(--color-leisure);
+	    }
+
+	    .ja-job-details.leisure .title,
+	    .ja-job-details.leisure .apply .ja-button {
+	        background-color: var(--color-leisure);
+	        border-color: var(--color-leisure);
+	    }
+
+	    .ja-job-details.travel {
+	        border-color: var(--color-travel);
+	    }
+
+	    .ja-job-details.travel .title,
+	    .ja-job-details.travel .apply .ja-button {
+	        background-color: var(--color-travel);
+	        border-color: var(--color-travel);
+	    }
+
+	    /* End job details */
+
+
+
+    /* Application form iframe (external app forms) */
+
+
+
+    .ja-apply-iframe iframe {
+
+        width: 100%;
+
+        height: 500px;
+
+        border: none;
+
+    }
+
+
+
+    .ja-apply-iframe .apply {
+
+        margin: 2em 0 0.5em 0;
+
+        text-align: center;
+
+    }
+
+
+
+    .ja-apply-iframe .apply .back-link {
+
+        font-size: 0.9em;
+
+    }
+
+
+
+    /* End application form iframe */
+
+
+
+    /* Application form */
+
+
+
+    .ja-job-apply .ja-success-text {}
+
+
+
+    .ja-job-apply .ja-submit .back-link {
+
+        font-size: 0.9em;
+
+        margin-left: 1em;
+
+    }
+
+
+
+    /* End application form */
+
+
+
+    /* Powered by JobAdder */
+
+
+
+    .powered-by-jobadder {
+        display: none;
+        color: #bbb;
+
+        font-size: 0.9em;
+
+        text-align: center;
+
+        margin: 2em 0 1em 0;
+
+    }
+
+
+
+    .powered-by-jobadder a {
+
+        color: #bbb;
+
+    }
+
+
+
+    .powered-by-jobadder a:hover {
+
+        color: #aaa;
+
+    }
+
+
+
+    /* End powered by JobAdder */
+
+    /* ===== BOXRECRRUITMENTGROUP STYLING ===== */
+
+    :root {
+        --body-bg: #ffffff;
+        --color-body: #646363;
+        --color-healthcare: #542b74;
+        --color-hospitality: #f39200;
+        --color-leisure: #e30613;
+        --color-travel: #0071bc;
+        --color-businessSolution: #70bf1f;
+    }
+
+    *,
+    *::after,
+    *::before {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+    html {
+        font-size: 62.5%;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        color: var(--color-body);
+        font-family: "Inter", sans-serif;
+        line-height: 1.5;
+        background: var(--body-bg);
+    }
+
+    button,
+    a {
+        cursor: pointer;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    #ja-jobs-widget {
+        padding: 4rem 4rem;
+    }
+
+    /* ===== FORM STYLING ===== */
+
+    .ja-form {
+	        display: block !important;
+	        margin-top: 6rem !important;
+	        margin-bottom: 6rem !important;
+	        padding: 2.5rem 3rem !important;
+	        text-align: center !important;
+	        max-width: 1200px !important;
+	        margin-left: auto !important;
+	        margin-right: auto !important;
+	        background-color: #f8f8f8 !important;
+	        border-radius: 1.5rem !important;
+    }
+
+    .ja-form::before {
+        content: "VACANCIES" !important;
+        color: var(--color-healthcare) !important;
+        font-size: 4rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        text-align: center !important;
+        display: block !important;
+        margin-bottom: 4.5rem !important;
+        letter-spacing: 0.1rem !important;
+    }
+
+    .ja-form .ja-search-form {
+	        display: flex !important;
+	        flex-direction: row !important;
+	        justify-content: center !important;
+	        align-items: stretch !important;
+	        gap: 1.8rem !important;
+	        flex-wrap: wrap !important;
+	        width: 100% !important;
+	        row-gap: 1.5rem !important;
+    }
+
+    .ja-form .ja-field-container {
+	        display: inline-flex !important;
+	        margin-bottom: 0 !important;
+	        position: relative !important;
+	        vertical-align: middle !important;
+	        flex: 0 1 250px !important;
+	        align-items: stretch !important;
+    }
+
+    .ja-form .ja-field-container label {
+        display: none !important;
+    }
+
+    /* Hide location and workType fields */
+    .ja-form .ja-field-container:has(select[name="location"]) {
+        display: none !important;
+    }
+
+    .ja-form .ja-field-container:has(select[name="workType"]) {
+        display: none !important;
+    }
+
+    /* Fallback - hide the selects directly */
+    .ja-form select[name="location"],
+    .ja-form select[name="workType"] {
+        display: none !important;
+    }
+
+    /* Hide parent containers */
+    .ja-form select[name="location"] ~ *,
+    .ja-form select[name="workType"] ~ * {
+        display: none !important;
+    }
+
+    .select-wrapper {
+        position: relative;
+    }
+
+    .ja-form .ja-field-container select {
+        border: 2px solid #000 !important;
+        font-weight: bold !important;
+        padding: 1rem 3rem !important;
+        padding-right: 4rem !important;
+        text-transform: uppercase !important;
+        background: #fff !important;
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        cursor: pointer !important;
+        font-family: "Inter", sans-serif !important;
+        font-size: 1.4rem !important;
+	        text-align: center !important;
+	        color: #000 !important;
+	        width: 100% !important;
+	        min-width: 0 !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .ja-form .ja-field-container select:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .ja-form .ja-field-container select:focus-visible {
+        outline: none !important;
+        box-shadow: 0 0 0 3px rgba(84, 43, 116, 0.2) !important;
+    }
+
+    .ja-form .ja-field-container:has(select)::after {
+        content: "" !important;
+        position: absolute !important;
+        top: 50% !important;
+        right: 1.5rem !important;
+        width: 8px !important;
+        height: 8px !important;
+        border-right: 2px solid #000 !important;
+        border-bottom: 2px solid #000 !important;
+        transform: translateY(-50%) rotate(45deg) !important;
+        pointer-events: none !important;
+    }
+
+    .select-wrapper::after {
+        content: "" !important;
+        position: absolute !important;
+        top: 50% !important;
+        right: 1.5rem !important;
+        width: 8px !important;
+        height: 8px !important;
+        border-right: 2px solid #000 !important;
+        border-bottom: 2px solid #000 !important;
+        transform: translateY(-50%) rotate(45deg) !important;
+        pointer-events: none !important;
+    }
+
+    .ja-form .ja-field-container input[type="text"] {
+        border: 2px solid #000 !important;
+        font-weight: bold !important;
+        padding: 1rem 3rem !important;
+        text-transform: uppercase !important;
+        font-family: "Inter", sans-serif !important;
+        font-size: 1.4rem !important;
+	        text-align: center !important;
+	        color: #000 !important;
+	        width: 100% !important;
+	        min-width: 0 !important;
+        background: #fff !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .ja-form .ja-field-container input[type="text"]:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .ja-form .ja-field-container input[type="text"]:focus-visible {
+        outline: none !important;
+        box-shadow: 0 0 0 3px rgba(84, 43, 116, 0.2) !important;
+    }
+
+    .ja-form .ja-field-container input[type="text"]::placeholder {
+        color: #999 !important;
+    }
+
+    .ja-form .ja-submit {
+	        margin-top: 0 !important;
+	        margin-left: 0 !important;
+	        width: auto !important;
+	        display: inline-flex !important;
+	        justify-content: center !important;
+	        gap: 1rem !important;
+	        align-items: stretch !important;
+	        flex: 0 1 250px !important;
+    }
+
+    .ja-form .ja-submit .ja-button {
+        border: 2px solid #000 !important;
+        font-weight: bold !important;
+        padding: 1rem 3.5rem !important;
+        text-transform: uppercase !important;
+        background-color: #fff !important;
+        font-family: "Inter", sans-serif !important;
+        font-size: 1.4rem !important;
+	        text-align: center !important;
+	        color: #000 !important;
+	        width: 100% !important;
+	        min-width: 0 !important;
+        transition: all 0.3s ease !important;
+        cursor: pointer !important;
+    }
+
+    .ja-form .ja-submit .ja-button:hover {
+        background-color: var(--color-healthcare) !important;
+        color: white !important;
+        border-color: var(--color-healthcare) !important;
+        box-shadow: 0 4px 12px rgba(84, 43, 116, 0.3) !important;
+    }
+
+    .ja-form .ja-submit .ja-button:active {
+        transform: translateY(1px) !important;
+    }
+
+    /* ===== JOB LIST STYLING ===== */
+
+	    .ja-job-list {
+	        display: grid !important;
+	        /* Fixed-ish card width so cards don't grow when there are fewer
+	           results. Extra space stays empty on the right, and cards stay
+	           left-aligned. */
+	        grid-template-columns: repeat(auto-fill, minmax(220px, 260px)) !important;
+	        grid-gap: 1.5rem !important; /* spacing between cards */
+	        margin-bottom: 3em !important;
+	        /* Keep inner padding small so 4 cards fit within 1200px */
+	        padding: 0 1.5rem !important;
+	        width: 100% !important;
+	        float: none !important;
+	        justify-content: flex-start !important; /* keep grid left-aligned */
+	    }
+
+	    /* Hide JobAdder pager so jobs appear in a single scrolling list */
+	    .ja-pager-container,
+	    .ja-pager,
+	    .ja-pager-summary {
+	        display: none !important;
+	    }
+
+    .ja-job-list .job {
+        border: 0.5rem solid #ccc;
+        border-radius: 1.5rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+	        justify-content: flex-start !important;
+        align-items: stretch !important;
+        padding: 0 !important;
+	        /* Force cards to be visually square */
+	        aspect-ratio: 1 / 1 !important;
+	        min-height: 0 !important;
+	        height: auto !important;
+        float: none !important;
+        width: 100% !important;
+        background-color: #fff !important;
+        color: #000 !important;
+        position: relative !important;
+        overflow: visible !important;
+    }
+
+    .ja-job-list .job.alt {
+        background-color: transparent !important;
+    }
+
+    .ja-job-list .job.hot {
+        background-color: transparent !important;
+    }
+
+    /* ===== JOB TITLE (CATEGORY) ===== */
+
+    .ja-job-list .job .title {
+        padding: 0 !important;
+        margin: 0 !important;
+        background-color: #000 !important;
+        width: 100% !important;
+        border-radius: 1rem 1rem 0 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    .ja-job-list .job .title a {
+        color: white !important;
+        font-size: 1.6rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        text-align: center !important;
+        padding: 1rem 1rem !important;
+        display: block !important;
+        text-decoration: none !important;
+        font-family: "Inter", sans-serif !important;
+        letter-spacing: 0.05rem !important;
+    }
+
+    /* ===== JOB META (DETAILS) ===== */
+
+    .ja-job-list .job .meta {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+	        /* Distribute content from top to bottom so there's no big gap below READ MORE */
+	        justify-content: space-between !important;
+	        padding: 1rem 1.5rem 1rem 1.5rem !important; /* slightly smaller bottom padding */
+        width: 100% !important;
+        float: none !important;
+        zoom: 1 !important;
+        gap: 0.5rem !important;
+        flex: 1 !important;
+        overflow: visible !important;
+        min-height: 0 !important;
+    }
+
+    .ja-job-list .job .meta::before,
+    .ja-job-list .job .meta::after {
+        display: none !important;
+    }
+
+    .ja-job-list .job .meta p {
+        margin: 0 !important;
+        font-size: 1.2rem !important;
+        font-weight: 500 !important;
+        text-align: center !important;
+        color: #000 !important;
+    }
+
+    /* Date */
+    .ja-job-list .job .meta .date-posted {
+        color: #000 !important;
+        font-size: 1.1rem !important;
+        font-weight: 600 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .ja-job-list .job .meta .date-posted p {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .ja-job-list .job .meta .date-posted::before {
+        content: none !important;
+    }
+
+    /* Job Title/Designation */
+    .ja-job-list .job .meta .job-title {
+        color: var(--color-body) !important;
+        font-size: 1.3rem !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        text-align: center !important;
+        margin: 0.2rem 0 !important;
+        padding: 0 !important;
+        line-height: 1.3 !important;
+    }
+
+    /* Date */
+    .ja-job-list .job .meta .date,
+    .ja-job-list .job .meta .date p {
+        color: #000;
+        font-size: 1.2rem !important;
+        font-weight: 500 !important;
+        text-align: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Designation (Job Title) */
+    .ja-job-list .job .meta .designation {
+        margin: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    .ja-job-list .job .meta .designation p {
+        color: #000 !important;
+        font-size: 1.4rem !important;
+        font-weight: 700 !important;
+        line-height: 1.2 !important;
+        text-transform: uppercase !important;
+        text-align: center !important;
+        margin: 0 !important;
+        padding: 0 0.5rem !important;
+    }
+
+    /* Card Separator */
+    .ja-job-list .job .meta .card-seperator {
+        width: 100% !important;
+        height: 0.2rem !important;
+        background-color: #ccc;
+        margin: 0 !important;
+        padding: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Job Type */
+    .ja-job-list .job .meta .job-type {
+        margin: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    .ja-job-list .job .meta .job-type p {
+        color: #000 !important;
+        font-size: 1.1rem !important;
+        font-weight: 500 !important;
+        text-align: center !important;
+        text-transform: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1.3 !important;
+    }
+
+    /* Card Description */
+    .ja-job-list .job .meta .card-desc {
+	        margin: 0 0 0.5rem 0 !important; /* small, even gap above READ MORE */
+		        flex: 0 0 auto !important;
+	        /* Keep description very short so all boxes stay close to square */
+	        max-height: 2.6rem !important; /* ~2 lines with 1.3 line-height */
+        overflow: hidden !important;
+    }
+
+    .ja-job-list .job .meta .card-desc p {
+        color: #000 !important;
+        font-size: 1.1rem !important;
+        font-weight: 400 !important;
+        text-align: center !important;
+        text-transform: none !important;
+        margin: 0 !important;
+        padding: 0 0.5rem !important;
+	        line-height: 1.3 !important;
+	        display: -webkit-box !important;
+	        /* Limit to 2 lines so descriptions are very short */
+	        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+
+    /* Card Link */
+    .ja-job-list .job .meta .card-link {
+	        margin-top: 0 !important; /* remove large flexible spacer above READ MORE */
+	        padding-top: 0.5rem !important;
+	        width: 100% !important;
+	        flex-shrink: 0 !important;
+	        text-align: center !important; /* ensure READ MORE is centered horizontally */
+    }
+
+    .ja-job-list .job .meta .card-link a {
+	        /* Base color; overridden by category-specific rules below */
+	        color: #000 !important;
+        font-size: 1.1rem !important;
+        font-weight: 700 !important;
+        text-align: center !important;
+        text-transform: uppercase !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        text-decoration: none !important;
+        display: block !important;
+        letter-spacing: 0.05rem !important;
+    }
+
+	    /* READ MORE link in category color */
+	    .ja-job-list .job.business .meta .card-link a,
+	    .ja-job-list .job.business .card-link a {
+	        color: var(--color-businessSolution) !important;
+	    }
+
+	    .ja-job-list .job.healthcare .meta .card-link a,
+	    .ja-job-list .job.healthcare .card-link a {
+	        color: var(--color-healthcare) !important;
+	    }
+
+	    .ja-job-list .job.hospitality .meta .card-link a,
+	    .ja-job-list .job.hospitality .card-link a {
+	        color: var(--color-hospitality) !important;
+	    }
+
+	    .ja-job-list .job.leisure .meta .card-link a,
+	    .ja-job-list .job.leisure .card-link a {
+	        color: var(--color-leisure) !important;
+	    }
+
+	    .ja-job-list .job.travel .meta .card-link a,
+	    .ja-job-list .job.travel .card-link a {
+	        color: var(--color-travel) !important;
+	    }
+
+    /* Classifications
+       Hide any remaining JobAdder classification list so nothing appears under READ MORE
+       (some templates render it outside .meta, so target both cases). */
+    .ja-job-list .job .meta .classifications,
+    .ja-job-list .job .classifications {
+        border-top: none !important;
+        border-bottom: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        list-style: none !important;
+        display: none !important;
+    }
+
+    .ja-job-list .job .meta .classifications::before,
+    .ja-job-list .job .meta .classifications::after,
+    .ja-job-list .job .classifications::before,
+    .ja-job-list .job .classifications::after {
+        display: none !important;
+    }
+
+    .ja-job-list .job .meta .classifications li,
+    .ja-job-list .job .classifications li {
+        color: #000 !important;
+        font-size: 1.2rem !important;
+        font-weight: 500 !important;
+        text-transform: capitalize !important;
+        text-align: center !important;
+        display: none !important;
+    }
+
+    .ja-job-list .job .meta .classifications li::before,
+    .ja-job-list .job .meta .classifications li::marker,
+    .ja-job-list .job .classifications li::before,
+    .ja-job-list .job .classifications li::marker {
+        display: none !important;
+    }
+
+    /* Job Type */
+    .ja-job-list .job .meta .job-type {
+        color: #000 !important;
+        font-size: 1.1rem !important;
+        font-weight: 500 !important;
+        text-align: center !important;
+        margin: 0.2rem 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Job Description */
+    .ja-job-list .job .meta .job-description {
+        color: #000 !important;
+        font-size: 1.1rem !important;
+        font-weight: 500 !important;
+        text-align: center !important;
+        text-transform: capitalize !important;
+        margin: 0.2rem 0 !important;
+        padding: 0 !important;
+        line-height: 1.3 !important;
+    }
+
+    /* View Details Button */
+    .ja-job-list .job .meta .view-details,
+    .ja-job-list .job .view-details {
+        background-color: transparent !important;
+        border: none !important;
+        color: #000 !important;
+        font-size: 1.1rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        cursor: pointer !important;
+        padding: 0.3rem 0 !important;
+        text-decoration: none !important;
+        font-family: "Inter", sans-serif !important;
+        margin: 0.3rem 0 0 0 !important;
+    }
+
+    .ja-job-list .job .meta .view-details:hover,
+    .ja-job-list .job .view-details:hover {
+        text-decoration: underline !important;
+    }
+
+    /* ===== CATEGORY-SPECIFIC COLORS ===== */
+
+    /* Helper function to get category from job element */
+
+    /* Business */
+    .ja-job-list .job:has(.title a:contains("Business")),
+    .ja-job-list .job[data-category="Business"],
+    .ja-job-list .job[data-sector="Business"],
+    .ja-job-list .job.business {
+        border-color: var(--color-businessSolution) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Business")) .title,
+    .ja-job-list .job[data-category="Business"] .title,
+    .ja-job-list .job[data-sector="Business"] .title,
+    .ja-job-list .job.business .title {
+        background: var(--color-businessSolution) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Business")) .meta .view-details,
+    .ja-job-list .job:has(.title a:contains("Business")) .meta .date-posted,
+    .ja-job-list .job:has(.title a:contains("Business")) .meta .date,
+    .ja-job-list .job:has(.title a:contains("Business")) .meta .date p,
+    .ja-job-list .job:has(.title a:contains("Business")) .meta .card-link a,
+    .ja-job-list .job:has(.title a:contains("Business")) .card-link a,
+    .ja-job-list .job[data-category="Business"] .meta .view-details,
+    .ja-job-list .job[data-category="Business"] .meta .date-posted,
+    .ja-job-list .job[data-category="Business"] .meta .date,
+    .ja-job-list .job[data-category="Business"] .meta .date p,
+    .ja-job-list .job[data-category="Business"] .meta .card-link a,
+    .ja-job-list .job[data-category="Business"] .card-link a,
+    .ja-job-list .job[data-sector="Business"] .meta .view-details,
+    .ja-job-list .job[data-sector="Business"] .meta .date-posted,
+    .ja-job-list .job[data-sector="Business"] .meta .date,
+    .ja-job-list .job[data-sector="Business"] .meta .date p,
+    .ja-job-list .job[data-sector="Business"] .meta .card-link a,
+    .ja-job-list .job[data-sector="Business"] .card-link a,
+    .ja-job-list .job.business .meta .view-details,
+    .ja-job-list .job.business .meta .date-posted,
+    .ja-job-list .job.business .meta .date,
+    .ja-job-list .job.business .meta .date p,
+    .ja-job-list .job.business .meta .card-link a,
+    .ja-job-list .job.business .card-link a {
+        color: var(--color-businessSolution) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Business")) .card-seperator,
+    .ja-job-list .job[data-category="Business"] .card-seperator,
+    .ja-job-list .job[data-sector="Business"] .card-seperator,
+    .ja-job-list .job.business .card-seperator {
+        background-color: var(--color-businessSolution) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Business")) .classifications,
+    .ja-job-list .job[data-category="Business"] .classifications,
+    .ja-job-list .job[data-sector="Business"] .classifications {
+        border-top-color: var(--color-businessSolution) !important;
+        border-bottom-color: var(--color-businessSolution) !important;
+    }
+
+    /* Healthcare */
+    .ja-job-list .job:has(.title a:contains("Healthcare")),
+    .ja-job-list .job[data-category="Healthcare"],
+    .ja-job-list .job[data-sector="Healthcare"],
+    .ja-job-list .job.healthcare {
+        border-color: var(--color-healthcare) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Healthcare")) .title,
+    .ja-job-list .job[data-category="Healthcare"] .title,
+    .ja-job-list .job[data-sector="Healthcare"] .title,
+    .ja-job-list .job.healthcare .title {
+        background: var(--color-healthcare) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Healthcare")) .meta .view-details,
+    .ja-job-list .job:has(.title a:contains("Healthcare")) .meta .date-posted,
+    .ja-job-list .job:has(.title a:contains("Healthcare")) .meta .date,
+    .ja-job-list .job:has(.title a:contains("Healthcare")) .meta .date p,
+    .ja-job-list .job:has(.title a:contains("Healthcare")) .meta .card-link a,
+    .ja-job-list .job:has(.title a:contains("Healthcare")) .card-link a,
+    .ja-job-list .job[data-category="Healthcare"] .meta .view-details,
+    .ja-job-list .job[data-category="Healthcare"] .meta .date-posted,
+    .ja-job-list .job[data-category="Healthcare"] .meta .date,
+    .ja-job-list .job[data-category="Healthcare"] .meta .date p,
+    .ja-job-list .job[data-category="Healthcare"] .meta .card-link a,
+    .ja-job-list .job[data-category="Healthcare"] .card-link a,
+    .ja-job-list .job[data-sector="Healthcare"] .meta .view-details,
+    .ja-job-list .job[data-sector="Healthcare"] .meta .date-posted,
+    .ja-job-list .job[data-sector="Healthcare"] .meta .date,
+    .ja-job-list .job[data-sector="Healthcare"] .meta .date p,
+    .ja-job-list .job[data-sector="Healthcare"] .meta .card-link a,
+    .ja-job-list .job[data-sector="Healthcare"] .card-link a,
+    .ja-job-list .job.healthcare .meta .view-details,
+    .ja-job-list .job.healthcare .meta .date-posted,
+    .ja-job-list .job.healthcare .meta .date,
+    .ja-job-list .job.healthcare .meta .date p,
+    .ja-job-list .job.healthcare .meta .card-link a,
+    .ja-job-list .job.healthcare .card-link a {
+        color: var(--color-healthcare) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Healthcare")) .card-seperator,
+    .ja-job-list .job[data-category="Healthcare"] .card-seperator,
+    .ja-job-list .job[data-sector="Healthcare"] .card-seperator,
+    .ja-job-list .job.healthcare .card-seperator {
+        background-color: var(--color-healthcare) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Healthcare")) .classifications,
+    .ja-job-list .job[data-category="Healthcare"] .classifications,
+    .ja-job-list .job[data-sector="Healthcare"] .classifications {
+        border-top-color: var(--color-healthcare) !important;
+        border-bottom-color: var(--color-healthcare) !important;
+    }
+
+    /* Hospitality */
+    .ja-job-list .job:has(.title a:contains("Hospitality")),
+    .ja-job-list .job[data-category="Hospitality"],
+    .ja-job-list .job[data-sector="Hospitality"],
+    .ja-job-list .job.hospitality {
+        border-color: var(--color-hospitality) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Hospitality")) .title,
+    .ja-job-list .job[data-category="Hospitality"] .title,
+    .ja-job-list .job[data-sector="Hospitality"] .title,
+    .ja-job-list .job.hospitality .title {
+        background: var(--color-hospitality) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Hospitality")) .meta .view-details,
+    .ja-job-list .job:has(.title a:contains("Hospitality")) .meta .date-posted,
+    .ja-job-list .job:has(.title a:contains("Hospitality")) .meta .date,
+    .ja-job-list .job:has(.title a:contains("Hospitality")) .meta .date p,
+    .ja-job-list .job:has(.title a:contains("Hospitality")) .meta .card-link a,
+    .ja-job-list .job:has(.title a:contains("Hospitality")) .card-link a,
+    .ja-job-list .job[data-category="Hospitality"] .meta .view-details,
+    .ja-job-list .job[data-category="Hospitality"] .meta .date-posted,
+    .ja-job-list .job[data-category="Hospitality"] .meta .date,
+    .ja-job-list .job[data-category="Hospitality"] .meta .date p,
+    .ja-job-list .job[data-category="Hospitality"] .meta .card-link a,
+    .ja-job-list .job[data-category="Hospitality"] .card-link a,
+    .ja-job-list .job[data-sector="Hospitality"] .meta .view-details,
+    .ja-job-list .job[data-sector="Hospitality"] .meta .date-posted,
+    .ja-job-list .job[data-sector="Hospitality"] .meta .date,
+    .ja-job-list .job[data-sector="Hospitality"] .meta .date p,
+    .ja-job-list .job[data-sector="Hospitality"] .meta .card-link a,
+    .ja-job-list .job[data-sector="Hospitality"] .card-link a,
+    .ja-job-list .job.hospitality .meta .view-details,
+    .ja-job-list .job.hospitality .meta .date-posted,
+    .ja-job-list .job.hospitality .meta .date,
+    .ja-job-list .job.hospitality .meta .date p,
+    .ja-job-list .job.hospitality .meta .card-link a,
+    .ja-job-list .job.hospitality .card-link a {
+        color: var(--color-hospitality) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Hospitality")) .card-seperator,
+    .ja-job-list .job[data-category="Hospitality"] .card-seperator,
+    .ja-job-list .job[data-sector="Hospitality"] .card-seperator,
+    .ja-job-list .job.hospitality .card-seperator {
+        background-color: var(--color-hospitality) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Hospitality")) .classifications,
+    .ja-job-list .job[data-category="Hospitality"] .classifications,
+    .ja-job-list .job[data-sector="Hospitality"] .classifications {
+        border-top-color: var(--color-hospitality) !important;
+        border-bottom-color: var(--color-hospitality) !important;
+    }
+
+    /* Leisure */
+    .ja-job-list .job:has(.title a:contains("Leisure")),
+    .ja-job-list .job[data-category="Leisure"],
+    .ja-job-list .job[data-sector="Leisure"],
+    .ja-job-list .job.leisure {
+        border-color: var(--color-leisure) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Leisure")) .title,
+    .ja-job-list .job[data-category="Leisure"] .title,
+    .ja-job-list .job[data-sector="Leisure"] .title,
+    .ja-job-list .job.leisure .title {
+        background: var(--color-leisure) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Leisure")) .meta .view-details,
+    .ja-job-list .job:has(.title a:contains("Leisure")) .meta .date-posted,
+    .ja-job-list .job:has(.title a:contains("Leisure")) .meta .date,
+    .ja-job-list .job:has(.title a:contains("Leisure")) .meta .date p,
+    .ja-job-list .job:has(.title a:contains("Leisure")) .meta .card-link a,
+    .ja-job-list .job:has(.title a:contains("Leisure")) .card-link a,
+    .ja-job-list .job[data-category="Leisure"] .meta .view-details,
+    .ja-job-list .job[data-category="Leisure"] .meta .date-posted,
+    .ja-job-list .job[data-category="Leisure"] .meta .date,
+    .ja-job-list .job[data-category="Leisure"] .meta .date p,
+    .ja-job-list .job[data-category="Leisure"] .meta .card-link a,
+    .ja-job-list .job[data-category="Leisure"] .card-link a,
+    .ja-job-list .job[data-sector="Leisure"] .meta .view-details,
+    .ja-job-list .job[data-sector="Leisure"] .meta .date-posted,
+    .ja-job-list .job[data-sector="Leisure"] .meta .date,
+    .ja-job-list .job[data-sector="Leisure"] .meta .date p,
+    .ja-job-list .job[data-sector="Leisure"] .meta .card-link a,
+    .ja-job-list .job[data-sector="Leisure"] .card-link a,
+    .ja-job-list .job.leisure .meta .view-details,
+    .ja-job-list .job.leisure .meta .date-posted,
+    .ja-job-list .job.leisure .meta .date,
+    .ja-job-list .job.leisure .meta .date p,
+    .ja-job-list .job.leisure .meta .card-link a,
+    .ja-job-list .job.leisure .card-link a {
+        color: var(--color-leisure) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Leisure")) .card-seperator,
+    .ja-job-list .job[data-category="Leisure"] .card-seperator,
+    .ja-job-list .job[data-sector="Leisure"] .card-seperator,
+    .ja-job-list .job.leisure .card-seperator {
+        background-color: var(--color-leisure) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Leisure")) .classifications,
+    .ja-job-list .job[data-category="Leisure"] .classifications,
+    .ja-job-list .job[data-sector="Leisure"] .classifications {
+        border-top-color: var(--color-leisure) !important;
+        border-bottom-color: var(--color-leisure) !important;
+    }
+
+    /* Travel */
+    .ja-job-list .job:has(.title a:contains("Travel")),
+    .ja-job-list .job[data-category="Travel"],
+    .ja-job-list .job[data-sector="Travel"],
+    .ja-job-list .job.travel {
+        border-color: var(--color-travel) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Travel")) .title,
+    .ja-job-list .job[data-category="Travel"] .title,
+    .ja-job-list .job[data-sector="Travel"] .title,
+    .ja-job-list .job.travel .title {
+        background: var(--color-travel) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Travel")) .meta .view-details,
+    .ja-job-list .job:has(.title a:contains("Travel")) .meta .date-posted,
+    .ja-job-list .job:has(.title a:contains("Travel")) .meta .date,
+    .ja-job-list .job:has(.title a:contains("Travel")) .meta .date p,
+    .ja-job-list .job:has(.title a:contains("Travel")) .meta .card-link a,
+    .ja-job-list .job:has(.title a:contains("Travel")) .card-link a,
+    .ja-job-list .job[data-category="Travel"] .meta .view-details,
+    .ja-job-list .job[data-category="Travel"] .meta .date-posted,
+    .ja-job-list .job[data-category="Travel"] .meta .date,
+    .ja-job-list .job[data-category="Travel"] .meta .date p,
+    .ja-job-list .job[data-category="Travel"] .meta .card-link a,
+    .ja-job-list .job[data-category="Travel"] .card-link a,
+    .ja-job-list .job[data-sector="Travel"] .meta .view-details,
+    .ja-job-list .job[data-sector="Travel"] .meta .date-posted,
+    .ja-job-list .job[data-sector="Travel"] .meta .date,
+    .ja-job-list .job[data-sector="Travel"] .meta .date p,
+    .ja-job-list .job[data-sector="Travel"] .meta .card-link a,
+    .ja-job-list .job[data-sector="Travel"] .card-link a,
+    .ja-job-list .job.travel .meta .view-details,
+    .ja-job-list .job.travel .meta .date-posted,
+    .ja-job-list .job.travel .meta .date,
+    .ja-job-list .job.travel .meta .date p,
+    .ja-job-list .job.travel .meta .card-link a,
+    .ja-job-list .job.travel .card-link a {
+        color: var(--color-travel) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Travel")) .card-seperator,
+    .ja-job-list .job[data-category="Travel"] .card-seperator,
+    .ja-job-list .job[data-sector="Travel"] .card-seperator,
+    .ja-job-list .job.travel .card-seperator {
+        background-color: var(--color-travel) !important;
+    }
+
+    .ja-job-list .job:has(.title a:contains("Travel")) .classifications,
+    .ja-job-list .job[data-category="Travel"] .classifications,
+    .ja-job-list .job[data-sector="Travel"] .classifications {
+        border-top-color: var(--color-travel) !important;
+        border-bottom-color: var(--color-travel) !important;
+    }
+
+    /* ===== END BOXRECRRUITMENTGROUP STYLING ===== */
+</style>
+
+</body>
+</html>
