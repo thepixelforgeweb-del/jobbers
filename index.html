@@ -64,7 +64,7 @@
 
         applicationFormSettings: {
 
-            useExternalApplicationForm: true,
+            useExternalApplicationForm: false,
 
             showExternalApplicationFormInNewWindow: false
 
@@ -486,12 +486,12 @@
 		    }
 
 	    function styleApplicationForm() {
-	        // Style the iframe container
-	        var iframeContainer = document.querySelector('.ja-apply-iframe');
-	        if (!iframeContainer) return;
+	        // Style the application form
+	        var applyForm = document.querySelector('.ja-job-apply');
+	        if (!applyForm) return;
 
 	        // Only enhance once per render
-	        if (iframeContainer.getAttribute('data-enhanced') === 'true') {
+	        if (applyForm.getAttribute('data-enhanced') === 'true') {
 	            return;
 	        }
 
@@ -506,18 +506,18 @@
 	            }
 	        }
 
-	        // Fallback: check the iframe container text for keywords
+	        // Fallback: check the form text for keywords
 	        if (!sector) {
-	            var containerText = iframeContainer.textContent.toLowerCase();
-	            if (containerText.includes('healthcare') || containerText.includes('health')) {
+	            var formText = applyForm.textContent.toLowerCase();
+	            if (formText.includes('healthcare') || formText.includes('health')) {
 	                sector = 'healthcare';
-	            } else if (containerText.includes('hospitality')) {
+	            } else if (formText.includes('hospitality')) {
 	                sector = 'hospitality';
-	            } else if (containerText.includes('leisure')) {
+	            } else if (formText.includes('leisure')) {
 	                sector = 'leisure';
-	            } else if (containerText.includes('travel')) {
+	            } else if (formText.includes('travel')) {
 	                sector = 'travel';
-	            } else if (containerText.includes('business')) {
+	            } else if (formText.includes('business')) {
 	                sector = 'business';
 	            }
 	        }
@@ -528,37 +528,23 @@
 	        }
 
 	        var capitalised = sector.charAt(0).toUpperCase() + sector.slice(1);
-	        iframeContainer.setAttribute('data-category', capitalised);
-	        iframeContainer.setAttribute('data-sector', capitalised);
-	        iframeContainer.classList.add(sector.toLowerCase());
+	        applyForm.setAttribute('data-category', capitalised);
+	        applyForm.setAttribute('data-sector', capitalised);
+	        applyForm.classList.add(sector.toLowerCase());
 
-	        // Apply color filter to iframe based on sector
-	        var iframe = iframeContainer.querySelector('iframe');
-	        if (iframe) {
-	            var filterValue = '';
-	            switch(sector.toLowerCase()) {
-	                case 'business':
-	                    filterValue = 'hue-rotate(0deg) saturate(1.2)';
-	                    break;
-	                case 'healthcare':
-	                    filterValue = 'hue-rotate(-30deg) saturate(1.1)';
-	                    break;
-	                case 'hospitality':
-	                    filterValue = 'hue-rotate(0deg) saturate(1)';
-	                    break;
-	                case 'leisure':
-	                    filterValue = 'hue-rotate(-20deg) saturate(1.3)';
-	                    break;
-	                case 'travel':
-	                    filterValue = 'hue-rotate(-60deg) saturate(1.2)';
-	                    break;
-	            }
-	            if (filterValue) {
-	                iframe.style.filter = filterValue;
-	            }
+	        // Get the job title from the details page
+	        var jobTitle = '';
+	        var titleEl = document.querySelector('.ja-job-details .title');
+	        if (titleEl) {
+	            jobTitle = titleEl.textContent.trim();
 	        }
 
-	        iframeContainer.setAttribute('data-enhanced', 'true');
+	        // Set the data-job-title attribute for the ::before pseudo-element
+	        if (jobTitle) {
+	            applyForm.setAttribute('data-job-title', jobTitle);
+	        }
+
+	        applyForm.setAttribute('data-enhanced', 'true');
 	    }
 
 	    setInterval(function () {
@@ -1684,9 +1670,9 @@
 
 
 
-    /* Application form iframe (external app forms) */
+    /* Application form - Internal form styling */
 
-    .ja-apply-iframe {
+    .ja-job-apply {
         max-width: 600px;
         margin: 4rem auto 6rem;
         padding: 0;
@@ -1695,66 +1681,287 @@
         border: 0.5rem solid var(--color-hospitality);
         overflow: hidden;
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        font-family: "Inter", sans-serif;
     }
 
-    .ja-apply-iframe iframe {
-        width: 100%;
-        height: 600px;
-        border: none;
+    /* Form header with job title */
+    .ja-job-apply::before {
+        content: attr(data-job-title);
         display: block;
-    }
-
-    .ja-apply-iframe .apply {
-        margin: 2em 0 0.5em 0;
+        width: 100%;
+        padding: 1.8rem 2.4rem;
+        background-color: var(--color-hospitality);
+        color: #ffffff;
+        font-size: 1.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
         text-align: center;
+        letter-spacing: 0.08em;
+        box-sizing: border-box;
     }
 
-    .ja-apply-iframe .apply .back-link {
-        font-size: 0.9em;
+    .ja-job-apply .ja-form {
+        display: block !important;
+        margin: 0 !important;
+        padding: 2.4rem !important;
+        background-color: #ffffff !important;
+        border-radius: 0 !important;
+        border: none !important;
+        max-width: none !important;
+        text-align: left !important;
     }
 
-    /* Sector-specific colors for iframe container */
-    .ja-apply-iframe.business {
+    .ja-job-apply .ja-form::before {
+        content: "" !important;
+        display: none !important;
+    }
+
+    .ja-job-apply .ja-search-form {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .ja-job-apply .ja-field-container {
+        display: block !important;
+        margin-bottom: 1.5rem !important;
+        width: 100% !important;
+        flex: none !important;
+    }
+
+    .ja-job-apply .ja-field-container label {
+        display: block !important;
+        font-size: 1.2rem !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        color: #333333 !important;
+        margin-bottom: 0.5rem !important;
+        letter-spacing: 0.05em !important;
+    }
+
+    .ja-job-apply .ja-field-container input[type="text"],
+    .ja-job-apply .ja-field-container input[type="email"],
+    .ja-job-apply .ja-field-container input[type="tel"],
+    .ja-job-apply .ja-field-container textarea {
+        width: 100% !important;
+        padding: 0.8rem 1rem !important;
+        border: none !important;
+        border-bottom: 2px solid var(--color-hospitality) !important;
+        border-radius: 0 !important;
+        font-size: 1.4rem !important;
+        font-family: "Inter", sans-serif !important;
+        color: #333333 !important;
+        background-color: #ffffff !important;
+        box-sizing: border-box !important;
+        transition: border-color 0.3s ease !important;
+    }
+
+    .ja-job-apply .ja-field-container input[type="text"]:focus,
+    .ja-job-apply .ja-field-container input[type="email"]:focus,
+    .ja-job-apply .ja-field-container input[type="tel"]:focus,
+    .ja-job-apply .ja-field-container textarea:focus {
+        outline: none !important;
+        border-bottom-color: var(--color-hospitality) !important;
+        box-shadow: none !important;
+    }
+
+    .ja-job-apply .ja-field-container textarea {
+        min-height: 120px !important;
+        resize: vertical !important;
+    }
+
+    .ja-job-apply .ja-field-container input::placeholder,
+    .ja-job-apply .ja-field-container textarea::placeholder {
+        color: #999999 !important;
+    }
+
+    /* File upload styling */
+    .ja-job-apply .ja-field-container input[type="file"] {
+        display: none !important;
+    }
+
+    .ja-job-apply .ja-field-container .file-upload-label {
+        display: inline-block !important;
+        padding: 0.8rem 1.6rem !important;
+        background-color: var(--color-hospitality) !important;
+        color: #ffffff !important;
+        font-size: 1.3rem !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        border-radius: 0.3rem !important;
+        cursor: pointer !important;
+        text-align: center !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        letter-spacing: 0.05em !important;
+        border: none !important;
+    }
+
+    .ja-job-apply .ja-field-container .file-upload-label:hover {
+        background-color: #e68a00 !important;
+    }
+
+    /* Submit button styling */
+    .ja-job-apply .ja-submit {
+        margin-top: 2rem !important;
+        margin-left: 0 !important;
+        display: flex !important;
+        justify-content: center !important;
+        gap: 1rem !important;
+        width: 100% !important;
+        flex-wrap: wrap !important;
+    }
+
+    .ja-job-apply .ja-submit .ja-button {
+        padding: 1rem 2.4rem !important;
+        background-color: var(--color-hospitality) !important;
+        color: #ffffff !important;
+        border: 2px solid var(--color-hospitality) !important;
+        font-size: 1.3rem !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        border-radius: 0.3rem !important;
+        cursor: pointer !important;
+        transition: all 0.3s ease !important;
+        letter-spacing: 0.05em !important;
+    }
+
+    .ja-job-apply .ja-submit .ja-button:hover {
+        background-color: #e68a00 !important;
+        border-color: #e68a00 !important;
+        box-shadow: 0 4px 12px rgba(243, 146, 0, 0.3) !important;
+    }
+
+    .ja-job-apply .ja-submit .ja-button:active {
+        transform: translateY(1px) !important;
+    }
+
+    /* Sector-specific colors for internal form */
+    .ja-job-apply.business {
         border-color: var(--color-businessSolution);
     }
 
-    .ja-apply-iframe.business iframe {
-        filter: hue-rotate(0deg) saturate(1.2);
+    .ja-job-apply.business::before {
+        background-color: var(--color-businessSolution);
     }
 
-    .ja-apply-iframe.healthcare {
+    .ja-job-apply.business .ja-field-container input,
+    .ja-job-apply.business .ja-field-container textarea {
+        border-bottom-color: var(--color-businessSolution) !important;
+    }
+
+    .ja-job-apply.business .ja-field-container .file-upload-label,
+    .ja-job-apply.business .ja-submit .ja-button {
+        background-color: var(--color-businessSolution) !important;
+        border-color: var(--color-businessSolution) !important;
+    }
+
+    .ja-job-apply.business .ja-field-container .file-upload-label:hover,
+    .ja-job-apply.business .ja-submit .ja-button:hover {
+        background-color: #5fa01a !important;
+        border-color: #5fa01a !important;
+    }
+
+    .ja-job-apply.healthcare {
         border-color: var(--color-healthcare);
     }
 
-    .ja-apply-iframe.healthcare iframe {
-        filter: hue-rotate(-30deg) saturate(1.1);
+    .ja-job-apply.healthcare::before {
+        background-color: var(--color-healthcare);
     }
 
-    .ja-apply-iframe.hospitality {
+    .ja-job-apply.healthcare .ja-field-container input,
+    .ja-job-apply.healthcare .ja-field-container textarea {
+        border-bottom-color: var(--color-healthcare) !important;
+    }
+
+    .ja-job-apply.healthcare .ja-field-container .file-upload-label,
+    .ja-job-apply.healthcare .ja-submit .ja-button {
+        background-color: var(--color-healthcare) !important;
+        border-color: var(--color-healthcare) !important;
+    }
+
+    .ja-job-apply.healthcare .ja-field-container .file-upload-label:hover,
+    .ja-job-apply.healthcare .ja-submit .ja-button:hover {
+        background-color: #3d1f54 !important;
+        border-color: #3d1f54 !important;
+    }
+
+    .ja-job-apply.hospitality {
         border-color: var(--color-hospitality);
     }
 
-    .ja-apply-iframe.hospitality iframe {
-        filter: hue-rotate(0deg) saturate(1);
+    .ja-job-apply.hospitality::before {
+        background-color: var(--color-hospitality);
     }
 
-    .ja-apply-iframe.leisure {
+    .ja-job-apply.hospitality .ja-field-container input,
+    .ja-job-apply.hospitality .ja-field-container textarea {
+        border-bottom-color: var(--color-hospitality) !important;
+    }
+
+    .ja-job-apply.hospitality .ja-field-container .file-upload-label,
+    .ja-job-apply.hospitality .ja-submit .ja-button {
+        background-color: var(--color-hospitality) !important;
+        border-color: var(--color-hospitality) !important;
+    }
+
+    .ja-job-apply.hospitality .ja-field-container .file-upload-label:hover,
+    .ja-job-apply.hospitality .ja-submit .ja-button:hover {
+        background-color: #e68a00 !important;
+        border-color: #e68a00 !important;
+    }
+
+    .ja-job-apply.leisure {
         border-color: var(--color-leisure);
     }
 
-    .ja-apply-iframe.leisure iframe {
-        filter: hue-rotate(-20deg) saturate(1.3);
+    .ja-job-apply.leisure::before {
+        background-color: var(--color-leisure);
     }
 
-    .ja-apply-iframe.travel {
+    .ja-job-apply.leisure .ja-field-container input,
+    .ja-job-apply.leisure .ja-field-container textarea {
+        border-bottom-color: var(--color-leisure) !important;
+    }
+
+    .ja-job-apply.leisure .ja-field-container .file-upload-label,
+    .ja-job-apply.leisure .ja-submit .ja-button {
+        background-color: var(--color-leisure) !important;
+        border-color: var(--color-leisure) !important;
+    }
+
+    .ja-job-apply.leisure .ja-field-container .file-upload-label:hover,
+    .ja-job-apply.leisure .ja-submit .ja-button:hover {
+        background-color: #c10410 !important;
+        border-color: #c10410 !important;
+    }
+
+    .ja-job-apply.travel {
         border-color: var(--color-travel);
     }
 
-    .ja-apply-iframe.travel iframe {
-        filter: hue-rotate(-60deg) saturate(1.2);
+    .ja-job-apply.travel::before {
+        background-color: var(--color-travel);
     }
 
-    /* End application form iframe */
+    .ja-job-apply.travel .ja-field-container input,
+    .ja-job-apply.travel .ja-field-container textarea {
+        border-bottom-color: var(--color-travel) !important;
+    }
+
+    .ja-job-apply.travel .ja-field-container .file-upload-label,
+    .ja-job-apply.travel .ja-submit .ja-button {
+        background-color: var(--color-travel) !important;
+        border-color: var(--color-travel) !important;
+    }
+
+    .ja-job-apply.travel .ja-field-container .file-upload-label:hover,
+    .ja-job-apply.travel .ja-submit .ja-button:hover {
+        background-color: #005a94 !important;
+        border-color: #005a94 !important;
+    }
+
+    /* End application form */
 
 
 
