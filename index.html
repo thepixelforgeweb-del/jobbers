@@ -103,7 +103,9 @@
 	        // Update title to show SECTOR name instead of job title
 	        if (titleLink && capitalisedSector) {
 	            titleLink.textContent = capitalisedSector.toUpperCase();
-	            titleLink.href = originalHref;
+	            // Add sector as query parameter to the URL
+	            var separator = originalHref.includes('?') ? '&' : '?';
+	            titleLink.href = originalHref + separator + 'sector=' + encodeURIComponent(capitalisedSector);
 	        }
 
 		    // Hide all original elements that we are going to rebuild
@@ -298,6 +300,14 @@
 	        }
 
 	        var sector = '';
+
+	        // FIRST: Check URL query parameter for sector
+	        var urlParams = new URLSearchParams(window.location.search);
+	        var sectorParam = urlParams.get('sector');
+	        if (sectorParam) {
+	            sector = sectorParam.toLowerCase();
+	            console.log('Job Details - Sector from URL parameter:', sector);
+	        }
 
 	        // Prefer classifications text inside the details meta block
 	        var classifications = details.querySelector('.meta .classifications');
@@ -499,24 +509,33 @@
 	        var sector = '';
 	        var jobTitle = '';
 
-	        // Try to detect sector and job title from the job details that should be visible
-	        var detailsContainer = document.querySelector('.ja-job-details');
-	        if (detailsContainer) {
-	            var detailsSector = detailsContainer.getAttribute('data-sector');
-	            console.log('Application Form - Details sector attribute:', detailsSector);
-	            console.log('Application Form - Details classes:', detailsContainer.className);
-	            if (detailsSector) {
-	                sector = detailsSector.toLowerCase();
-	            }
+	        // FIRST: Check URL query parameter for sector
+	        var urlParams = new URLSearchParams(window.location.search);
+	        var sectorParam = urlParams.get('sector');
+	        if (sectorParam) {
+	            sector = sectorParam.toLowerCase();
+	            console.log('Application Form - Sector from URL parameter:', sector);
+	        }
 
-	            // Get job title from details
-	            var titleEl = detailsContainer.querySelector('h1, h2, .ja-job-title, .title');
-	            if (titleEl) {
-	                jobTitle = titleEl.textContent.trim();
+	        // Fallback: Try to detect sector from the job details that should be visible
+	        if (!sector) {
+	            var detailsContainer = document.querySelector('.ja-job-details');
+	            if (detailsContainer) {
+	                var detailsSector = detailsContainer.getAttribute('data-sector');
+	                console.log('Application Form - Details sector attribute:', detailsSector);
+	                if (detailsSector) {
+	                    sector = detailsSector.toLowerCase();
+	                }
+
+	                // Get job title from details
+	                var titleEl = detailsContainer.querySelector('h1, h2, .ja-job-title, .title');
+	                if (titleEl) {
+	                    jobTitle = titleEl.textContent.trim();
+	                }
 	            }
 	        }
 
-	        // Fallback: check the iframe container text for keywords
+	        // Final fallback: check the iframe container text for keywords
 	        if (!sector) {
 	            var containerText = iframeContainer.textContent.toLowerCase();
 	            if (containerText.includes('healthcare') || containerText.includes('health')) {
