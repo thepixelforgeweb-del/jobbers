@@ -360,6 +360,7 @@
 	        details.setAttribute('data-category', capitalised);
 	        details.setAttribute('data-sector', capitalised);
 	        details.classList.add(sector.toLowerCase());
+	        console.log('Job Details - Applied sector:', sector, 'Capitalised:', capitalised);
 
 	        // Normalise action labels to match design
 	        var backLink = details.querySelector('.apply .back-link');
@@ -502,6 +503,8 @@
 	        var detailsContainer = document.querySelector('.ja-job-details');
 	        if (detailsContainer) {
 	            var detailsSector = detailsContainer.getAttribute('data-sector');
+	            console.log('Application Form - Details sector attribute:', detailsSector);
+	            console.log('Application Form - Details classes:', detailsContainer.className);
 	            if (detailsSector) {
 	                sector = detailsSector.toLowerCase();
 	            }
@@ -534,11 +537,13 @@
 	            sector = 'hospitality';
 	        }
 
+	        console.log('Application Form - Final sector:', sector);
 	        var capitalised = sector.charAt(0).toUpperCase() + sector.slice(1);
 	        iframeContainer.setAttribute('data-category', capitalised);
 	        iframeContainer.setAttribute('data-sector', capitalised);
 	        iframeContainer.setAttribute('data-job-title', jobTitle || 'Apply Now');
 	        iframeContainer.classList.add(sector.toLowerCase());
+	        console.log('Application Form - Applied class:', sector.toLowerCase());
 
 	        iframeContainer.setAttribute('data-enhanced', 'true');
 	    }
