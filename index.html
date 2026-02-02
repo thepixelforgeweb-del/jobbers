@@ -177,12 +177,18 @@
 	            // click handlers / data attributes keep working.
 	            var linkDiv = document.createElement('div');
 	            linkDiv.className = 'card-link';
-	
+
 	            // Make sure text looks right and the element is visible
 	            viewDetailsEl.textContent = 'READ MORE';
 	            viewDetailsEl.style.display = 'block';
 	            viewDetailsEl.style.padding = '0';
-	
+
+	            // Add sector as query parameter to the URL if it's a link
+	            if (viewDetailsEl.href) {
+	                var separator = viewDetailsEl.href.includes('?') ? '&' : '?';
+	                viewDetailsEl.href = viewDetailsEl.href + separator + 'sector=' + encodeURIComponent(capitalisedSector);
+	            }
+
 	            linkDiv.appendChild(viewDetailsEl);
 	            meta.appendChild(linkDiv);
 	        } else if (originalHref && originalHref !== '#') {
@@ -190,7 +196,9 @@
 	            var fallbackDiv = document.createElement('div');
 	            fallbackDiv.className = 'card-link';
 	            var fallbackLink = document.createElement('a');
-	            fallbackLink.href = originalHref;
+	            // Add sector as query parameter to the URL
+	            var separator = originalHref.includes('?') ? '&' : '?';
+	            fallbackLink.href = originalHref + separator + 'sector=' + encodeURIComponent(capitalisedSector);
 	            fallbackLink.textContent = 'READ MORE';
 	            fallbackLink.target = '_blank';
 	            fallbackDiv.appendChild(fallbackLink);
