@@ -532,6 +532,32 @@
 	        iframeContainer.setAttribute('data-sector', capitalised);
 	        iframeContainer.classList.add(sector.toLowerCase());
 
+	        // Apply color filter to iframe based on sector
+	        var iframe = iframeContainer.querySelector('iframe');
+	        if (iframe) {
+	            var filterValue = '';
+	            switch(sector.toLowerCase()) {
+	                case 'business':
+	                    filterValue = 'hue-rotate(0deg) saturate(1.2)';
+	                    break;
+	                case 'healthcare':
+	                    filterValue = 'hue-rotate(-30deg) saturate(1.1)';
+	                    break;
+	                case 'hospitality':
+	                    filterValue = 'hue-rotate(0deg) saturate(1)';
+	                    break;
+	                case 'leisure':
+	                    filterValue = 'hue-rotate(-20deg) saturate(1.3)';
+	                    break;
+	                case 'travel':
+	                    filterValue = 'hue-rotate(-60deg) saturate(1.2)';
+	                    break;
+	            }
+	            if (filterValue) {
+	                iframe.style.filter = filterValue;
+	            }
+	        }
+
 	        iframeContainer.setAttribute('data-enhanced', 'true');
 	    }
 
@@ -1692,20 +1718,40 @@
         border-color: var(--color-businessSolution);
     }
 
+    .ja-apply-iframe.business iframe {
+        filter: hue-rotate(0deg) saturate(1.2);
+    }
+
     .ja-apply-iframe.healthcare {
         border-color: var(--color-healthcare);
+    }
+
+    .ja-apply-iframe.healthcare iframe {
+        filter: hue-rotate(-30deg) saturate(1.1);
     }
 
     .ja-apply-iframe.hospitality {
         border-color: var(--color-hospitality);
     }
 
+    .ja-apply-iframe.hospitality iframe {
+        filter: hue-rotate(0deg) saturate(1);
+    }
+
     .ja-apply-iframe.leisure {
         border-color: var(--color-leisure);
     }
 
+    .ja-apply-iframe.leisure iframe {
+        filter: hue-rotate(-20deg) saturate(1.3);
+    }
+
     .ja-apply-iframe.travel {
         border-color: var(--color-travel);
+    }
+
+    .ja-apply-iframe.travel iframe {
+        filter: hue-rotate(-60deg) saturate(1.2);
     }
 
     /* End application form iframe */
