@@ -1729,14 +1729,22 @@
 	        border-color: var(--color-travel);
 	    }
 
-	    .ja-job-details.travel .title,
-	    .ja-job-details.travel .apply .ja-button {
-	        background-color: var(--color-travel);
-	        border-color: var(--color-travel);
-	    }
+    .ja-job-details.travel .title,
+    .ja-job-details.travel .apply .ja-button {
+        background-color: var(--color-travel);
+        border-color: var(--color-travel);
+    }
 
-	    /* End job details */
+    /* End job details */
 
+    /* Override: center-align job details header title and ensure wrapping */
+    .ja-job-details .title,
+    .ja-job-details .title a {
+        text-align: center !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
 
 
     /* Application form iframe (external app forms) */
@@ -2800,7 +2808,103 @@
     @media screen and (max-width: 768px) {
         /* Body Spacing */
         .body-spacing {
-            padding: 2rem 1rem !important;
+            padding: 1rem 0.5rem !important;
+        }
+
+        /* Job Details Page */
+        .ja-job-details {
+            margin: 1rem 0.5rem 2rem !important;
+            border-radius: 1rem !important;
+            border-width: 0.3rem !important;
+        }
+
+        .ja-job-details .title {
+            padding: 1rem 0.5rem !important;
+            font-size: 1.4rem !important;
+            line-height: 1.2 !important;
+            text-align: center !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            white-space: normal !important;
+            margin: 0 !important;
+        }
+
+        .ja-job-details .title a {
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            white-space: normal !important;
+        }
+
+        .ja-job-details .meta {
+            padding: 1rem 1rem 0.5rem !important;
+            font-size: 1rem !important;
+            gap: 0.2rem 1rem !important;
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+
+        .ja-job-details .meta p {
+            font-size: 1rem !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            white-space: normal !important;
+        }
+
+        .ja-job-details .description {
+            padding: 0 1rem 1rem !important;
+            font-size: 1rem !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+        }
+
+        .ja-job-details .description p {
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            white-space: normal !important;
+        }
+
+        .ja-job-details .description h3,
+        .ja-job-details .description h4 {
+            margin: 1rem 0 0.5rem !important;
+            font-size: 1.2rem !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            white-space: normal !important;
+        }
+
+        .ja-job-details .description ul {
+            padding-left: 1.5rem !important;
+            margin: 0 0 1rem !important;
+        }
+
+        .ja-job-details .description ul li {
+            margin-bottom: 0.3rem !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            white-space: normal !important;
+        }
+
+        .ja-job-details .apply {
+            padding: 1rem !important;
+            gap: 0.8rem !important;
+            flex-direction: column !important;
+        }
+
+        .ja-job-details .apply .back-link {
+            font-size: 1rem !important;
+            padding: 0.7rem 1.2rem !important;
+            width: 100% !important;
+            text-align: center !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+        }
+
+        .ja-job-details .apply .ja-button {
+            font-size: 1rem !important;
+            padding: 0.8rem 1.5rem !important;
+            width: 100% !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
         }
 
         /* Form Styling */
@@ -2854,8 +2958,8 @@
         /* Job Cards Grid - 1 card per row on mobile */
         .ja-job-list {
             grid-template-columns: 1fr !important;
-            grid-gap: 1.5rem !important;
-            padding: 0 1rem !important;
+            grid-gap: 0.8rem !important;
+            padding: 0 0.5rem !important;
             max-width: 100% !important;
         }
 
@@ -2865,34 +2969,54 @@
         }
 
         .ja-job-list .job .title {
-            padding: 1rem !important;
+            padding: 0.4rem 0.5rem !important;
+            flex-shrink: 0 !important;
         }
 
         .ja-job-list .job .title a {
-            font-size: 1.4rem !important;
-            padding: 0.8rem !important;
+            font-size: 1.1rem !important;
+            padding: 0.2rem !important;
+            line-height: 1.1 !important;
         }
 
         .ja-job-list .job .meta {
-            padding: 1rem !important;
-            gap: 0.5rem !important;
+            padding: 0.4rem 0.5rem !important;
+            gap: 0.15rem !important;
+            justify-content: flex-start !important;
         }
 
         .ja-job-list .job .meta .date-posted {
-            font-size: 1rem !important;
+            font-size: 0.75rem !important;
+            flex-shrink: 0 !important;
+            margin: 0 !important;
         }
 
         .ja-job-list .job .meta .designation p {
-            font-size: 1.2rem !important;
+            font-size: 0.95rem !important;
+            line-height: 1 !important;
+            margin: 0 !important;
+        }
+
+        .ja-job-list .job .meta .card-seperator {
+            margin: 0.2rem 0 !important;
+            height: 0.15rem !important;
         }
 
         .ja-job-list .job .meta .card-desc p {
-            font-size: 1rem !important;
-            max-height: 3rem !important;
+            font-size: 0.8rem !important;
+            max-height: 1.8rem !important;
+            line-height: 0.9 !important;
+            margin: 0 !important;
+        }
+
+        .ja-job-list .job .meta .card-link {
+            margin-top: 0.2rem !important;
+            padding-top: 0.2rem !important;
         }
 
         .ja-job-list .job .meta .card-link a {
-            font-size: 1rem !important;
+            font-size: 0.8rem !important;
+            flex-shrink: 0 !important;
         }
     }
 
@@ -2922,37 +3046,63 @@
         /* Job Cards Grid - 1 card per row on extra small devices */
         .ja-job-list {
             grid-template-columns: 1fr !important;
-            grid-gap: 1.2rem !important;
-            padding: 0 0.5rem !important;
+            grid-gap: 0.6rem !important;
+            padding: 0 0.4rem !important;
         }
 
         .ja-job-list .job {
             aspect-ratio: 1/1 !important;
         }
 
+        .ja-job-list .job .title {
+            padding: 0.3rem 0.4rem !important;
+            flex-shrink: 0 !important;
+        }
+
         .ja-job-list .job .title a {
-            font-size: 1.2rem !important;
+            font-size: 1rem !important;
+            padding: 0.15rem !important;
+            line-height: 1 !important;
         }
 
         .ja-job-list .job .meta {
-            padding: 0.8rem !important;
-            gap: 0.3rem !important;
+            padding: 0.3rem 0.4rem !important;
+            gap: 0.1rem !important;
+            justify-content: flex-start !important;
         }
 
         .ja-job-list .job .meta .date-posted {
-            font-size: 0.9rem !important;
+            font-size: 0.7rem !important;
+            flex-shrink: 0 !important;
+            margin: 0 !important;
         }
 
         .ja-job-list .job .meta .designation p {
-            font-size: 1rem !important;
+            font-size: 0.85rem !important;
+            line-height: 0.95 !important;
+            margin: 0 !important;
+        }
+
+        .ja-job-list .job .meta .card-seperator {
+            margin: 0.1rem 0 !important;
+            height: 0.1rem !important;
         }
 
         .ja-job-list .job .meta .card-desc p {
-            font-size: 0.85rem !important;
+            font-size: 0.7rem !important;
+            max-height: 1.5rem !important;
+            line-height: 0.75 !important;
+            margin: 0 !important;
+        }
+
+        .ja-job-list .job .meta .card-link {
+            margin-top: 0.1rem !important;
+            padding-top: 0.1rem !important;
         }
 
         .ja-job-list .job .meta .card-link a {
-            font-size: 0.9rem !important;
+            font-size: 0.7rem !important;
+            flex-shrink: 0 !important;
         }
     }
 
