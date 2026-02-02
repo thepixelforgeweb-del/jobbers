@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jobbers - Box Recruitment Group</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ================= ROOT ================= */
+:root {
+    --color-healthcare: #542b74;
+    --color-hospitality: #f39200;
+    --color-leisure: #e30613;
+    --color-travel: #0071bc;
+    --color-business: #70bf1f;
+}
+
+html { font-size: 62.5%; }
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background: #fff;
+}
+
+/* ================= FORM ================= */
+.ja-form {
+    text-align: center;
+    margin: 6rem 0;
+}
+
+.ja-form::before {
+    content: "VACANCIES";
+    display: block;
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--color-healthcare);
+    margin-bottom: 4rem;
+}
+
+.ja-search-form {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.ja-field-container select,
+.ja-field-container input {
+    border: 2px solid #000;
+    padding: 1rem 3rem;
+    font-weight: 700;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.ja-button {
+    border: 2px solid #000;
+    background: #fff;
+    font-weight: 700;
+    padding: 1rem 3.5rem;
+    cursor: pointer;
+}
+
+/* ================= GRID ================= */
+.ja-job-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2.5rem;
+    padding: 4rem;
+}
+
+/* ================= CARD ================= */
+.ja-job-list .job {
+    aspect-ratio: 1 / 1;
+    border: 0.5rem solid #ccc;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Title */
+.job .title {
+    background: #000;
+}
+
+.job .title a {
+    display: block;
+    padding: 1.2rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+/* Meta */
+.job .meta {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    gap: 0.5rem;
+}
+
+.job .meta p {
+    margin: 0;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Separator */
+.card-seperator {
+    width: 100%;
+    height: 2px;
+    background: #ccc;
+    margin: 0.5rem 0;
+}
+
+/* Description */
+.card-desc {
+    max-height: 3rem;
+    overflow: hidden;
+}
+
+.card-desc p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5;
+}
+
+/* Read more */
+.card-link {
+    margin-top: auto;
+}
+
+.card-link a {
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+/* ================= CATEGORY COLORS ================= */
+.job.business { border-color: var(--color-business); }
+.job.business .title { background: var(--color-business); }
+.job.business .card-seperator,
+.job.business .card-link a { color: var(--color-business); }
+
+.job.healthcare { border-color: var(--color-healthcare); }
+.job.healthcare .title { background: var(--color-healthcare); }
+.job.healthcare .card-seperator,
+.job.healthcare .card-link a { color: var(--color-healthcare); }
+
+.job.hospitality { border-color: var(--color-hospitality); }
+.job.hospitality .title { background: var(--color-hospitality); }
+.job.hospitality .card-seperator,
+.job.hospitality .card-link a { color: var(--color-hospitality); }
+
+.job.leisure { border-color: var(--color-leisure); }
+.job.leisure .title { background: var(--color-leisure); }
+.job.leisure .card-seperator,
+.job.leisure .card-link a { color: var(--color-leisure); }
+
+.job.travel { border-color: var(--color-travel); }
+.job.travel .title { background: var(--color-travel); }
+.job.travel .card-seperator,
+.job.travel .card-link a { color: var(--color-travel); }
+</style>
+</head>
+
+<body>
+
+<div id="ja-jobs-widget"></div>
+
+<script>
+var _jaJobsSettings = {
+    key: "EU2_3pgjze45lgle3kkulh6ljkw5ra",
+    jobSearchSettings: {
+        showSearchForm: true,
+        searchButtonText: "SEARCH JOBS",
+        fields: ["category", "subCategory", "keywords"],
+        categories: [
+            { name: "Business", value: "Business" },
+            { name: "Healthcare", value: "Healthcare" },
+            { name: "Hospitality", value: "Hospitality" },
+            { name: "Leisure", value: "Leisure" },
+            { name: "Travel", value: "Travel" }
+        ]
+    }
+};
+
+/* ===== FORCE ALLOWED FILTERS ONLY ===== */
+function enforceAllowedFilters() {
+    const allowed = ["category", "subCategory", "keywords"];
+    document.querySelectorAll(".ja-field-container").forEach(f => {
+        const el = f.querySelector("select, input");
+        f.style.display = el && allowed.includes(el.name) ? "inline-block" : "none";
+    });
+}
+
+/* ===== CARD ENHANCER ===== */
+function enhanceCards() {
+    document.querySelectorAll(".ja-job-list .job").forEach(job => {
+        if (job.dataset.enhanced) return;
+
+        const summary = job.querySelector(".summary");
+        let text = summary ? summary.textContent.trim() : "";
+
+        if (text.length > 55) {
+            text = text.slice(0, 55).replace(/[.,;!?]+$/, "") + "…";
+        }
+
+        if (summary) summary.remove();
+
+        const meta = job.querySelector(".meta");
+        const desc = document.createElement("div");
+        desc.className = "card-desc";
+        desc.innerHTML = `<p>${text}</p>`;
+        meta.insertBefore(desc, meta.lastElementChild);
+
+        job.dataset.enhanced = "true";
+    });
+}
+
+/* ===== OBSERVER ===== */
+const observer = new MutationObserver(() => {
+    enforceAllowedFilters();
+    enhanceCards();
+});
+
+observer.observe(document.getElementById("ja-jobs-widget"), {
+    childList: true,
+    subtree: true
+});
+</script>
+
+<script src="https://apps.jobadder.com/widgets/v1/jobs.min.js"></script>
+
+</body>
+</html>

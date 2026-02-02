@@ -13,12 +13,6 @@
 
 <div class="body-main-container">
     <main class="body-container body-spacing">
-        <section class="navigation-container">
-            <nav>
-                <a href="#">Home</a><a href="#">Employers</a><a href="#">Candidates</a><a class="active" href="#">Vacancies</a><a href="#">Sectors</a><a href="#">Contact</a><a href="#">Policies</a>
-            </nav>
-        </section>
-
         <div id="ja-jobs-widget"></div>
     </main>
 </div>
@@ -103,9 +97,11 @@
 	        // Update title to show SECTOR name instead of job title
 	        if (titleLink && capitalisedSector) {
 	            titleLink.textContent = capitalisedSector.toUpperCase();
-	            // Add sector as query parameter to the URL
-	            var separator = originalHref.includes('?') ? '&' : '?';
-	            titleLink.href = originalHref + separator + 'sector=' + encodeURIComponent(capitalisedSector);
+	            // Store sector in localStorage so details page can access it
+	            titleLink.addEventListener('click', function(e) {
+	                localStorage.setItem('jobSector', capitalisedSector);
+	                console.log('Title link clicked - Storing sector in localStorage:', capitalisedSector);
+	            });
 	        }
 
 		    // Hide all original elements that we are going to rebuild
@@ -185,8 +181,17 @@
 
 	            // Add sector as query parameter to the URL if it's a link
 	            if (viewDetailsEl.href) {
-	                var separator = viewDetailsEl.href.includes('?') ? '&' : '?';
-	                viewDetailsEl.href = viewDetailsEl.href + separator + 'sector=' + encodeURIComponent(capitalisedSector);
+	                // For links, add click handler to store sector in localStorage
+	                viewDetailsEl.addEventListener('click', function(e) {
+	                    localStorage.setItem('jobSector', capitalisedSector);
+	                    console.log('View details link clicked - Storing sector in localStorage:', capitalisedSector);
+	                });
+	            } else if (viewDetailsEl.tagName === 'BUTTON') {
+	                // For button elements, add click handler to store sector in localStorage
+	                viewDetailsEl.addEventListener('click', function(e) {
+	                    localStorage.setItem('jobSector', capitalisedSector);
+	                    console.log('View details button clicked - Storing sector in localStorage:', capitalisedSector);
+	                });
 	            }
 
 	            linkDiv.appendChild(viewDetailsEl);
@@ -196,11 +201,14 @@
 	            var fallbackDiv = document.createElement('div');
 	            fallbackDiv.className = 'card-link';
 	            var fallbackLink = document.createElement('a');
-	            // Add sector as query parameter to the URL
-	            var separator = originalHref.includes('?') ? '&' : '?';
-	            fallbackLink.href = originalHref + separator + 'sector=' + encodeURIComponent(capitalisedSector);
+	            fallbackLink.setAttribute('href', originalHref);
 	            fallbackLink.textContent = 'READ MORE';
 	            fallbackLink.target = '_blank';
+	            // Store sector in localStorage when clicked
+	            fallbackLink.addEventListener('click', function(e) {
+	                localStorage.setItem('jobSector', capitalisedSector);
+	                console.log('Fallback link clicked - Storing sector in localStorage:', capitalisedSector);
+	            });
 	            fallbackDiv.appendChild(fallbackLink);
 	            meta.appendChild(fallbackDiv);
 	        }
@@ -213,33 +221,64 @@
 	        var sectors = ['Leisure', 'Healthcare', 'Hospitality', 'Travel', 'Business'];
 	        var sectorIndex = 0;
 
+	        // Try to get the selected category from the search form
+	        var selectedCategory = '';
+	        var categorySelect = document.querySelector('.ja-form select[name="category"]');
+	        if (categorySelect && categorySelect.value) {
+	            selectedCategory = categorySelect.value.toLowerCase();
+	        }
+
 	        jobs.forEach(function (job, index) {
 	            var sector = '';
 
-	            // Prefer classifications text to determine sector
-	            var classifications = job.querySelector('.classifications');
-	            if (classifications) {
-	                var classText = classifications.textContent.toLowerCase();
-	                console.log('Classifications text:', classText);
-	                if (classText.includes('healthcare') || classText.includes('health')) {
-	                    sector = 'healthcare';
-	                } else if (classText.includes('hospitality')) {
-	                    sector = 'hospitality';
-	                } else if (classText.includes('leisure')) {
-	                    sector = 'leisure';
-	                } else if (classText.includes('travel')) {
-	                    sector = 'travel';
-	                } else if (classText.includes('business')) {
-	                    sector = 'business';
+	            // FIRST: Use the selected category from the search form if available
+	            if (selectedCategory) {
+	                sector = selectedCategory;
+	            }
+
+	            // SECOND: Try to extract category from the job's link URL
+	            if (!sector) {
+	                var titleLink = job.querySelector('.title a');
+	                if (titleLink && titleLink.href) {
+	                    var url = titleLink.href.toLowerCase();
+	                    if (url.includes('healthcare') || url.includes('health')) {
+	                        sector = 'healthcare';
+	                    } else if (url.includes('hospitality')) {
+	                        sector = 'hospitality';
+	                    } else if (url.includes('leisure')) {
+	                        sector = 'leisure';
+	                    } else if (url.includes('travel')) {
+	                        sector = 'travel';
+	                    } else if (url.includes('business')) {
+	                        sector = 'business';
+	                    }
 	                }
 	            }
 
-	            // Fallback: try job title text if we still don't have a sector
+	            // THIRD: Fallback to classifications text
+	            if (!sector) {
+	                var classifications = job.querySelector('.classifications');
+	                if (classifications) {
+	                    var classText = classifications.textContent.toLowerCase();
+	                    if (classText.includes('healthcare') || classText.includes('health')) {
+	                        sector = 'healthcare';
+	                    } else if (classText.includes('hospitality')) {
+	                        sector = 'hospitality';
+	                    } else if (classText.includes('leisure')) {
+	                        sector = 'leisure';
+	                    } else if (classText.includes('travel')) {
+	                        sector = 'travel';
+	                    } else if (classText.includes('business')) {
+	                        sector = 'business';
+	                    }
+	                }
+	            }
+
+	            // FOURTH: try job title text if we still don't have a sector
 	            if (!sector) {
 	                var titleLink = job.querySelector('.title a');
 	                if (titleLink) {
 	                    var titleText = titleLink.textContent.toLowerCase();
-	                    console.log('Title text:', titleText);
 	                    if (titleText.includes('healthcare') || titleText.includes('health')) {
 	                        sector = 'healthcare';
 	                    } else if (titleText.includes('hospitality')) {
@@ -254,10 +293,9 @@
 	                }
 	            }
 
-	            // Final fallback: check entire job element text
+	            // FIFTH: Final fallback - check entire job element text
 	            if (!sector) {
 	                var jobText = job.textContent.toLowerCase();
-	                console.log('Full job text:', jobText);
 	                if (jobText.includes('healthcare') || jobText.includes('health')) {
 	                    sector = 'healthcare';
 	                } else if (jobText.includes('hospitality')) {
@@ -271,29 +309,19 @@
 	                }
 	            }
 
-	            // TEMPORARY: If still no sector detected, assign one cyclically for testing
+	            // SIXTH: If still no sector detected, default to hospitality
 	            if (!sector) {
-	                console.log('No sector detected - assigning cyclically for testing');
-	                var capitalised = sectors[sectorIndex % sectors.length];
-	                sector = capitalised.toLowerCase();
-	                sectorIndex++;
+	                sector = 'hospitality';
 	            }
 
 	            if (sector) {
-	                console.log('Detected sector:', sector);
 	                // Capitalised value so it matches the CSS selectors like [data-category="Business"]
 	                var capitalised = sector.charAt(0).toUpperCase() + sector.slice(1);
 	                job.setAttribute('data-category', capitalised);
 	                job.setAttribute('data-sector', capitalised);
 	                job.classList.add(sector.toLowerCase());
-	                console.log('Applied sector class:', sector.toLowerCase(), 'and data attributes:', capitalised);
-	                console.log('Job element classes:', job.className);
-	                console.log('Job element getAttribute data-category:', job.getAttribute('data-category'));
-	                console.log('Job element getAttribute data-sector:', job.getAttribute('data-sector'));
 
 	                enhanceJobCard(job, capitalised);
-	            } else {
-	                console.log('No sector detected for job');
 	            }
 	        });
 	    }
@@ -309,12 +337,10 @@
 
 	        var sector = '';
 
-	        // FIRST: Check URL query parameter for sector
-	        var urlParams = new URLSearchParams(window.location.search);
-	        var sectorParam = urlParams.get('sector');
-	        if (sectorParam) {
-	            sector = sectorParam.toLowerCase();
-	            console.log('Job Details - Sector from URL parameter:', sector);
+	        // FIRST: Check localStorage for sector (set when job card was clicked)
+	        var storedSector = localStorage.getItem('jobSector');
+	        if (storedSector) {
+	            sector = storedSector.toLowerCase();
 	        }
 
 	        // Prefer classifications text inside the details meta block
@@ -378,7 +404,7 @@
 	        details.setAttribute('data-category', capitalised);
 	        details.setAttribute('data-sector', capitalised);
 	        details.classList.add(sector.toLowerCase());
-	        console.log('Job Details - Applied sector:', sector, 'Capitalised:', capitalised);
+	        console.log('Job Details - Sector:', capitalised);
 
 	        // Normalise action labels to match design
 	        var backLink = details.querySelector('.apply .back-link');
@@ -517,22 +543,36 @@
 	        var sector = '';
 	        var jobTitle = '';
 
-	        // FIRST: Check URL query parameter for sector
-	        var urlParams = new URLSearchParams(window.location.search);
-	        var sectorParam = urlParams.get('sector');
-	        if (sectorParam) {
-	            sector = sectorParam.toLowerCase();
-	            console.log('Application Form - Sector from URL parameter:', sector);
+	        // FIRST: Check localStorage for sector (set when job card was clicked)
+	        var storedSector = localStorage.getItem('jobSector');
+	        if (storedSector) {
+	            sector = storedSector.toLowerCase();
 	        }
 
-	        // Fallback: Try to detect sector from the job details that should be visible
+	        // THIRD: Try to detect sector from the job details that should be visible
 	        if (!sector) {
 	            var detailsContainer = document.querySelector('.ja-job-details');
 	            if (detailsContainer) {
+	                // Check data-sector attribute first
 	                var detailsSector = detailsContainer.getAttribute('data-sector');
-	                console.log('Application Form - Details sector attribute:', detailsSector);
 	                if (detailsSector) {
 	                    sector = detailsSector.toLowerCase();
+	                }
+
+	                // If not found, check the CSS classes for sector class
+	                if (!sector) {
+	                    var classes = detailsContainer.className.toLowerCase();
+	                    if (classes.includes('healthcare')) {
+	                        sector = 'healthcare';
+	                    } else if (classes.includes('hospitality')) {
+	                        sector = 'hospitality';
+	                    } else if (classes.includes('leisure')) {
+	                        sector = 'leisure';
+	                    } else if (classes.includes('travel')) {
+	                        sector = 'travel';
+	                    } else if (classes.includes('business')) {
+	                        sector = 'business';
+	                    }
 	                }
 
 	                // Get job title from details
@@ -543,7 +583,7 @@
 	            }
 	        }
 
-	        // Final fallback: check the iframe container text for keywords
+	        // FOURTH: Final fallback - check the iframe container text for keywords
 	        if (!sector) {
 	            var containerText = iframeContainer.textContent.toLowerCase();
 	            if (containerText.includes('healthcare') || containerText.includes('health')) {
@@ -559,18 +599,17 @@
 	            }
 	        }
 
-	        // Default to hospitality if no sector detected
+	        // FIFTH: Default to hospitality if no sector detected
 	        if (!sector) {
 	            sector = 'hospitality';
 	        }
 
-	        console.log('Application Form - Final sector:', sector);
 	        var capitalised = sector.charAt(0).toUpperCase() + sector.slice(1);
 	        iframeContainer.setAttribute('data-category', capitalised);
 	        iframeContainer.setAttribute('data-sector', capitalised);
 	        iframeContainer.setAttribute('data-job-title', jobTitle || 'Apply Now');
 	        iframeContainer.classList.add(sector.toLowerCase());
-	        console.log('Application Form - Applied class:', sector.toLowerCase());
+	        console.log('Application Form - Sector:', capitalised);
 
 	        iframeContainer.setAttribute('data-enhanced', 'true');
 	    }
@@ -596,37 +635,7 @@
 <script src="https://apps.jobadder.com/widgets/v1/jobs.min.js"></script>
 
 <style>
-    /* ===== HEADER/NAVIGATION STYLING ===== */
 
-    .navigation-container nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-    }
-
-    .navigation-container a {
-        color: var(--color-body);
-        font-size: 1.5rem;
-        font-weight: 500;
-        line-height: normal;
-        padding: 1rem 4rem;
-        text-transform: uppercase;
-        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-    }
-
-    .navigation-container a.active {
-        background-color: var(--color-healthcare);
-        color: var(--body-bg);
-    }
-
-    .navigation-container a:hover {
-        background-color: var(--color-healthcare);
-        color: var(--body-bg);
-    }
-
-    /* ===== END HEADER/NAVIGATION STYLING ===== */
 
     html {
         overflow: scroll;
@@ -2789,21 +2798,9 @@
     /* ===== MOBILE RESPONSIVE STYLING ===== */
 
     @media screen and (max-width: 768px) {
-        /* Header/Navigation */
+        /* Body Spacing */
         .body-spacing {
             padding: 2rem 1rem !important;
-        }
-
-        .navigation-container nav {
-            flex-direction: column !important;
-            gap: 0.5rem !important;
-        }
-
-        .navigation-container a {
-            font-size: 1.2rem !important;
-            padding: 0.8rem 2rem !important;
-            width: 100% !important;
-            text-align: center !important;
         }
 
         /* Form Styling */
@@ -2854,36 +2851,48 @@
             font-size: 1rem !important;
         }
 
-        /* Job Cards Grid */
+        /* Job Cards Grid - 1 card per row on mobile */
         .ja-job-list {
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
-            grid-gap: 1rem !important;
-            padding: 0 0.5rem !important;
+            grid-template-columns: 1fr !important;
+            grid-gap: 1.5rem !important;
+            padding: 0 1rem !important;
+            max-width: 100% !important;
         }
 
         .ja-job-list .job {
             aspect-ratio: 1/1 !important;
+            max-width: 100% !important;
+        }
+
+        .ja-job-list .job .title {
+            padding: 1rem !important;
+        }
+
+        .ja-job-list .job .title a {
+            font-size: 1.4rem !important;
+            padding: 0.8rem !important;
         }
 
         .ja-job-list .job .meta {
-            padding: 0.8rem 1rem !important;
-            gap: 0.3rem !important;
+            padding: 1rem !important;
+            gap: 0.5rem !important;
         }
 
-        .ja-job-list .job .meta .job-title {
+        .ja-job-list .job .meta .date-posted {
             font-size: 1rem !important;
         }
 
         .ja-job-list .job .meta .designation p {
-            font-size: 1.1rem !important;
+            font-size: 1.2rem !important;
         }
 
         .ja-job-list .job .meta .card-desc p {
-            font-size: 0.9rem !important;
+            font-size: 1rem !important;
+            max-height: 3rem !important;
         }
 
         .ja-job-list .job .meta .card-link a {
-            font-size: 0.9rem !important;
+            font-size: 1rem !important;
         }
     }
 
@@ -2891,11 +2900,6 @@
         /* Extra small devices */
         .body-spacing {
             padding: 1rem 0.5rem !important;
-        }
-
-        .navigation-container a {
-            font-size: 1rem !important;
-            padding: 0.6rem 1rem !important;
         }
 
         .ja-form {
@@ -2915,18 +2919,27 @@
             font-size: 0.95rem !important;
         }
 
+        /* Job Cards Grid - 1 card per row on extra small devices */
         .ja-job-list {
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
-            grid-gap: 0.8rem !important;
-            padding: 0 0.3rem !important;
+            grid-template-columns: 1fr !important;
+            grid-gap: 1.2rem !important;
+            padding: 0 0.5rem !important;
+        }
+
+        .ja-job-list .job {
+            aspect-ratio: 1/1 !important;
+        }
+
+        .ja-job-list .job .title a {
+            font-size: 1.2rem !important;
         }
 
         .ja-job-list .job .meta {
-            padding: 0.6rem 0.8rem !important;
-            gap: 0.2rem !important;
+            padding: 0.8rem !important;
+            gap: 0.3rem !important;
         }
 
-        .ja-job-list .job .meta .job-title {
+        .ja-job-list .job .meta .date-posted {
             font-size: 0.9rem !important;
         }
 
@@ -2935,11 +2948,11 @@
         }
 
         .ja-job-list .job .meta .card-desc p {
-            font-size: 0.8rem !important;
+            font-size: 0.85rem !important;
         }
 
         .ja-job-list .job .meta .card-link a {
-            font-size: 0.8rem !important;
+            font-size: 0.9rem !important;
         }
     }
 
