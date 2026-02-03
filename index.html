@@ -1346,7 +1346,14 @@
         width: 100%;
         background: #fff;
         overflow: hidden;
+	    	opacity: 0;
+	    	transition: opacity 0.25s ease;
     }
+
+	    /* Show cards only once a sector has been assigned to avoid black-to-colour flicker */
+	    .ja-job-list .job[data-sector] {
+	    	opacity: 1;
+	    }
 
     .ja-job-list .job.alt {
         background-color: #fff;
