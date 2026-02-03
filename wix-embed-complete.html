@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Hide JobAdder's default apply form */
+        .ja-job-apply,
+        .ja-apply-iframe,
+        iframe[src*="apply"] {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            height: 0 !important;
+            overflow: hidden !important;
+        }
+        
+        /* Custom application form overlay */
+        #customApplyOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999999;
+            overflow-y: auto;
+        }
+        
+        #customApplyOverlay.active {
+            display: block;
+        }
+        
+        .custom-apply-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .custom-apply-header {
+            background: linear-gradient(135deg, #F7941D 0%, #FF8C00 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .custom-apply-header h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .custom-apply-body {
+            padding: 30px;
+        }
+        
+        .logo-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .logo-box-text {
+            color: #333333;
+        }
+        
+        .logo-hospitality-text {
+            color: #F7941D;
+        }
+        
+        .job-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .job-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333333;
+            margin: 0 0 10px 0;
+        }
+        
+        .job-subtitle {
+            font-size: 14px;
+            color: #666666;
+            margin: 0;
+        }
+        
+        .button-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #F7941D 0%, #FF8C00 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #E8850C 0%, #F7941D 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(247, 148, 29, 0.3);
+        }
+        
+        .or-text {
+            font-size: 14px;
+            color: #666666;
+            font-weight: 500;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .form-field {
+            flex: 1;
+        }
+        
+        .form-field.full-width {
+            width: 100%;
+        }
+        
+        .form-field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            color: #333333;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .form-field input,
+        .form-field textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #F7941D;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: 'Inter', Arial, sans-serif;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        .form-field input:focus,
+        .form-field textarea:focus {
+            outline: none;
+            border-color: #FF8C00;
+            box-shadow: 0 0 0 3px rgba(247, 148, 29, 0.1);
+        }
+
+        .form-field textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #F7941D 0%, #FF8C00 100%);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #E8850C 0%, #F7941D 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(247, 148, 29, 0.3);
+        }
+
+        .btn-close {
+            background: #42195f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-close:hover {
+            background: #331447;
+        }
+
+        .success-message,
+        .error-message {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+            }
+
+            .custom-apply-container {
+                margin: 20px;
+            }
+
+            .button-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn-secondary {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="ja-jobs-widget"></div>
+
+    <!-- Custom Application Form Overlay -->
+    <div id="customApplyOverlay">
+        <div class="custom-apply-container">
+            <div class="custom-apply-header">
+                <h2 id="overlayJobTitle">APPLY NOW</h2>
+            </div>
+
+            <div class="custom-apply-body">
+                <div class="logo-section">
+                    <div class="logo-box">
+                        <svg class="logo-icon" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="5" width="40" height="40" fill="none" stroke="#F7941D" stroke-width="3" transform="rotate(45 25 25)"/>
+                        </svg>
+                        <div class="logo-text">
+                            <span class="logo-box-text">BOX</span><span class="logo-hospitality-text">HOSPITALITY</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="job-info">
+                    <h3 class="job-title" id="overlayJobTitleText">Food and Beverage Operations Manager</h3>
+                    <p class="job-subtitle">Please complete the form below to apply for this position</p>
+                </div>
+
+                <form id="customApplicationForm">
+                    <input type="hidden" id="customJobId" name="jobId" value="">
+
+                    <div class="button-row">
+                        <button type="button" class="btn-secondary" id="customUploadCvBtn">UPLOAD CV</button>
+                        <span class="or-text">or</span>
+                        <button type="button" class="btn-secondary" id="customApplyLaterBtn">APPLY LATER</button>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="customFirstName">FIRST NAME *</label>
+                            <input type="text" id="customFirstName" name="firstName" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="customLastName">LAST NAME *</label>
+                            <input type="text" id="customLastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-field full-width" style="margin-bottom: 20px;">
+                        <label for="customEmail">EMAIL ADDRESS *</label>
+                        <input type="email" id="customEmail" name="email" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="customPhone">PHONE</label>
+                            <input type="tel" id="customPhone" name="phone">
+                        </div>
+                        <div class="form-field">
+                            <label for="customMobile">MOBILE</label>
+                            <input type="tel" id="customMobile" name="mobile">
+                        </div>
+                    </div>
+
+                    <div class="form-field full-width" style="margin-bottom: 20px;">
+                        <label for="customCoverNote">COVER NOTE</label>
+                        <textarea id="customCoverNote" name="coverNote"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">APPLY NOW</button>
+                    <button type="button" class="btn-close" id="closeOverlayBtn">CANCEL</button>
+
+                    <div id="customSuccessMessage" class="success-message" style="display: none;">
+                        <h3>✓ Application Submitted Successfully!</h3>
+                        <p>Thank you for your application. We'll be in touch soon.</p>
+                    </div>
+
+                    <div id="customErrorMessage" class="error-message" style="display: none;">
+                        <h3>⚠ Submission Failed</h3>
+                        <p id="customErrorText">Please try again or contact us directly.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // JobAdder Widget Configuration
+    var _jaJobsSettings = {
+        key: "EU2_3pgjze45lgle3kkulh6ljkw5ra",
+        jobSearchSettings: {
+            showSearchForm: true,
+            searchButtonText: "SEARCH JOBS",
+            showCategoryFilter: true,
+            categoryFilterLabel: "Job Sector",
+            showSubCategoryFilter: false,
+            showWorkTypeFilter: false,
+            showKeywordSearch: true,
+            keywordSearchLabel: "Keywords (separate with comma)"
+        },
+        applicationFormSettings: {
+            useExternalApplicationForm: false,
+            showExternalApplicationFormInNewWindow: false
+        }
+    };
+
+    // Change "View Details" to "READ MORE"
+    setInterval(function () {
+        var myClasses = document.getElementsByClassName("view-details");
+        for (var i = 0; i < myClasses.length; i++) {
+            if (myClasses[i].innerText !== "READ MORE") {
+                myClasses[i].innerText = "READ MORE";
+            }
+        }
+    }, 1);
+</script>
+
+<script src="https://apps.jobadder.com/widgets/v1/jobs.min.js"></script>
+
+<script>
+    // ============================================
+    // CUSTOM APPLICATION FORM - WIX EMBED VERSION
+    // Intercepts "Apply Now" and shows custom overlay
+    // ============================================
+    (function() {
+        'use strict';
+
+        console.log('Box Recruitment: Custom form script loaded');
+
+        let currentJobId = null;
+        let currentJobTitle = null;
+
+        // Function to show custom overlay
+        function showCustomApplyForm(jobId, jobTitle) {
+            console.log('Box Recruitment: Showing custom form for job:', jobId, jobTitle);
+
+            currentJobId = jobId;
+            currentJobTitle = jobTitle || 'Position';
+
+            // Set job details in overlay
+            document.getElementById('overlayJobTitle').textContent = currentJobTitle.toUpperCase();
+            document.getElementById('overlayJobTitleText').textContent = currentJobTitle;
+            document.getElementById('customJobId').value = jobId;
+
+            // Show overlay
+            document.getElementById('customApplyOverlay').classList.add('active');
+
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Function to hide custom overlay
+        function hideCustomApplyForm() {
+            console.log('Box Recruitment: Hiding custom form');
+            document.getElementById('customApplyOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+
+            // Reset form
+            document.getElementById('customApplicationForm').reset();
+            document.getElementById('customSuccessMessage').style.display = 'none';
+            document.getElementById('customErrorMessage').style.display = 'none';
+        }
+
+        // Close overlay button
+        document.getElementById('closeOverlayBtn').addEventListener('click', hideCustomApplyForm);
+
+        // Close overlay when clicking outside
+        document.getElementById('customApplyOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideCustomApplyForm();
+            }
+        });
+
+        // Upload CV button
+        document.getElementById('customUploadCvBtn').addEventListener('click', function() {
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = '.pdf,.doc,.docx';
+            fileInput.onchange = function(e) {
+                if (e.target.files.length > 0) {
+                    alert('CV uploaded: ' + e.target.files[0].name);
+                }
+            };
+            fileInput.click();
+        });
+
+        // Apply Later button
+        document.getElementById('customApplyLaterBtn').addEventListener('click', function() {
+            alert('Job saved for later!');
+            hideCustomApplyForm();
+        });
+
+        // Form submission
+        document.getElementById('customApplicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            console.log('Box Recruitment: Submitting application');
+
+            const formData = {
+                jobId: document.getElementById('customJobId').value,
+                firstName: document.getElementById('customFirstName').value,
+                lastName: document.getElementById('customLastName').value,
+                email: document.getElementById('customEmail').value,
+                phone: document.getElementById('customPhone').value,
+                mobile: document.getElementById('customMobile').value,
+                coverNote: document.getElementById('customCoverNote').value
+            };
+
+            console.log('Box Recruitment: Form data:', formData);
+
+            // Show success message
+            document.getElementById('customSuccessMessage').style.display = 'block';
+            document.getElementById('customErrorMessage').style.display = 'none';
+
+            // Hide form after 3 seconds
+            setTimeout(function() {
+                hideCustomApplyForm();
+            }, 3000);
+        });
+
+        // Intercept JobAdder's apply button clicks
+        function interceptApplyButtons() {
+            // Hide JobAdder's default apply form
+            const applyForms = document.querySelectorAll('.ja-job-apply, .ja-apply-iframe, iframe[src*="apply"]');
+            applyForms.forEach(form => {
+                form.style.display = 'none';
+                form.style.visibility = 'hidden';
+                form.style.opacity = '0';
+                form.style.height = '0';
+                form.style.overflow = 'hidden';
+            });
+
+            // Find all "Apply Now" buttons
+            const applyButtons = document.querySelectorAll(
+                '.ja-job-details .ja-apply-button, ' +
+                '.ja-job-details button, ' +
+                '.ja-job-details .ja-button, ' +
+                'button[class*="apply"], ' +
+                'a[class*="apply"]'
+            );
+
+            console.log('Box Recruitment: Found', applyButtons.length, 'apply buttons');
+
+            applyButtons.forEach(button => {
+                const buttonText = button.textContent.toLowerCase();
+                if (buttonText.includes('apply')) {
+                    // Remove existing click handlers
+                    const newButton = button.cloneNode(true);
+                    button.parentNode.replaceChild(newButton, button);
+
+                    // Add custom click handler
+                    newButton.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        console.log('Box Recruitment: Apply button clicked');
+
+                        // Get job details from page
+                        let jobTitle = 'Position';
+                        const titleElement = document.querySelector('.ja-job-details h1, .ja-job-details h2, .ja-job-details .title');
+                        if (titleElement) {
+                            jobTitle = titleElement.textContent.trim();
+                        }
+
+                        // Get job ID from URL or data attribute
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const jobId = urlParams.get('id') || urlParams.get('jobId') || 'unknown';
+
+                        // Show custom form
+                        showCustomApplyForm(jobId, jobTitle);
+
+                        return false;
+                    });
+
+                    console.log('Box Recruitment: Intercepted apply button:', buttonText);
+                }
+            });
+        }
+
+        // Run interception on page load and periodically
+        setInterval(interceptApplyButtons, 500);
+
+        // Also run when DOM changes
+        const observer = new MutationObserver(interceptApplyButtons);
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
+        console.log('Box Recruitment: Custom form interception active');
+    })();
+</script>
+
+

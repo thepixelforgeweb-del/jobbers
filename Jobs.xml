@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Jobs advertiser="Box Leisure Recruitment" account="1286" jid="4253" source="3pgjze45lgle3kkulh6ljkw5ra">
+  <Fields>
+    <Field jid="19463" type="List" name="Category">
+      <Values>
+        <Value jid="1222765" name="Retail">
+          <Field jid="19464" type="List" name="Sub Category">
+            <Values>
+              <Value jid="1235677" name="Managers" />
+              <Value jid="1235678" name="Team Members" />
+            </Values>
+          </Field>
+        </Value>
+        <Value jid="1235611" name="Administration">
+          <Field jid="19464" type="List" name="Sub Category">
+            <Values>
+              <Value jid="1235649" name="Aftersales" />
+              <Value jid="1235650" name="Accounts" />
+              <Value jid="1235651" name="General" />
+              <Value jid="1235652" name="Admin" />
+              <Value jid="1235653" name="HR Payroll" />
+            </Values>
+          </Field>
+        </Value>
+        <Value jid="1235612" name="Accommodation / Housekeeping">
+          <Field jid="19464" type="List" name="Sub Category">
+            <Values>
+              <Value jid="1235654" name="Managers" />
+              <Value jid="1235655" name="Team Members" />
+            </Values>
+          </Field>
+        </Value>
+        <Value jid="1235613" name="Audio Visual" />
+        <Value jid="1235614" name="Bars">
+          <Field jid="19464" type="List" name="Sub Category">
+            <Values>
+              <Value jid="1235656" name="Managers" />
+              <Value jid="1235657" name="Team Members" />
+            </Values>
+          </Field>
+        </Value>
+        <Value jid="1235615" name="Caravan Sales">
+          <Field jid="19464" type="List" name="Sub Category">
+            <Values>
+              <Value jid="1235658" name="Experienced" />
+              <Value jid="1235659" name="Non Experienced" />
+            </Values>
+          </Field>
+        </Value>
+        <Value jid="1235616" name="Caravan Sales Managers">
+          <Field jid="19464" type="List" name="Sub Category">
+            <Values>
+              <Value jid="1235660" name="Experienced" />
+              <Value jid="1235661" name="Non Experienced" />
+            </Values>
+          </Field>
+        </Value>
+        <Value jid="1235617" name="Cluster Managers" />
+        <Value jid="1235618" name="Hotel Operations Managers" />
+        <Value jid="1235619" name="Resort Lodge Sales" />
+        <Value jid="1235620" name="Sales">
+          <Field jid="19464" type="List" name="Sub Category">
+            <Values>
+              <Value jid="1235662" name="Membership Sales" />
+              <Value jid="1235663" name="Account Sales" />
+              <Value jid="1235664" name="Supplier Sales" />
+              <Value jid="1235665" name="General Sales" />
+              <Value jid="1235666" name="Events Sales" />
+              <Value jid="1235667" name="Residential Sales" />
+            </Values>
+          </Field>
+        </Value>
+        <Value jid="1235621" name="Chefs">
+          <Field jid="19464" type="List" name="Sub Category">
+            <Values>
+              <Value jid="1235668" name="Executive Chef" />
+              <Value jid="1235669" name="Head Chef" />
+              <Value jid="1235670" name="Sous Chef" />
+              <Value jid="1235671" name="Chef De Partie" />
+              <Value jid="1235672" name="Commis Chef" />
+              <Value jid="1235673" name="Junior Chef" />
+              <Value jid="1235674" name="Kitchen Porter" />
+            </Values>
+          </Field>
+        </Value>
+        <Value jid="1235622" name="Complex Manager" />
+        <Value jid="1235623" name="Head of Food and Beverage" />
+        <Value jid="1235624" name="Entertainment Managers" />
+        <Value jid="1235625" name="General Manager">
+          <Field jid="19464" type="List" name="Sub Category">
+            <Values>
+              <Value jid="1235675" name="Holiday Park" />
+              <Value jid="1235676" name="Hotel" />
+            </Values>
+          </Field>
+        </Value>
+        <Value jid="1235626" name="Grounds and Maintenance" />
+        <Value jid="1235627" name="Guest Experience" />
+        <Value jid="1235628" name="Reservations" />
+        <Value jid="1235629" name="Key Account Managers" />
+        <Value jid="1235630" name="Leisure and Activities">
+          <Field jid="19464" type="List" name="Sub Category">
+            <Values>
+              <Value jid="1235679" name="Managers" />
+              <Value jid="1235680" name="Team Members" />
+            </Values>
+          </Field>
+        </Value>
+        <Value jid="1235631" name="Reception">
+          <Field jid="19464" type="List" name="Sub Category">
+            <Values>
+              <Value jid="1235681" name="Managers" />
+              <Value jid="1235682" name="Team Members" />
+            </Values>
+          </Field>
+        </Value>
+        <Value jid="1235632" name="Lifeguards" />
+        <Value jid="1235633" name="Sport and Leisure">
+          <Field jid="19464" type="List" name="Sub Category">
+            <Values>
+              <Value jid="1235683" name="Managers" />
+              <Value jid="1235684" name="Team Members" />
+            </Values>
+          </Field>
+        </Value>
+        <Value jid="1235634" name="Pool">
+          <Field jid="19464" type="List" name="Sub Category">
+            <Values>
+              <Value jid="1235685" name="Managers" />
+              <Value jid="1235686" name="Team Members" />
+            </Values>
+          </Field>
+        </Value>
+        <Value jid="1235635" name="Marketing" />
+        <Value jid="1235636" name="Multi Skilled Leisure Professionals" />
+        <Value jid="1235637" name="Owners Experience" />
+        <Value jid="1235638" name="Park Wardens" />
+        <Value jid="1235639" name="Electricians" />
+        <Value jid="1235640" name="Gas Engineers" />
+        <Value jid="1235641" name="Restaurant">
+          <Field jid="19464" type="List" name="Sub Category">
+            <Values>
+              <Value jid="1235687" name="Managers" />
+              <Value jid="1235688" name="Team Members" />
+            </Values>
+          </Field>
+        </Value>
+        <Value jid="1235642" name="Security">
+          <Field jid="19464" type="List" name="Sub Category">
+            <Values>
+              <Value jid="1235689" name="Managers" />
+              <Value jid="1235690" name="Team Members" />
+            </Values>
+          </Field>
+        </Value>
+        <Value jid="1235643" name="Spa" />
+        <Value jid="1235644" name="Support Roles" />
+        <Value jid="1235645" name="Facilities" />
+        <Value jid="1235646" name="Fast Food Outlet" />
+        <Value jid="1235647" name="Fitness Instructor" />
+        <Value jid="1235648" name="Management Couple">
+          <Field jid="19464" type="List" name="Sub Category">
+            <Values>
+              <Value jid="1235691" name="Park Wardens" />
+              <Value jid="1235692" name="Public House Management" />
+            </Values>
+          </Field>
+        </Value>
+        <Value jid="1578748" name="Engineering" />
+        <Value jid="1578749" name="Manufacturing" />
+        <Value jid="1595444" name="Hospitality" />
+        <Value jid="1595445" name="Healthcare" />
+        <Value jid="1595446" name="Leisure" />
+        <Value jid="1595447" name="Solutions" />
+        <Value jid="1595448" name="Travel" />
+      </Values>
+    </Field>
+    <Field jid="19465" type="List" name="Location">
+      <Values>
+        <Value jid="1223248" name="Bedfordshire" />
+        <Value jid="1223249" name="Berkshire" />
+        <Value jid="1223250" name="Bristol" />
+        <Value jid="1223251" name="Buckinghamshire" />
+        <Value jid="1223252" name="Cambridgeshire" />
+        <Value jid="1223253" name="Cheshire" />
+        <Value jid="1223254" name="Cornwall" />
+        <Value jid="1223255" name="Cumbria" />
+        <Value jid="1223256" name="Derbyshire" />
+        <Value jid="1223257" name="Devon" />
+        <Value jid="1223258" name="Dorset" />
+        <Value jid="1223259" name="Durham" />
+        <Value jid="1223260" name="East Riding of Yorkshire" />
+        <Value jid="1223261" name="East Sussex" />
+        <Value jid="1223262" name="Essex" />
+        <Value jid="1223263" name="Gloucestershire" />
+        <Value jid="1223264" name="Greater London" />
+        <Value jid="1223265" name="Greater Manchester" />
+        <Value jid="1223266" name="Hampshire" />
+        <Value jid="1223267" name="Herefordshire" />
+        <Value jid="1223268" name="Hertfordshire" />
+        <Value jid="1223269" name="Isle of Wight" />
+        <Value jid="1223270" name="Kent" />
+        <Value jid="1223271" name="Lancashire" />
+        <Value jid="1223272" name="Leicestershire" />
+        <Value jid="1223273" name="Lincolnshire" />
+        <Value jid="1223274" name="Merseyside" />
+        <Value jid="1223275" name="Norfolk" />
+        <Value jid="1223276" name="North Yorkshire" />
+        <Value jid="1223277" name="Northamptonshire" />
+        <Value jid="1223278" name="Northumberland" />
+        <Value jid="1223279" name="Nottinghamshire" />
+        <Value jid="1223280" name="Oxfordshire" />
+        <Value jid="1223281" name="Rutland" />
+        <Value jid="1223282" name="Shropshire" />
+        <Value jid="1223283" name="Somerset" />
+        <Value jid="1223284" name="South Yorkshire" />
+        <Value jid="1223285" name="Staffordshire" />
+        <Value jid="1223286" name="Suffolk" />
+        <Value jid="1223287" name="Surrey" />
+        <Value jid="1223288" name="Tyne and Wear" />
+        <Value jid="1223289" name="Warwickshire" />
+        <Value jid="1223290" name="West Midlands" />
+        <Value jid="1223291" name="West Sussex" />
+        <Value jid="1223292" name="West Yorkshire" />
+        <Value jid="1223293" name="Wiltshire" />
+        <Value jid="1223294" name="Worcestershire" />
+        <Value jid="1223295" name="Antrim" />
+        <Value jid="1223296" name="Armagh" />
+        <Value jid="1223297" name="Derry/Londonderry" />
+        <Value jid="1223298" name="Down" />
+        <Value jid="1223299" name="Fermanagh" />
+        <Value jid="1223300" name="Tyrone" />
+        <Value jid="1223301" name="Aberdeen City" />
+        <Value jid="1223302" name="Aberdeenshire" />
+        <Value jid="1223303" name="Angus" />
+        <Value jid="1223304" name="Argyll and Bute" />
+        <Value jid="1223305" name="Clackmannanshire" />
+        <Value jid="1223306" name="Dumfries and Galloway" />
+        <Value jid="1223307" name="Dundee City" />
+        <Value jid="1223308" name="East Ayrshire" />
+        <Value jid="1223309" name="East Dunbartonshire" />
+        <Value jid="1223310" name="East Lothian" />
+        <Value jid="1223311" name="East Renfrewshire" />
+        <Value jid="1223312" name="City of Edinburgh" />
+        <Value jid="1223313" name="Falkirk" />
+        <Value jid="1223314" name="Fife" />
+        <Value jid="1223315" name="Glasgow City" />
+        <Value jid="1223316" name="Highland" />
+        <Value jid="1223317" name="Inverclyde" />
+        <Value jid="1223318" name="Midlothian" />
+        <Value jid="1223319" name="Moray" />
+        <Value jid="1223320" name="North Ayrshire" />
+        <Value jid="1223321" name="North Lanarkshire" />
+        <Value jid="1223322" name="Perth and Kinross" />
+        <Value jid="1223323" name="Renfrewshire" />
+        <Value jid="1223324" name="Scottish Borders" />
+        <Value jid="1223325" name="South Ayrshire" />
+        <Value jid="1223326" name="South Lanarkshire" />
+        <Value jid="1223327" name="Stirling" />
+        <Value jid="1223328" name="West Dunbartonshire" />
+        <Value jid="1223329" name="West Lothian" />
+        <Value jid="1223330" name="Na h-Eileanan Siar" />
+        <Value jid="1223331" name="Orkney Islands" />
+        <Value jid="1223332" name="Shetland Islands" />
+        <Value jid="1223333" name="Blaenau Gwent" />
+        <Value jid="1223334" name="Bridgend" />
+        <Value jid="1223335" name="Caerphilly" />
+        <Value jid="1223336" name="Cardiff" />
+        <Value jid="1223337" name="Carmarthenshire" />
+        <Value jid="1223338" name="Ceredigion" />
+        <Value jid="1223339" name="Conwy" />
+        <Value jid="1223340" name="Denbighshire" />
+        <Value jid="1223341" name="Flintshire" />
+        <Value jid="1223342" name="Gwynedd" />
+        <Value jid="1223343" name="Isle of Anglesey" />
+        <Value jid="1223344" name="Merthyr Tydfil" />
+        <Value jid="1223345" name="Monmouthshire" />
+        <Value jid="1223346" name="Neath Port Talbot" />
+        <Value jid="1223347" name="Newport" />
+        <Value jid="1223348" name="Pembrokeshire" />
+        <Value jid="1223349" name="Powys" />
+        <Value jid="1223350" name="Rhondda Cynon Taff" />
+        <Value jid="1223351" name="Swansea" />
+        <Value jid="1223352" name="Torfaen" />
+        <Value jid="1223353" name="Vale of Glamorgan" />
+        <Value jid="1223354" name="Wrexham" />
+      </Values>
+    </Field>
+    <Field jid="19466" type="List" name="Work Type">
+      <Values>
+        <Value jid="1223355" name="Permanent / Full Time" />
+        <Value jid="1223356" name="Contract or Temp" />
+        <Value jid="1223357" name="Part-time" />
+        <Value jid="1223358" name="Casual" />
+        <Value jid="1595449" name="Seasonal" />
+        <Value jid="1595450" name="Temporary" />
+        <Value jid="1595451" name="Temp to Perm" />
+      </Values>
+    </Field>
+  </Fields>
+  <Job jid="781213" reference="885307" datePosted="2026-01-12" dateUpdated="2026-01-12T11:43:01Z">
+    <Title>Restaurant and Bar manager</Title>
+    <Summary>Restaurant and Bar manager</Summary>
+    <Description><![CDATA[<strong>Location</strong>: Cornwall<br><strong>Contract Type</strong>: Permanent, Full-Time (Annualised Hours)<br><strong>Hours</strong>: 40 hours per week, including evenings and weekends<br><strong>Salary</strong>: 30,690 per annum<br> &nbsp;<br> <strong>What You'll Do:</strong><br> As the Bar &amp; Grill Manager, you'll play a key role in leading our food and beverage operations to deliver an exceptional experience for our guests and owners. Your responsibilities will include:<br> <ul> <li>Leading and developing a high-performing team to provide top-tier service.</li> <li>Ensuring a safe, clean, and inviting environment in line with our 5-star standards.</li> <li>Delivering outstanding guest experiences, building strong relationships through excellent service.</li> <li>Recruiting, training, and inspiring your team to uphold consistency in service and standards.</li> <li>Driving profitability and performance, achieving budgets and targets.</li> <li>Embracing our company values, ensuring every guest visit is memorable.</li> </ul> <strong>What We're Looking For:</strong><br> We're searching for a passionate and driven hospitality leader who is:<br> <ul> <li>Guest-focused, with a strong customer service ethic.</li> <li>Competitive and results-driven, eager to hit performance targets.</li> <li>An inspiring coach and leader, able to develop and motivate a team.</li> <li>Experienced in food &amp; beverage operations, preferably in a high-volume setting.</li> </ul> <strong>Why Join Us?</strong><br> By joining us, you'll be part of a fast-growing company that values its employees. As a Manager, you'll benefit from:<br> <ul> <li>A permanent, full-time role with a competitive salary.</li> <li>Opportunities for career progression and professional development.</li> <li>The satisfaction of maintaining high standards across our retail and hospitality facilities.</li> <li>Exclusive team perks, including:</li> <li>Exclusive Discounts: 30% off food and beverages, and up to 30% off holidays across the parks.</li> <li>Team Perks: Access to our Leisure &amp; Gym facilities.</li> <li>Amazing Team Events: Celebrate success with your colleagues.</li> <li>Convenient Benefits: Onsite parking and free bus transport (park dependent).</li> <li>Training &amp; Development: Learn and grow in a supportive environment.</li> </ul> <strong>How to Apply:</strong><br> If you're ready to take on this exciting and rewarding role, apply today!<br>Send us your CV to abbie@boxleisurerecruitment.co.uk.]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235623">Head of Food and Beverage</Classification>
+      <Classification jid="19465" name="Location" vid="1223254">Cornwall</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>abbie@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/781213/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="781134" reference="671204" datePosted="2026-01-12" dateUpdated="2026-01-12T09:40:27Z">
+    <Title>East Yorkshire - Senior Travel Consultant</Title>
+    <Summary>East Yorkshire - Senior Travel Consultant</Summary>
+    <Description><![CDATA[<strong>We'd love to hear from you.</strong><br> <strong>Job Type:&nbsp;Full-time, Permanent<br>Location:&nbsp;East Yorkshire</strong><br> <strong>Senior Travel Consultant&nbsp;</strong><br><strong>Hours 37 (30 + considered)</strong><br><strong>Duration - Permanent</strong><br><strong>Salary &pound;31,000 up to &pound;36,000 dependent on experience plus substantial bonus opportunity</strong><br> &nbsp;<br> Our client is opening a brand-new Travel store in East Yorkshire and we're looking for an experienced Senior Travel Consultant who's ready to step into a leadership role.<br> This is an exciting opportunity to help shape a brand-new branch from day one while working as part of a well-established, award-winning local business.<br> &nbsp;<br> <strong>Who We Are</strong><br> The company is built on our Charter &mdash; keeping clients at the centre of everything we do, working as one team, constantly looking for ways to improve, and taking responsibility for protecting our customers and our business. If that ethos feels like a natural fit for you, you'll feel right at home with us.<br> &nbsp;<br> <strong>The Role</strong><br> As the senior member of the store team, you'll take the lead on both performance and day-to-day operations. You'll be someone who can deliver exceptional service while naturally guiding others.<br> &nbsp;<br> In this role, you will:<br> <ul> <li>Create high-quality tailor-made, long-haul and multi-centre holidays</li> <li>Confidently sell cruise holidays across mainstream and specialist lines</li> <li>Manage your own enquiry pipeline and generate new and repeat business</li> <li>Support customers before, during and after travel</li> <li>Provide guidance and support to the team as the store grows</li> <li>Process ATOL bookings accurately and independently</li> <li>Ensure full compliance with ABTA, ATOL and PTR requirements</li> <li>Build strong relationships with suppliers and contribute to marketing activity</li> <li>Protect client money, safeguard travellers and uphold our Charter</li> <li>Share ideas and help improve how we work as a team</li> </ul> &nbsp;<br> <strong>About You</strong><br> We're looking for someone who brings both experience and energy into a growing environment.<br> &nbsp;<br> You'll need:<br> <ul> <li>3+ years' experience in a retail travel role</li> <li>Strong background in tailormade, long-haul and multi-centre holidays</li> <li>Confidence selling cruise, including specialist lines</li> <li>Experience handling your own ATOL bookings</li> <li>A collaborative mindset and a genuine belief in teamwork</li> <li>A positive, proactive approach to learning and development</li> <li>A passion for helping people and delivering brilliant service</li> <li>Flexibility as the store develops and the team expands</li> </ul> &nbsp;<br> <strong>What You Can Expect</strong><br> In line with our Charter, we offer a supportive and professional workplace where people are encouraged to grow and succeed.<br> &nbsp;<br> You'll receive:<br> <ul> <li>A busy, varied working environment</li> <li>Clear responsibilities and a personal development plan</li> <li>Funded training, fam trips and supplier learning</li> <li>Regular 121s and team meetings</li> <li>Incentive schemes that recognise both personal and team success</li> <li>Supportive leadership and a friendly, welcoming team</li> <li>Competitive earnings of &pound;31,000-&pound;36,000 OTE</li> <li>Travel discounts, company pension and free parking</li> </ul> &nbsp;<br> <strong>How to Apply</strong><br> Apply today contact abbie@boxleisurerecruitment.co.uk]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235620">Sales</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235664">Supplier Sales</Classification>
+      <Classification jid="19465" name="Location" vid="1223260">East Riding of Yorkshire</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>abbie@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/781134/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="781120" reference="885190" datePosted="2026-01-12" dateUpdated="2026-01-12T08:49:09Z">
+    <Title>Park Manager Couple or Single position</Title>
+    <Summary>Park Manager Couple or Single position</Summary>
+    <Description><![CDATA[<div><strong>Box Leisure "The cutting edge of leisure careers"</strong><br><strong>Job Title:</strong>&nbsp;Park managers couple or single position&nbsp;</div> <div><strong>Location:</strong> North Yorkshire<br><strong>Salary:&nbsp;</strong>up to &pound;50K<br><strong>Hours:</strong>&nbsp;As business requires<br><strong>Duration:</strong>&nbsp;permanent.</div> <br> Immediate Opportunity - Park Managers (Couple or Individual)<br>&#55357;&#56525; 5-Star Static &amp; Lodge Park | North Yorkshire / Lancashire Border<br><br>We're looking to appoint experienced Park Managers for our well-established 5-star park with around 200 privately owned lodges and static caravans.<br><br>This role suits a couple or individuals with prior park experience. The position is hands-on and varied, covering:<br> - Office &amp; customer support (admin, billing, CRM, owner liaison)<br> - Grounds &amp; maintenance (park upkeep, landscaping, basic repairs)<br><br>&#10004; Full-time, permanent roles<br>&#10004; Competitive salary<br>&#10004; On-site accommodation included - fully winterised modern static with all mod cons<br>&#10004; High-quality park, professional team, great working environment<br><br>Interviews will be arranged promptly.<br><br>&#55357;&#56551; To express interest, contact: Abbie at abbie@boxleisurerecruitment.co.uk]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235638">Park Wardens</Classification>
+      <Classification jid="19465" name="Location" vid="1223276">North Yorkshire</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>abbie@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/781120/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="781080" reference="885102" datePosted="2026-01-11" dateUpdated="2026-01-11T16:10:54Z">
+    <Title>Head of Food and Beverage</Title>
+    <Summary>Exciting role in a Luxury Hotel</Summary>
+    <Description><![CDATA[<div>Head of F&amp;B in a Luxury Hotel</div> <div>Full Job Description <div> <div><strong>Box Leisure&nbsp; &nbsp; &nbsp; "The Cutting Edge of Leisure Careers"</strong><br><strong>Job Title:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Head of Food &amp; Beverage</strong><br><strong>Location:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Runnymede</strong><br><strong>Duration:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Permanent - Full Time</strong><br><strong>Salary:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &pound;52,000&nbsp;</strong><br>&nbsp;<br><br><br>A rewarding career at our clients prestigious hotel means joining one great team who aim to create a warm hearted and seamless experience across their unique and beautiful portfolio of Hotels.<br><br>The Purpose of the role:<br><br>As a Food &amp; Beverage Manager you will you will lead, support and coach a passionate team who take pride in hosting exceptional dining and bar experiences for guests. You will work in a high performing and fast paced environment aiming to exceed our clients guest's needs and expectations on a daily basis.<br><br>Role responsibilities:<br><br>-Accountability for delivery of exceptional food and beverage sales and service standards<br>-Guest satisfaction<br>-Training &amp; development of food and beverage knowledge and skills<br>-To control stock management and work within the budget provided for the department, spending money wisely to &nbsp;support the team and guest experience<br>-Team retention<br>-Be present during service and operational times to lead the team from the front<br>-Responsibility for the financial performance of all food and beverage departments<br>-Supporting the food and beverage department managers to provide their teams with the appropriate tools and &nbsp;resources for the job&nbsp;<br>-Providing a safe, secure and appealing environment by adhering to the companies Health &amp; Safety policies<br>&nbsp;<br>Experience and training:<br><br>-We welcome applicants with previous management experience working in Hospitality, ideally within a large scale &nbsp;hotel or food and beverage environment<br>-You will have a proven track record of training, developing, building and motivating a team<br>-It is essential that you are a Personal License Holder<br><br>The benefits of working for our client:<br><br>-Free use of many of the hotel facilities and discounts off food and retail outlets<br>-20% team member discount on holidays across the brands hotels and resorts for you, your family and &nbsp;friends<br>-Reward and recognition schemes including long service<br>-Externally recognised qualifications that will give you the opportunity to progress and develop<br>-Childcare voucher scheme (subject to eligibility)<br>-Government pension scheme<br><br>To take the next step in building the career you've always dreamed of...apply now!</div> <br> <div>Contact Michelle on 07553446864</div> <div>michelle@boxhospotalityrecruitment.co.uk</div> </div> </div>]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235623">Head of Food and Beverage</Classification>
+      <Classification jid="19465" name="Location" vid="1223287">Surrey</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>michelle@boxhospitalityrecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/781080/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="780962" reference="820990" datePosted="2026-01-09" dateUpdated="2026-01-09T15:13:51Z">
+    <Title>Sous Chef</Title>
+    <Summary>Great role with progression!</Summary>
+    <Description><![CDATA[<strong>Box Leisure: </strong><br> <strong>"The Cutting Edge of Leisure Careers"</strong><br> <strong>Role: SOUS CHEF &nbsp; </strong><br> <strong>Hotel | Nottinghamshire&nbsp; | Permanent | Full time</strong> <strong>Salary: &pound;35k</strong><br><br> &nbsp;<br> &nbsp;<br> | Looking for an experienced Sous Chef to oversee a busy kitchen operation at a busy hotel. &nbsp; &nbsp; An amazing opportunity to join one of the UKs leading hotel resort companies situated in the Northwest. This reputable holiday hotel operator offers a high-quality lifestyle opportunity, wonderful working environment, access to a myriad of leisure and outdoor activities and is well connected to the national motorway network.&nbsp; &nbsp; You will be responsible for driving a great food experience guest service and maximising the potential of the Food &amp; Beverage in back of house departments and offerings on park. You will nurture an environment that allows your team to perform at their best through high performance and high fulfilment and creating memories for our guests and giving our team opportunities of a lifetime. &nbsp;<br> &nbsp;<br> <strong>Sous Chef Role Responsibilities:</strong> &nbsp;<br> <ul> <li>Manage the kitchen in absence of head chef</li> <li>Manages service ensuring all food is always high quality</li> <li>Develop and mentor team members to get the best out of them</li> <li>High level of operational knowledge within kitchen operations</li> <li>Ensure health and safety is number priority and always compliant with legislation.</li> </ul> &nbsp;<br> <strong>Qualifications&nbsp;Experience Essential:</strong> &nbsp;<br> <ul> <li>High Level of operational knowledge within a kitchen environment and be available to share ideas to improve standards.</li> <li>Be able to lead from the front and communicate under pressure.</li> <li>Coach other team members and develop their skills, improving their performance</li> <li>Minimum level 2 food safety</li> <li>Up to date Allergens certificate</li> </ul> &nbsp;<br> If you have questions or would like to apply for this role, please contact:<br> &nbsp;<br>michelle@boxhospitalityrecruitment.co.uk or Call 07553446864/ 0161 359 6110]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235621">Chefs</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235670">Sous Chef</Classification>
+      <Classification jid="19465" name="Location" vid="1223279">Nottinghamshire</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>michelle@boxhospitalityrecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/780962/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="780956" reference="715529" datePosted="2026-01-09" dateUpdated="2026-01-09T14:41:53Z">
+    <Title>Ex. Head Chef</Title>
+    <Summary>Great role in a Luxury Hotel!</Summary>
+    <Description><![CDATA[<strong>Executive Chef</strong><br> <strong>Box Leisure</strong> 'The Cutting Edge of Leisure Careers'<br> <strong>Location</strong> - Nottinghamshire<br> <strong>Salary</strong> - &pound;55,000 - &pound;60,000<br> <strong>Hours</strong> - Full Time&nbsp;<br> <strong>Duration</strong> - Perm<br> &nbsp;<br> We are looking for an Executive Head Chef to join a team at a stunning hotel set in the Beautiful county of Nottinghamshire.&nbsp;<br> &nbsp;<br> Working within the Hotel kitchen, the Executive Head Chef will promote and maintain a culture which delivers the highest operational standards which exceed performance and guest expectations through a culture of excellence.<br> The role will be responsible for driving financial success, guest service, exceptional food quality and maximising the Kitchens potential whilst nurturing an environment that allows the team to perform at their best.<br> &nbsp;<br> <strong>Key responsibilities:</strong><br> <ul> <li>Takes ownership of all kitchens, monitoring consistent delivery of a quality experience in line with the Brand Standards and continually looking and learning to develop.</li> <li>Responsibility for all stock and food cost management across all areas of the business.</li> <li>Directs, leads and coaches the team&rsquo;s activities within the Kitchen to ensure all areas of responsibilities are covered</li> <li>Confidently deals with guest concerns with the ability to resolve problems, showing empathy and understanding continually looking to improvise with opportunities our guests provide.</li> <li>Monitors guest insights, using feedback to drive a culture of improvement.</li> <li>Effectively projects for guest demand, monitoring speed of service and is proactive in arranging appropriate resource/support to ensure the guest experience is not affected Working collaboratively with the front of house F&amp;B leaders to develop innovative ways to delight our guests and team Supporting and liaising with our central Food &amp; Beverage team in regard to new menu launches and the implementation process.</li> <li>Demonstrates and role models a commitment to delivering superior food quality and guest experience in everything that you do to the agreed Brand Standards</li> <li>Takes responsibility to ensure all team are always adhering to the Brand Standards including appearance standards</li> <li>Manages compliance with all relevant legislation, company and Health &amp; Safety policies within your area of responsibility Ensure the Kitchen Health &amp; Safety checks are being carried out daily and any concerns are raised to the General Manager or Maintenance team</li> </ul> <strong>Experience / Skills:</strong> Understanding of different communication styles, along with your own, with the ability to be able to communicate with versatility at all levels A high level of operational knowledge specific to your area of expertise and uses this skill and knowledge to coach team members to thrive Ability to effectively lead, motivate and engage your team, even in times of high demand Able to manage multiple priorities and adapt quickly to changing requirements Willingness to challenge if standards aren&rsquo;t meeting required levels Good financial knowledge with the ability to manage costs in line with Kitchen budgets Ability to coach and give feedback to team members to improve performance<br> <strong>Required:</strong> Food safety level 3&nbsp;&nbsp;<br> &nbsp;<br> <strong>What's in it for you?</strong><br> <ul> <li>Free use of Pool, Gyms and many other Leisure facilities</li> <li>20% team member discount across the brand for you, your family and&nbsp; friends</li> <li>Funded qualification development opportunities from Level 2 to Masters Degrees for permanent team members</li> <li>&nbsp;Access to the Employee Assistance Programme including support for your wellbeing and free access to advice and expertise on financial and legal matters etc</li> <li>Fantastic discounts when making purchases from most major retailors and hundreds of discounts on everyday purchases</li> <li>Team Member of the Month Awards &bull;&nbsp;Instant Recognition schemes with great rewards through our busiest times &bull;&nbsp;Long Service awards</li> </ul> Speak to Michelle<br>michelle@boxhospitalityrecruitment.co.uk]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235621">Chefs</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235668">Executive Chef</Classification>
+      <Classification jid="19465" name="Location" vid="1223279">Nottinghamshire</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>michelle@boxhospitalityrecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/780956/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="780185" reference="635030k" datePosted="2026-01-06" dateUpdated="2026-01-06T13:57:48Z">
+    <Title>Caravan Sales Person</Title>
+    <Summary>Caravan Sales Person</Summary>
+    <Description><![CDATA[<strong>Box Leisure &ldquo;The cutting edge of leisure careers&rdquo;</strong><br> <strong>Job Title:</strong>&nbsp;Leisure Sales Specialist &nbsp;<br> <strong>Location:</strong> North Wales -&nbsp;&nbsp;<br> <strong>Salary: </strong>Basic: Up to &pound;25,450&nbsp;&nbsp;<strong>OTE:</strong>&nbsp;&pound;50,000<br> <strong>Hours:</strong>&nbsp;As business requires<br> <strong>Duration:</strong>&nbsp;permanent.<br><br> &bull; Huge commission + bonus potential<br> &bull; Full training &amp; support<br> &nbsp;<br> Our client is looking for an upbeat, enthusiastic sales executive. A proven track record in a face to face Holiday Home Sales sales environment is a must in specifically Caravan sales.&nbsp;<br> &nbsp;<br> You will be reporting into the senior sales manager on a day to day basis and aid them into driving sales for the business.<br> &nbsp;<br> Successful applicants will be responsible for selling luxury Caravans on the Resort, while delivering exceptional customer service and interactional skills at all times.<br> &nbsp;<br> You will be expected to:<br> <ul> <li>Maximizing sales for the resort and selling Lodges</li> <li>Maintain high standards of customer service and ensure your guests are well looked after</li> <li>Adhere to and promoting the Company Values along with Company best practice and legal compliance</li> <li>Develop and maintain relationships with owners, holidaymakers, internal and external customers.</li> <li>Gain feedback from both owners and holidaymakers on the services and facilities provided on park</li> <li>Resolving customer queries by using a positive approach and putting yourself in the customers&rsquo; shoes.</li> <li>Deal effectively and efficiently with customer concerns and compliments following the company guidelines.</li> <li>Maintain a continuous positive dialogue with customers to ensure the sale of holiday homes is supported from initial transaction to final delivery and handover including a full and final check on all relevant documentation.</li> <li>Monitor and help proactively resolve after sales complaints to ensure customer satisfaction</li> <li>Encouraging potential upgrades and upselling to guests</li> </ul> &nbsp;<br> For further information please apply or contact the Box Leisure team on 0161 359 4660.]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235615">Caravan Sales</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235658">Experienced</Classification>
+      <Classification jid="19465" name="Location" vid="1223340">Denbighshire</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>abbie@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/780185/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="779858" reference="566212f" datePosted="2026-01-05" dateUpdated="2026-01-05T16:30:12Z">
+    <Title>Holiday Home Sales</Title>
+    <Summary>Holiday Home Sales</Summary>
+    <Description><![CDATA[<strong>Box Leisure "The cutting edge of leisure careers"</strong><br>&nbsp;<br><strong>HOLIDAY HOME SALES</strong><br>&nbsp;<br><strong>Location: Highlands, Scotland</strong><br><strong>Permanent | Full time</strong>&nbsp;<br><strong>Salary: &pound;DOE plus commissions (commission structure TBC at interview stage)</strong><br><strong>Hours:</strong>&nbsp;<strong>As business requires</strong><br><strong>Holiday home sales experience required</strong><br> &nbsp;Accommodation available<br><br>We have an excellent position available for an out going and charismatic Holiday Home Advisor at one of our clients stunning holiday resorts in Cumbria.<br>&nbsp;<br>This position will see you maximising sales of holiday homes and working within a small team of sales advisors in order to create potential buyers with their dream holiday home. This is a fantastic environment and industry to work within and the role will see you working within one of our clients' beautiful holiday home parks set in the region of Cumbria.&nbsp;<br>&nbsp;<br><strong>Role Responsibilities:</strong><br> <ul> <li>Being a motivating team member within a small group of holiday home sales advisors</li> <li>Maximizing sales for the resort and selling either luxury lodges or caravans</li> <li>Maintaining high standards of customer service and ensure your buyers are well looked after</li> <li>Adhering to and promoting the Company Values along with Company best practice and legal compliance</li> <li>Developing and maintaining relationships with owners, holiday potential homeowners, internal and external customers</li> <li>Gaining feedback from new buyers and acting accordingly</li> <li>Resolving customer queries by using a positive approach and putting yourself in the customers' shoes</li> <li>Deal effectively and efficiently with customer concerns and compliments following the company guidelines</li> <li>Maintain a continuous positive dialogue with customers to ensure the sale of holiday homes is supported from initial transaction to final delivery and handover including a full and final check on all relevant documentation</li> <li>Monitor and help proactively resolve any after sales complaints to ensure customer satisfaction</li> <li>Encouraging potential upgrades and upselling to potential buyers</li> </ul> &nbsp;<br> If you have previous experience in caravan sales and you want an amazing new opportunity then contact abbie@boxleisurerecruitment.co.uk&nbsp;today for more information.]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235615">Caravan Sales</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235658">Experienced</Classification>
+      <Classification jid="19465" name="Location" vid="1223316">Highland</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>abbie@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/779858/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="779705" reference="819299" datePosted="2026-01-05" dateUpdated="2026-01-05T10:04:25Z">
+    <Title>Chef De Partie</Title>
+    <Summary>Great role to progress within a luxury Hotel!</Summary>
+    <Description><![CDATA[<strong>Box Leisure:</strong><br> <strong>"The Cutting Edge of Leisure Careers"</strong><br> <strong>Role: Chef De Partie</strong><br> <strong>Hotel | Nottingham | Permanent | Full time</strong> <strong>Salary: &pound;28,000 - &pound;30,000&nbsp;</strong><br> <strong>Limited: Live-in accommodation is available</strong>&nbsp;<br> Looking for an experienced Chef De Partie to oversee a busy kitchen operation at a busy hotel. &nbsp;An amazing opportunity to join one of the UKs leading hotel resort companies situated in the Northwest. This reputable holiday hotel operator offers a high-quality lifestyle opportunity, wonderful working environment, access to a myriad of leisure and outdoor activities and is well connected to the national motorway network.&nbsp; &nbsp; You will be responsible for driving a great food experience guest service and maximising the potential of the Food &amp; Beverage in back of house departments and offerings on park. You will nurture an environment that allows your team to perform at their best through high performance and high fulfilment and creating memories for our guests and giving our team opportunities of a lifetime. &nbsp;&nbsp;<br> <strong>Chef De Partie</strong><br> <ul> <li>Setting up the kitchen prior to a restaurant's opening</li> <li>Preparing a particular kitchen station by bringing all food containers to that point in the line</li> <li>Cooking a specific portion of each plated meal</li> <li>Assisting with marinating, cutting and precooking foods</li> <li>Cleaning the kitchen before the restaurant closes</li> <li>Cleaning and sanitising their area with warm water and soap</li> <li>Wrapping unused items and storing them in proper areas at the end of a shift</li> <li>Plating food creatively and maximising customer enjoyment</li> </ul> &nbsp;<br> <strong>Qualifications&nbsp;Experience Essential:</strong> &nbsp;<br> <ul> <li>Good Level of operational knowledge within a kitchen environment</li> <li>Be able to lead from the front and communicate under pressure.</li> <li>Minimum level 2 food safety</li> <li>Up to date Allergens certificate</li> <li>Being open to learn new skills and take on constructive criticism</li> </ul> If you have questions or would like to apply for this role, please contact:<br>michellel@boxhospitalityrecruitment.co.uk or Call 07947409191/ 0161 359 6110]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235621">Chefs</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235671">Chef De Partie</Classification>
+      <Classification jid="19465" name="Location" vid="1223279">Nottinghamshire</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>michelle@boxhospitalityrecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/779705/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="779275" reference="817415" datePosted="2025-12-30" dateUpdated="2026-01-12T10:44:20Z">
+    <Title>Padel Leisure Manager</Title>
+    <Summary>opportunity to bring a business to life!</Summary>
+    <Description><![CDATA[<strong>itle</strong>: Padel Facility Manager&nbsp;<br><strong>Box Leisure Recruitment "The cutting edge of Leisure Careers"</strong><br><strong>Location</strong>: Greater Manchester&nbsp;<br><strong>Salary</strong>: Up to &pound;35k<br><strong>Duration</strong>: Permanent &nbsp;<br> &nbsp;<br> We are launching a brand-new padel centre in Rochdale, and we're on the lookout for an energetic and proactive&nbsp;<strong>Facility Manager</strong>&nbsp;to lead operations from the ground up. This is an exciting opportunity to join one of the fastest-growing sports in the UK and play a key role in creating a vibrant and inclusive environment for our players and local community.<br> This is not your average club manager role. While your primary focus will be managing day-to-day padel operations, you will also provide light oversight (not direct management) of other businesses based within the wider facility. Your job is to keep the whole venue running smoothly and ensure an exceptional experience for everyone on site.<br> <br> <strong>Key Responsibilities:</strong><br> <ul> <li><strong>Facility Operations</strong>: Oversee the smooth running of padel courts and wider site operations, ensuring cleanliness, maintenance, and safety at all times.</li> <li><strong>Customer Experience</strong>: Be the face of the centre&mdash;create a welcoming, friendly environment for members and casual players.</li> <li><strong>Booking &amp; Admin</strong>: Manage court bookings, staff rotas, customer communications, and Playtomic integration.</li> <li><strong>Maintenance Oversight</strong>: Conduct regular checks of nets, glass walls, lighting, sand levels, and surrounding areas to ensure everything is in working order.</li> <li><strong>Support On-Site Businesses</strong>: Act as a point of contact for other businesses operating within the facility, escalating issues where needed.</li> <li><strong>Coach &amp; Event Coordination</strong>: Work alongside coaches to ensure lesson coverage and help plan tournaments, social events, and community sessions.</li> <li><strong>Health &amp; Safety</strong>: Lead site safety compliance, carry out risk assessments, and ensure first aid and emergency protocols are in place.</li> <li><strong>Marketing Support</strong>: Collaborate with the marketing team to help promote local events and initiatives.</li> </ul> <br> <strong>You Should Have:</strong><br> <ul> <li>Prior experience in&nbsp;<strong>facility management</strong>, leisure operations, or sports venue management.</li> <li>Great people skills&mdash;confident, approachable, and solution-focused.</li> <li>Strong organisational ability with a keen eye for site standards and safety.</li> <li>A good understanding of&nbsp;<strong>padel</strong>&nbsp;(or another racket sport).</li> <li>Willingness to work flexible hours including evenings and weekends.</li> <li>Confidence in using basic digital systems like booking software and WhatsApp for customer communication.</li> </ul> <br> <strong>Bonus Points For:</strong><br> <ul> <li>Previous experience managing any Leisure facility , padel/tennis&nbsp; would be a bonus</li> <li>First Aid certificate (or willingness to undertake training).</li> <li>Event or community engagement experience.</li> </ul> <br> <strong>What We Offer:</strong><br> <ul> <li>Competitive salary based on experience</li> <li>Performance-based bonus</li> <li>28 days holiday per year</li> <li>Uniform and branded kit</li> <li>The chance to shape the culture and success of a brand-new facility</li> </ul> &nbsp;<br> If interested, please contact James on kevin.maguire@boxleisurerecruitment.co.uk&nbsp;/ 07557305459]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235633">Sport and Leisure</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235683">Managers</Classification>
+      <Classification jid="19465" name="Location" vid="1223265">Greater Manchester</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>kevin.maguire@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/779275/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="779280" reference="545745a" datePosted="2025-12-30" dateUpdated="2025-12-30T10:49:43Z">
+    <Title>Park Manager</Title>
+    <Summary>30-35k  |  If you are looking at working for an amazing Independent with a great career progression opportunity, then read on.</Summary>
+    <Description><![CDATA[<strong>Box Leisure &ldquo;The cutting edge of leisure careers&rdquo;</strong><br> <strong>Job Title:</strong> Park Site Manager<br> <strong>Location:</strong>&nbsp;Devon<br> <strong>Salary: </strong>&pound;35,000<br> <strong>Hours:</strong>&nbsp;As business requires<br> <strong>Duration:</strong> Permanent<br> &nbsp;<br> We have a new opportunity available for a Holiday Park Site Manager to oversee, monitor and manage a lovely residential lodge park based in a beautiful location in Devon. Not a bad place to say you work is it? Our client boasts a number of beautiful parks around the UK and are one of the most upcoming and exciting holiday park operators at the moment on the circuit.<br> &nbsp;<br> As the Park Site Manager you would be responsible for a small team on park who contribute to the running of the park across various departments such as Guest Services and&nbsp; maintenance. Accommodation may also be provided for the right candidate.<br> &nbsp;<br> <strong>Role responsibilities:&nbsp;</strong><br> <ul> <li>Overseeing the overall presentation of the park to ensure the park and its grounds are kept to a high standard</li> <li>Ensuring the park team are running each department efficiently</li> <li>Ensuring the parks facilities are functional, safe and well-maintained</li> <li>Be responsible for each department across guest services/reception, maintenance and security</li> <li>Be available on call with regards to security and patrol of the park</li> <li>Be competent in showing potential owners around available lodges</li> <li>Delivering exceptional customer service and achieving revenue goals</li> <li>Cost control&nbsp;</li> </ul> This role would be suited to a hands-on Manager who has previous experience in the holiday park/residential park environment. We believe this experience is invaluable in order to fully be able to understand and be aware of what is required in this type of environment in order to be able to deliver high standards of service to the parks owners.<br> &nbsp;<br> If you are interested in this opportunity and think you have the skills and experience required. Please contact kevin.maguire@boxleisurerecruitment.co.uk&nbsp;today.]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235625">General Manager</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235675">Holiday Park</Classification>
+      <Classification jid="19465" name="Location" vid="1223257">Devon</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>kevin.maguire@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/779280/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="779270" reference="817641" datePosted="2025-12-30" dateUpdated="2025-12-30T10:41:36Z">
+    <Title>Chef De Partie</Title>
+    <Summary>Exiting role in great hotel!</Summary>
+    <Description><![CDATA[<strong>Box Leisure:</strong><br> <strong>"The Cutting Edge of Leisure Careers"</strong><br> <strong>Role: Chef De Partie</strong><br> <strong>Hotel | Hampshire | Permanent | Full time</strong> <strong>Salary: &pound;28,000 - &pound;29,000&nbsp;</strong><br> <strong>Limited: Live-in accommodation is available</strong>&nbsp;<br> Looking for an experienced Chef De Partie to oversee a busy kitchen operation at a busy hotel. &nbsp;An amazing opportunity to join one of the UKs leading hotel resort companies situated in the Northwest. This reputable holiday hotel operator offers a high-quality lifestyle opportunity, wonderful working environment, access to a myriad of leisure and outdoor activities and is well connected to the national motorway network.&nbsp; &nbsp; You will be responsible for driving a great food experience guest service and maximising the potential of the Food &amp; Beverage in back of house departments and offerings on park. You will nurture an environment that allows your team to perform at their best through high performance and high fulfilment and creating memories for our guests and giving our team opportunities of a lifetime. &nbsp;&nbsp;<br> <strong>Chef De Partie</strong><br> <ul> <li>Setting up the kitchen prior to a restaurant's opening</li> <li>Preparing a particular kitchen station by bringing all food containers to that point in the line</li> <li>Cooking a specific portion of each plated meal</li> <li>Assisting with marinating, cutting and precooking foods</li> <li>Cleaning the kitchen before the restaurant closes</li> <li>Cleaning and sanitising their area with warm water and soap</li> <li>Wrapping unused items and storing them in proper areas at the end of a shift</li> <li>Plating food creatively and maximising customer enjoyment</li> </ul> &nbsp;<br> <strong>Qualifications&nbsp;Experience Essential:</strong> &nbsp;<br> <ul> <li>Good Level of operational knowledge within a kitchen environment</li> <li>Be able to lead from the front and communicate under pressure.</li> <li>Minimum level 2 food safety</li> <li>Up to date Allergens certificate</li> <li>Being open to learn new skills and take on constructive criticism</li> </ul> If you have questions or would like to apply for this role, please contact&nbsp;<br> James.hassall@boxleisurerecruitment.com]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235621">Chefs</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235671">Chef De Partie</Classification>
+      <Classification jid="19465" name="Location" vid="1223266">Hampshire</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>james.hassall@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/779270/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="779225" reference="868707" datePosted="2025-12-29" dateUpdated="2025-12-29T15:06:22Z">
+    <Title>Food and Beverage Operations Manager</Title>
+    <Summary>Fantastic Opportunity to work at this beautiful resort</Summary>
+    <Description><![CDATA[<strong>Box leisure Recruitment&nbsp;</strong><br> <strong>Role - Food and Beverage Operations Manager.</strong><br> <strong>Location - North Wales</strong><br> <strong>Salary - &pound;45,000</strong><br> &nbsp;<br> We are currently recruiting for a very exciting and fulfilling position. The role will see you working and supervising some fantastic venues across our resort. This is a great opportunity for a forward-thinking person, wanting and able to have a direct impact in shaping our F&amp;B businesses.<br> This is a position truly not to be missed....<br> <strong>Main duties and responsibilities</strong><br> <ul> <li>Ensuring that food and beverage areas set up for the day's business.</li> <li>Ensuring that staff are briefed and directed accordingly.</li> <li>Helping to come up with new ideas and run events within the facility.</li> <li>Ensuring that Food and Beverage rooms are cleared at the end of each event.</li> <li>Handle guest complaints, requests, and enquiries in a relaxed yet professional manner</li> <li>Help create a safe environment for both staff and guests and adhere to the company's health and safety policy and procedures.</li> </ul> <strong>Key Skills and Experience</strong><br> <ul> <li>Personal license is required.</li> <li>City and Guilds, BTEC, HND</li> <li>Food Hygiene Certs</li> <li>Experience in F&amp;B management / supervision required.</li> <li>Will be passionate about F&amp;B</li> <li>Will have an excellent eye for detail.</li> </ul> &nbsp;<br> <strong>Responsibilities</strong><br> <ul> <li>Manage all F&amp;B and day-to-day operations within budgeted guidelines and to the highest standards.</li> <li>Preserve excellent levels of internal and external customer service.</li> <li>Design exceptional menus, purchase goods and continuously make necessary improvements.</li> <li>Identify customers' needs and respond proactively to all their concerns.</li> <li>Lead F&amp;B team by attracting, recruiting, training, and appraising talented personnel.</li> <li>Establish targets, KPI's, schedules, policies, and procedures.</li> <li>Provide a two-way communication and nurture an ownership environment with emphasis in motivation and teamwork.</li> <li>Comply with all health and safety regulations.</li> <li>Report on management regarding sales results and productivity</li> </ul> &nbsp;<br> If you are interested in this opportunity and think you have the skills and experience required. Please contact Kevin at Box Leisure Recruitment kevin.maguire@boxleisurerecruitment.co.uk]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235623">Head of Food and Beverage</Classification>
+      <Classification jid="19465" name="Location" vid="1223342">Gwynedd</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>kevin.maguire@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/779225/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="779223" reference="690306d" datePosted="2025-12-29" dateUpdated="2025-12-29T14:57:51Z">
+    <Title>Kitchen Assistant</Title>
+    <Summary>Fantastic opportunity to work in newly refurbished venues joining us as a Kitchen Assistant in a beautiful country park setting</Summary>
+    <Description><![CDATA[<strong>Box Leisure: 'The Cutting edge of Leisure Career's'</strong><br> <strong>Role: Kitchen Assistant</strong><br> <strong>Location:</strong>, Chigwell, IG7<br> <strong>Type:</strong> Casual hours<br> &nbsp;<br> We are currently looking for passionate Kitchen Assistants to join our dynamic team in preparing healthy and hearty meals for our customers.<br> &nbsp;<br> As a Kitchen Assistant, you will work in our state-of-the-art kitchen, helping to maintain the highest standards of food safety, cleanliness, and meal preparation. we are looking for staff who would to learn and grow within the kitchen team.&nbsp;<br> &nbsp;<br> Located in Chigwell,&nbsp; our newly restored venue boasts a vibrant Caf&eacute;, Events space, farm, and other public areas. We opened our doors in Spring after a year-long restoration, bringing this exciting new project to life. Our aim is to not only provide delicious, healthy meals but also to create a welcoming and vibrant community space.<br> &nbsp;<br> <strong>Job role:</strong><br> <ul> <li>Prepare all menu components as requested to the required standards</li> <li>Follow cleaning schedule for kitchen and related areas</li> <li>Follow HACCAP, COSSH and other H&amp;S regulations as required</li> <li>Operate all equipment safely and in line with instruction</li> <li>Assist with any other task within scoop of the role as required</li> <li>Comprehensive training in food safety, allergies, and health &amp; safety protocols.</li> </ul> &nbsp;<br> <strong>Essential requirements:</strong><br> <ul> <li>Understanding of food preparation and processes</li> <li>Ability work as part of the team and on their own initiative</li> <li>Ability to follow instruction and execute to the highest standards</li> <li>Experience in kitchen environment beneficial</li> </ul> &nbsp;<br> <strong>We reserve the right to close this vacancy early if we receive sufficient applications for the role. Therefore, if you are interested, please submit your application as early as possible.</strong><br> &nbsp;<br> <strong>Contact me on - 01613596110 / sarah.smith@boxleisurerecruitment.co.uk</strong>]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235621">Chefs</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235674">Kitchen Porter</Classification>
+      <Classification jid="19465" name="Location" vid="1223262">Essex</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>sarah.smith@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/779223/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="779218" reference="819678" datePosted="2025-12-29" dateUpdated="2025-12-29T14:42:23Z">
+    <Title>Business Development Director</Title>
+    <Summary>Amazing opportunity to join a market leader in delivering bespoke front-of-house and community management solutions for the professional services area</Summary>
+    <Description><![CDATA[<strong>Business Development Director &ndash; Hunter Role</strong><br> <strong>Location London, UK </strong>| <strong>Reporting to: Managing Director</strong> | <strong>Function: Sales</strong><br> Are you a driven, strategic, and entrepreneurial sales leader ready to make a real impact?<br> Our client, part of the world-wide group, is seeking a high-energy Sales Director / Business Development Director to spearhead new business growth across the UK &amp; Ireland, with a primary focus on the professional services sector.<br> <strong>About the Client</strong><br> Our client is a market leader in delivering bespoke front-of-house and community management solutions for the professional services sector, as well as digital wellbeing services to the corporate and healthcare markets. They pride themselves on moulding innovative solutions to client needs, without compromising their brand.<br> <strong>The Opportunity</strong><br> Working closely with the Managing Director, you will drive revenue growth by developing and executing a targeted sales strategy across both channel partners and direct-to-market channels. This is a pure hunter role, ideal for a proven sales professional who thrives on creating new opportunities and closing complex deals.<br> <strong>Key Responsibilities</strong><br> <ul> <li>Lead the formulation and execution of a high-impact sales strategy focused on new client acquisition.</li> <li>Identify, target, and close new business opportunities across the UK &amp; Ireland.</li> <li>Engage and present to C-Suite, FM, HR, and Real Estate leaders at enterprise level.</li> <li>Manage the entire sales cycle from prospecting through to close, consistently meeting pipeline and revenue objectives.</li> <li>Prepare and deliver proposals, RFP responses, and compelling presentations.</li> <li>Collaborate cross-functionally with Operations, Marketing, and Sodexo colleagues to deliver tailored solutions.</li> <li>Prospect both externally and internally within Sodexo to build strategic partnerships.</li> <li>Use Salesforce to document and track all activities and forecasting.</li> <li>Contribute to the regional growth council and support Sodexo&rsquo;s wider sales pipeline.</li> </ul> <strong>About You</strong><br> We are looking for a dynamic, strategic hunter who can open doors, build relationships, and close deals at the highest level. You will have:<br> <ul> <li>5+ years of proven B2B sales success in the services or related sector.</li> <li>Demonstrable success selling direct to market (not lead-fed).</li> <li>Experience with enterprise solution selling to FM/RE leaders, ideally within Fortune 500 companies.</li> <li>A consultative sales approach with excellent communication and presentation skills.</li> <li>Experience managing long and complex sales cycles.</li> <li>Ability to engage C-suite stakeholders and tailor solutions to client needs.</li> <li>Appetite for challenge, results-driven mindset, and self-starter attitude.</li> <li>Familiarity with corporate procurement processes and Salesforce CRM.</li> <li>Willingness to travel as needed.</li> </ul> &nbsp;&nbsp;<br> <strong>Why Join Our Client</strong><br> <ul> <li>Be part of a fast-growing, innovative organisation backed by a world business leader.</li> <li>Opportunity to shape and execute strategy at a senior commercial level.</li> <li>High visibility and influence within a collaborative, entrepreneurial environment.</li> <li>Competitive package and performance-based rewards.</li> </ul> <strong>Interested?</strong><br> If you are ready to drive growth and take ownership of a high-impact commercial role, we would love to hear from you.<br> Apply now or contact us confidentially to discuss.]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235620">Sales</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235663">Account Sales</Classification>
+      <Classification jid="19465" name="Location" vid="1223264">Greater London</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>David.Burdaky@boxrecruitmentsolutions.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/779218/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="779217" reference="695032v" datePosted="2025-12-29" dateUpdated="2025-12-29T14:35:41Z">
+    <Title>Chef</Title>
+    <Summary>Great opportunity!</Summary>
+    <Description><![CDATA[<strong>Box Leisure:</strong><br> <strong>"The Cutting Edge of Leisure Careers"</strong><br> <strong>Role: Chef De Partie</strong><br> <strong>Holiday Park | Wisbech | Permanent | 40 Hours - 30K +</strong><br> Looking for an experienced Chef De Partie to oversee a kitchen operation at a great holiday park. &nbsp;An amazing opportunity to join one of the UKs leading holiday resort companies situated in the Northwest. This reputable holiday operator offers a high-quality lifestyle opportunity, wonderful working environment, access to a myriad of leisure and outdoor activities and is well connected to the national motorway network.&nbsp; &nbsp; You will be responsible for driving a great food experience guest service and maximising the potential of the Food &amp; Beverage in back of house departments and offerings on park. You will nurture an environment that allows your team to perform at their best through high performance and high fulfilment and creating memories for our guests and giving our team opportunities of a lifetime. &nbsp;&nbsp;<br> <strong>Chef De Partie</strong><br> <ul> <li>Setting up the kitchen prior to a restaurant&rsquo;s opening</li> <li>Preparing a particular kitchen station by bringing all food containers to that point in the line</li> <li>Cooking a specific portion of each plated meal</li> <li>Assisting with marinating, cutting and precooking foods</li> <li>Cleaning the kitchen before the restaurant closes</li> <li>Cleaning and sanitising their area with warm water and soap</li> <li>Wrapping unused items and storing them in proper areas at the end of a shift</li> <li>Plating food creatively and maximising customer enjoyment</li> </ul> &nbsp;<br> <strong>Qualifications&nbsp;Experience Essential:</strong> &nbsp;<br> <ul> <li>Good Level of operational knowledge within a kitchen environment</li> <li>Be able to lead from the front and communicate under pressure.</li> <li>Minimum level 2 food safety</li> <li>Up to date Allergens certificate</li> <li>Being open to learn new skills and take on constructive criticism</li> </ul> If you have questions or would like to apply for this role, please contact:<br>&nbsp;Call 07947409191/ 0161 359 6110]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235621">Chefs</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235670">Sous Chef</Classification>
+      <Classification jid="19465" name="Location" vid="1223252">Cambridgeshire</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>james.hassall@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/779217/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="779216" reference="863655" datePosted="2025-12-29" dateUpdated="2025-12-29T14:34:23Z">
+    <Title>Design Engineer - permanent role</Title>
+    <Summary>Experienced design engineer required for an exciting, full time, permanent role in Bolton.</Summary>
+    <Description><![CDATA[<strong>Box recruitment Solutions - "bespoke recruitment with in depth knowledge"</strong><br> &nbsp;<br> <strong>Design Engineer - Permanent Role</strong><br> &nbsp;<br> <strong>Salary up to &pound;50,000 DOE.</strong><br> &nbsp;<br> <strong>Job Summary:</strong><br> &nbsp;<br> An opportunity has arisen for an experienced design engineer to join a small high performing design team in a long established, positive &amp; growing manufacturing environment based in Bolton, Lancashire. Expansion into new market places and continuing investment in the factory requires expanded design resource to support these activities. You will be a product design expert who will establish appropriate delivery standards for the design office i.e. drawing standards, release requirements, tolerance standards.&nbsp; You will support the Engineering Manager to maintain the PDM database, BOM accuracy and all other design tools to a high standard.&nbsp; You will have excellent attention to detail which will define your contribution to ongoing product development in this fast-moving environment. The close proximity and working relationship with manufacturing engineers and the factory is a rare opportunity to develop a detailed understanding of processes in a modern precision engineering business.&nbsp; This knowledge will form the basis of a sound design for manufacture philosophy.<br> &nbsp;<br> Duties &amp; Responsibilities:<br> <ul> <li>Working as part of a small team reporting to the Engineering Manager.</li> <li>Leading Product design, specification and design maintenance activity.</li> <li>Project management of multiple small to medium projects</li> <li>Provision of engineering support for specific applications enquiries.</li> <li>Responsible for the integrity of the PDM database, BOM records and design standards.</li> <li>Development of a design from a spec to factory drawings, BoM, quality processes, etc as necessary.</li> <li>Taking responsibility for work packages within a project, organising own task priorities and resource to achieve targets.</li> </ul> &nbsp;<br> Person Specification<br> &nbsp;<br> Essential<br> <ul> <li>Portfolio evidence of good quality design experience</li> <li>Precision design experience, especially with carbon steel tubes, forgings, castings.</li> <li>Precision manufacturing process experience e.g. turning, machining, welding.</li> <li>Working to tolerance standards such as BS 8888, BS EN 10243-1, etc.</li> <li>Experience of design release and management in an ERP environment based on ISO9001 standards.</li> <li>Inquisitive mind with excellent attention to detail and a desire to get it right!</li> <li>Solid modelling experience with drawing creation.</li> <li>Hands on person prepared to tackle any reasonable task in a small dept.</li> <li>Enthusiastic and energetic nature.</li> <li>Design for manufacture experience and hungry to learn more.</li> <li>Good MS Office skills especially spreadsheets to a high level.</li> <li>Project planning &amp; management experience.</li> </ul> &nbsp;<br> Desirable<br> <ul> <li>SolidWorks 3D and 2D experience. Including use of design tables and Workgroup PDM.</li> <li>Knowledge of hydraulic design.</li> <li>Finite Element Analysis, awareness of mechanical systems.</li> <li>Understanding of Measurement techniques for first article inspection reports.</li> <li>Chartered engineer status.</li> <li>Mechanical Engineering degree or equivalent, BEng as a minimum, MEng/CEng desirable</li> </ul> &nbsp;<br> &nbsp;<br> Essential<br> <ul> <li>Portfolio evidence of good quality design experience</li> <li>Precision design experience, especially with carbon steel tubes, forgings, castings.</li> <li>Precision manufacturing process experience e.g. turning, machining, welding.</li> <li>Working to tolerance standards such as BS 8888, BS EN 10243-1, etc.</li> <li>Experience of design release and management in an ERP environment based on ISO9001 standards.</li> <li>Inquisitive mind with excellent attention to detail and a desire to get it right!</li> <li>Solid modelling experience with drawing creation.</li> <li>Hands on person prepared to tackle any reasonable task in a small dept.</li> <li>Enthusiastic and energetic nature.</li> <li>Design for manufacture experience and hungry to learn more.</li> <li>Good MS Office skills especially spreadsheets to a high level.</li> <li>Project planning &amp; management experience.</li> </ul> Other Skills &amp; Experience:<br> <ul> <li>Mechanical Engineering degree or equivalent.&nbsp; Preferably to MEng level</li> <li>With professional experience portfolio suitable for Chartered Engineer submission in due course</li> <li>Minimum 5 years mechanical design experience in a design role.</li> <li>Within easy commute (20 miles max from Bolton)</li> <li>Computer literate especially analytical spreadsheets</li> </ul>]]></Description>
+    <BulletPoints>
+      <BulletPoint>Design Engineer</BulletPoint>
+    </BulletPoints>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1578748">Engineering</Classification>
+      <Classification jid="19465" name="Location" vid="1223271">Lancashire</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>david.burdaky@boxrecruitmentsolutions.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/779216/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="779085" reference="703497" datePosted="2025-12-24" dateUpdated="2025-12-24T11:03:05Z">
+    <Title>Food and Beverage Manager</Title>
+    <Summary>Great opportunity with a great business!</Summary>
+    <Description><![CDATA[<strong>Box Leisure &ldquo;The cutting edge of leisure recruitment&rdquo;</strong><br> &nbsp;<br> <strong>Job Title:</strong>&nbsp; &nbsp; &nbsp; Food and Beverage Manager<br><strong>Location:&nbsp;</strong>&nbsp; &nbsp; &nbsp;Cornwall<br><strong>Salary:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</strong>up to &pound;33k with accommodation<br><br>Are you a self-motivated people driven Food and&nbsp;Beverage manager? We are seeking a skilled Complex Manager with strong organisational skills to join our clients holiday park in Cornwall on a full-time, permanent basis.<br><br><strong>A little bit about you:</strong><br> <br>As Complex Manager, you will be accountable for the effective management of all aspects of the Food &amp; Beverage functions. You will lead all the teams across the complex, including the restaurants, arcades, leisure facilities and the show bars by:<br> <ul> <li>Leading from the front to ensure all areas of retail standards meet with the expectations set out by the Company and our customers</li> <li>Managing health and safety procedures within food and beverage</li> <li>Driving the teams to hit and achieve yearly budgets</li> <li>Managing of cost controls within budgeted measures</li> <li>Recruiting, leading and motivating our talented team members as well as coaching and developing, nurturing future talent within your team.</li> <li>Successfully overseeing high volume bar sales as well as fast paced food venues</li> <li>Demonstrating high commercial awareness &amp; business acumen</li> </ul> If you have previous experience in the leisure/holiday park environment and have proven management skills this could be the role for you!<br> &nbsp;<br> Speak to Michelle today<br>Michelle- michelle@hospitalityrecruitment.co.uk<br> 07895433306]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235623">Head of Food and Beverage</Classification>
+      <Classification jid="19465" name="Location" vid="1223254">Cornwall</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>michelle@hospitalityrecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/779085/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="779049" reference="883432" datePosted="2025-12-23" dateUpdated="2025-12-23T22:07:32Z">
+    <Title>Warden Couple</Title>
+    <Summary>Warden Couple</Summary>
+    <Description><![CDATA[Holiday Resort Warden Couple<br>&nbsp;<br><strong>Box Leisure "The Cutting Edge of Leisure Careers"</strong><br><strong>Location:</strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;North<br><strong>Salary:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><strong>&pound;45000 - &pound;50,000,&nbsp;&nbsp;</strong><br><strong>Duration:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>Permanent - Accommodation can be provided,&nbsp;<br> &nbsp;<br> About the Role<br> We are looking for a reliable, friendly, and hands-on Holiday Park Warden to support the smooth day-to-day operation of our holiday park. This is a customer-facing role ideal for someone who enjoys working outdoors, supporting guests, and helping maintain high standards across the park.<br> The Holiday Park Warden plays a key role in ensuring guests have a safe, welcoming, and enjoyable stay while supporting park operations and maintenance.<br> Key Responsibilities<br> <ul> <li>Act as a visible, friendly point of contact for holiday guests and owners</li> <li>Carry out daily park checks to ensure safety, cleanliness, and presentation standards</li> <li>Assist with basic maintenance tasks (grounds, plumbing, electrics, general repairs)</li> <li>Support arrival and departure days, including welcoming guests and addressing issues</li> <li>Monitor park security, respond to emergencies, and handle out-of-hours call-outs if required</li> <li>Ensure health &amp; safety standards are maintained at all times</li> <li>Work closely with reception, housekeeping, maintenance, and management teams</li> <li>Assist with seasonal setup, shutdown, and park improvements</li> </ul> What We're Looking For<br> <ul> <li>Previous experience in a holiday park, hospitality, or caretaking role (preferred but not essential)</li> <li>Practical, hands-on approach with basic maintenance skills</li> <li>Strong customer service and communication skills</li> <li>Reliable, flexible, and willing to work weekends and holidays</li> <li>Ability to work independently and as part of a team</li> <li>Full UK driving licence preferred</li> </ul> What We Offer<br> <ul> <li>Competitive pay</li> <li>On-site accommodation (if applicable)</li> <li>A friendly, supportive working environment</li> <li>Varied role with no two days the same</li> <li>Opportunity to work in a beautiful outdoor setting</li> </ul> Please contact Abbie at abbie@boxleisurerecruitment.co.uk]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235638">Park Wardens</Classification>
+      <Classification jid="19465" name="Location" vid="1223255">Cumbria</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>abbie@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/779049/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="779048" reference="883431" datePosted="2025-12-23" dateUpdated="2025-12-23T22:01:11Z">
+    <Title>Sales Manager</Title>
+    <Summary>Sales Manager</Summary>
+    <Description><![CDATA[<div>oliday Resort Sales Manager<br>&nbsp;<br><strong>Box Leisure "The Cutting Edge of Leisure Careers"</strong><br><strong>Location:</strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;North<br><strong>Salary:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><strong>&pound;50000 - &pound;65,000,&nbsp; (dependent upon experience)&nbsp;plus bonus OTE 120K</strong><br><strong>Duration:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>Permanent - Accommodation can be provided,&nbsp;<br> &nbsp;<br> The Sales Manager is responsible for driving holiday home and accommodation sales, maximising revenue and profitability across the park. The role leads the on-park sales team, delivers against sales targets, ensures compliance, and supports the long-term commercial performance of the holiday park.<br> Key Responsibilities Sales &amp; Revenue<br> <ul> <li>Achieve and exceed annual, monthly, and weekly sales targets for holiday homes and related products</li> <li>Maximise pitch profitability, sales margins, and long-term park revenue</li> <li>Develop and execute sales strategies aligned with market demand and park objectives</li> <li>Balance caravan sales and holiday letting strategies to optimise overall park profitability</li> <li>Monitor competitor activity, pricing, and market trends to inform sales decisions</li> </ul> Team Leadership &amp; Performance<br> <ul> <li>Lead, motivate, and develop a high-performing on-park sales team</li> <li>Recruit, train, coach, and performance-manage sales advisors</li> <li>Set clear KPIs and hold team members accountable for outputs and standards</li> <li>Deliver ongoing sales training, negotiation coaching, and product knowledge development</li> <li>Foster a positive, results-driven sales culture</li> </ul> Customer Experience<br> <ul> <li>Ensure an exceptional customer journey from enquiry to completion</li> <li>Handle high-value sales negotiations and complex customer objections</li> <li>Maintain strong relationships with prospective and existing owners</li> <li>Resolve escalated customer issues professionally and effectively</li> </ul> Compliance &amp; Governance<br> <ul> <li>Ensure all sales activities are<strong> fully compliant</strong> with FCA, consumer law, and company policies</li> <li>Maintain accurate documentation, audit trails, and sales records</li> <li>Work closely with finance partners and ensure correct affordability and suitability processes</li> </ul> Financial &amp; Commercial Management<br> <ul> <li>Manage sales budgets, forecasting, and reporting</li> <li>Analyse sales data, conversion rates, and gross profit margins</li> <li>Support P&amp;L performance through effective cost control and revenue optimisation</li> <li>Contribute to annual budgeting and long-term financial planning</li> </ul> Collaboration &amp; Operations<br> <ul> <li>Work closely with Park General Manager, Operations, Lettings, and Marketing teams</li> <li>Support park-wide initiatives, promotions, and events</li> <li>Contribute to wider commercial strategy and continuous improvement initiatives</li> </ul> Skills &amp; Experience Required<br> <ul> <li>Proven experience as a Sales Manager within a holiday park, leisure, or property sales environment</li> <li>Strong leadership and people management capability</li> <li>Excellent commercial awareness and financial acumen</li> <li>Track record of consistently exceeding sales targets</li> <li>Confident negotiator with strong customer relationship skills</li> <li>High level of compliance awareness (FCA desirable)</li> <li>Data-driven, organised, and highly results-focused</li> </ul> Personal Attributes<br> <ul> <li>Professional, driven, and resilient</li> <li>Hands-on leadership style</li> <li>Customer-focused with strong ethical standards</li> <li>Adaptable to changing market conditions</li> <li>Passionate about developing people and driving performance</li> </ul> Send your CV to info@boxleisurerecruitment.co.uk</div> <div>Cancel</div>]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235616">Caravan Sales Managers</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235660">Experienced</Classification>
+      <Classification jid="19465" name="Location" vid="1223258">Dorset</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>info@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/779048/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="779047" reference="883430" datePosted="2025-12-23" dateUpdated="2025-12-23T21:57:36Z">
+    <Title>Sales Manager South</Title>
+    <Summary>Sales Manager South</Summary>
+    <Description><![CDATA[Holiday Resort Sales Manager<br>&nbsp;<br><strong>Box Leisure "The Cutting Edge of Leisure Careers"</strong><br><strong>Location:</strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;South<br><strong>Salary:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><strong>&pound;50000 - &pound;65,000,&nbsp; (dependent upon experience)&nbsp;plus bonus OTE 120K</strong><br><strong>Duration:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>Permanent - Accommodation can be provided,&nbsp;<br> &nbsp;<br> The Sales Manager is responsible for driving holiday home and accommodation sales, maximising revenue and profitability across the park. The role leads the on-park sales team, delivers against sales targets, ensures compliance, and supports the long-term commercial performance of the holiday park.<br> Key Responsibilities Sales &amp; Revenue<br> <ul> <li>Achieve and exceed annual, monthly, and weekly sales targets for holiday homes and related products</li> <li>Maximise pitch profitability, sales margins, and long-term park revenue</li> <li>Develop and execute sales strategies aligned with market demand and park objectives</li> <li>Balance caravan sales and holiday letting strategies to optimise overall park profitability</li> <li>Monitor competitor activity, pricing, and market trends to inform sales decisions</li> </ul> Team Leadership &amp; Performance<br> <ul> <li>Lead, motivate, and develop a high-performing on-park sales team</li> <li>Recruit, train, coach, and performance-manage sales advisors</li> <li>Set clear KPIs and hold team members accountable for outputs and standards</li> <li>Deliver ongoing sales training, negotiation coaching, and product knowledge development</li> <li>Foster a positive, results-driven sales culture</li> </ul> Customer Experience<br> <ul> <li>Ensure an exceptional customer journey from enquiry to completion</li> <li>Handle high-value sales negotiations and complex customer objections</li> <li>Maintain strong relationships with prospective and existing owners</li> <li>Resolve escalated customer issues professionally and effectively</li> </ul> Compliance &amp; Governance<br> <ul> <li>Ensure all sales activities are<strong> fully compliant</strong> with FCA, consumer law, and company policies</li> <li>Maintain accurate documentation, audit trails, and sales records</li> <li>Work closely with finance partners and ensure correct affordability and suitability processes</li> </ul> Financial &amp; Commercial Management<br> <ul> <li>Manage sales budgets, forecasting, and reporting</li> <li>Analyse sales data, conversion rates, and gross profit margins</li> <li>Support P&amp;L performance through effective cost control and revenue optimisation</li> <li>Contribute to annual budgeting and long-term financial planning</li> </ul> Collaboration &amp; Operations<br> <ul> <li>Work closely with Park General Manager, Operations, Lettings, and Marketing teams</li> <li>Support park-wide initiatives, promotions, and events</li> <li>Contribute to wider commercial strategy and continuous improvement initiatives</li> </ul> Skills &amp; Experience Required<br> <ul> <li>Proven experience as a Sales Manager within a holiday park, leisure, or property sales environment</li> <li>Strong leadership and people management capability</li> <li>Excellent commercial awareness and financial acumen</li> <li>Track record of consistently exceeding sales targets</li> <li>Confident negotiator with strong customer relationship skills</li> <li>High level of compliance awareness (FCA desirable)</li> <li>Data-driven, organised, and highly results-focused</li> </ul> Personal Attributes<br> <ul> <li>Professional, driven, and resilient</li> <li>Hands-on leadership style</li> <li>Customer-focused with strong ethical standards</li> <li>Adaptable to changing market conditions</li> <li>Passionate about developing people and driving performance</li> </ul> Send your CV to info@boxleisurerecruitment.co.uk]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235616">Caravan Sales Managers</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235660">Experienced</Classification>
+      <Classification jid="19465" name="Location" vid="1223258">Dorset</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>info@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/779047/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="779045" reference="815786" datePosted="2025-12-23" dateUpdated="2025-12-23T21:54:52Z">
+    <Title>General Manager</Title>
+    <Summary>General Manager</Summary>
+    <Description><![CDATA[Holiday Resort General Manager<br>&nbsp;<br><strong>Box Leisure "The Cutting Edge of Leisure Careers"</strong><br><strong>Location:</strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;North East<br><strong>Salary:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><strong>&pound;50000 - &pound;65,000,&nbsp; (dependent upon experience)&nbsp;plus bonus</strong><br><strong>Duration:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>Permanent - Accommodation can be provided,&nbsp;<br>&nbsp;<br>We are looking for an experienced General Manager&nbsp;to manage the teams and operations at a popular holiday park. You will also be accountable for the running of all the park through the effective motivation and management of all areas, ensuring excellent customer service.&nbsp;The successful candidate will have a solid background of managing a holiday park and balancing multiple revenue streams. We are seeking an experienced operator to manage the team successfully, someone who is an enthusiastic and engaging leader and can maximize sales, profitability, and customer service to position the company as a brand of choice.<br>&nbsp;<br><strong>As General Manager, your responsibilities will include:</strong><br> <ul> <li>Recruiting, retaining, motivating, training and consistently developing the department heads along with their direct reports to ensure we get the best from our people and deliver/exceed our guest expectations.</li> <li>Managing, organising, controlling, and supervising efficiently all elements of the park in line with current company policies and procedures ensuring delivery of the financial target of the park.</li> <li>Taking full responsibility of all revenue streams including Holiday Home Sales and Owners, Holiday Hire, on park spend and all park overheads whilst being directly accountable for the operation of all areas of the park in accordance with company standards of product, presentation, and service.</li> <li>Managing, organising, controlling, and supervising the process of any specified capital expenditure as directed by the Regional Director ensuring financial, conceptual, and phasing objectives are achieved in line with company policy.</li> <li>Managing agreed budgets of controllable expenses and wage costs, alongside determining, and implementing strategies to increase year on year sales and to achieve agreed gross profit margins throughout all units/departments.</li> <li>Regularly exploring competitor activity, market trends and new initiatives.</li> <li>A key focus area is agreeing, with department managers, their business plans and performance targets.</li> </ul> <strong>The ideal candidate's key skills and abilities will include:</strong><br> <ul> <li>Strong business and financial acumen, with a passion for customer focus.</li> <li>An honest, professional and a respectful approach.</li> <li>An ability to influence &amp; negotiate.</li> <li>Experience of planning &amp; organising projects.</li> <li>You will have extensive senior management experience, have high levels standards in customer experience and can demonstrate the ability to manage multiple revenue streams</li> <li>Holiday Park experience is essential.</li> </ul> If you are interested in this opportunity and think you have the necessary skills and experience required, then please contact us at info@boxleisurerecruitment.co.uk today.]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235625">General Manager</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235675">Holiday Park</Classification>
+      <Classification jid="19465" name="Location" vid="1223276">North Yorkshire</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>info@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/779045/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="779046" reference="883429" datePosted="2025-12-23" dateUpdated="2025-12-23T21:54:10Z">
+    <Title>General Manager South</Title>
+    <Summary>General Manager South</Summary>
+    <Description><![CDATA[Holiday Resort General Manager<br>&nbsp;<br><strong>Box Leisure "The Cutting Edge of Leisure Careers"</strong><br><strong>Location:</strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;South West<br><strong>Salary:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><strong>&pound;50000 - &pound;65,000,&nbsp; (dependent upon experience)&nbsp;plus bonus&nbsp;</strong><br><strong>Duration:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>Permanent - Accommodation can be provided,&nbsp;<br>&nbsp;<br>We are looking for an experienced General Manager&nbsp;to manage the teams and operations at a popular holiday park. You will also be accountable for the running of all the park through the effective motivation and management of all areas, ensuring excellent customer service.&nbsp;The successful candidate will have a solid background of managing a holiday park and balancing multiple revenue streams. We are seeking an experienced operator to manage the team successfully, someone who is an enthusiastic and engaging leader and can maximize sales, profitability, and customer service to position the company as a brand of choice.<br>&nbsp;<br><strong>As General Manager, your responsibilities will include:</strong><br> <ul> <li>Recruiting, retaining, motivating, training and consistently developing the department heads along with their direct reports to ensure we get the best from our people and deliver/exceed our guest expectations.</li> <li>Managing, organising, controlling, and supervising efficiently all elements of the park in line with current company policies and procedures ensuring delivery of the financial target of the park.</li> <li>Taking full responsibility of all revenue streams including Holiday Home Sales and Owners, Holiday Hire, on park spend and all park overheads whilst being directly accountable for the operation of all areas of the park in accordance with company standards of product, presentation, and service.</li> <li>Managing, organising, controlling, and supervising the process of any specified capital expenditure as directed by the Regional Director ensuring financial, conceptual, and phasing objectives are achieved in line with company policy.</li> <li>Managing agreed budgets of controllable expenses and wage costs, alongside determining, and implementing strategies to increase year on year sales and to achieve agreed gross profit margins throughout all units/departments.</li> <li>Regularly exploring competitor activity, market trends and new initiatives.</li> <li>A key focus area is agreeing, with department managers, their business plans and performance targets.</li> </ul> <strong>The ideal candidate's key skills and abilities will include:</strong><br> <ul> <li>Strong business and financial acumen, with a passion for customer focus.</li> <li>An honest, professional and a respectful approach.</li> <li>An ability to influence &amp; negotiate.</li> <li>Experience of planning &amp; organising projects.</li> <li>You will have extensive senior management experience, have high levels standards in customer experience and can demonstrate the ability to manage multiple revenue streams</li> <li>Holiday Park experience is essential.</li> </ul> If you are interested in this opportunity and think you have the necessary skills and experience required, then please contact us at info@boxleisurerecruitment.co.uk today.]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235625">General Manager</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235675">Holiday Park</Classification>
+      <Classification jid="19465" name="Location" vid="1223266">Hampshire</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>info@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/779046/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="778880" reference="818689g" datePosted="2025-12-23" dateUpdated="2025-12-23T09:30:25Z">
+    <Title>Holiday Home Sales Manager</Title>
+    <Summary>Holiday Home Sales Manager</Summary>
+    <Description><![CDATA[<div>Proven track record, result driven, delivering world-class service</div> <div>Full Job Description <div> <div><strong>Box Leisure "The cutting edge of leisure careers"</strong><br><strong>Job Title:</strong>&nbsp;Sales Manager&nbsp;&nbsp;</div> <div><strong>Location:</strong>&nbsp;Hampshire<br><strong>Salary:&nbsp;</strong>Basic: up to &pound;55K<br><strong>Hours:</strong>&nbsp;As business requires<br><strong>Duration:</strong>&nbsp;permanent.<br>We have an excellent position available for a holiday home sales manager. For your hard work you will receive a good basic salary of up to &pound;55,000 with potential great commission.<br>This is a premiere role, looking for a premiere, result driven team leader.<br>This position will see you coaching and leading a team, maximising sales of lodge holiday homes and creating lasting memories for our owners. A fantastic environment and industry to work within. This job will see you working on a beautiful holiday, delivering a personal, world class experience for new and existing owners. Where service matters, we care about people, and love our environment.<br>You will be expected to:<br> <ul> <li>Maximizing sales for the resort to a high end audience.</li> <li>Maintain high standards of customer service and ensure every customer has world-class experience.</li> <li>Coach and develop your team to deliver on target expectation and an amazing customer experience throughout.</li> <li>Adhere to and promoting the Company Values along with Company best practice and legal compliance</li> <li>Develop and maintain lasting relationships with owners, internal and external customers.</li> <li>Gain feedback from new buyers and act accordingly</li> <li>Resolving customer queries by using a positive approach and putting yourself in the customers' shoes.</li> <li>Deal effectively and efficiently with customer concerns and compliments following the company guidelines.</li> <li>Maintain a continuous positive dialogue with customers and team to ensure the sale of holiday homes is supported from initial transaction to final delivery and handover including a full and final check on all relevant documentation.</li> <li>Monitor and help proactively resolve after sales complaints to ensure customer satisfaction</li> <li>Encouraging potential upgrades and upselling to potential buyers</li> </ul> Please apply or call us today for more information via abbie@boxleisurerecruitment.co.uk<br>This role will go quickly.</div> </div> </div>]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235616">Caravan Sales Managers</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235660">Experienced</Classification>
+      <Classification jid="19465" name="Location" vid="1223266">Hampshire</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>abbie@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/778880/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="778833" reference="881182" datePosted="2025-12-22" dateUpdated="2025-12-22T16:23:06Z">
+    <Title>General Manager</Title>
+    <Summary>Pub General Manager for a British traditional pub</Summary>
+    <Description><![CDATA[<br> &nbsp;<strong>General Managers Wanted for Traditional British Pubs</strong><br> &nbsp;<br> Are you passionate about the pub industry and looking for an exciting management opportunity?<br> &nbsp;<br> We are looking for Pub General Managers to run a traditional British pub.<br> &nbsp;<br> <strong>Position:</strong> General Manager<br><strong>Salary:</strong>&nbsp;&pound;30,000 per annum&nbsp;<br> <strong>Location: Birkenhead</strong><br> &nbsp;<br> <strong>Responsibilities:</strong><br> <ul> <li>Oversee daily operations of the pub to ensure high standards of service and customer satisfaction.</li> <li>Manage staff, including recruitment, training, and scheduling.</li> <li>Implement and maintain health and safety regulations.</li> <li>Monitor and manage budgets to ensure profitability.</li> <li>Develop and execute marketing strategies to attract and retain customers.</li> <li>Ensure the pub adheres to all legal and company standards, including licensing laws.</li> </ul> <strong>Requirements:</strong><br> <ul> <li>Proven experience as a General Manager in the hospitality industry, preferably in a pub setting.</li> <li>Strong leadership and interpersonal skills.</li> <li>Excellent organisational and multitasking abilities.</li> <li>A passion for providing exceptional customer service.</li> <li>Knowledge of health and safety regulations and licensing laws.</li> <li>Ability to manage budgets and financial plans effectively.</li> <li>Flexibility to work evenings, weekends, and bank holidays.</li> </ul> Apply today!<br> &nbsp;<br> For more information, speak to Michelle&nbsp; michelle@boxhospitalityrecruitment.co.uk<br> 0161 359 4660/ 0161 359 6110]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235625">General Manager</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235676">Hotel</Classification>
+      <Classification jid="19465" name="Location" vid="1223274">Merseyside</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>michelle@boxhospitalityrecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/778833/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="778826" reference="883222" datePosted="2025-12-22" dateUpdated="2025-12-22T15:36:23Z">
+    <Title>Senior Sous Chef</Title>
+    <Summary>Exciting Senior Sous Chef role in a luxury Hotel group</Summary>
+    <Description><![CDATA[<strong>Box Leisure:</strong><br> <strong>"The Cutting Edge of Leisure Careers"</strong><br> <strong>Role: Senior Sous Chef&nbsp;&nbsp;</strong><br> <strong>Hotel | Runnymede on Thames Permanent | Full time</strong> <strong>Salary 40,000-42,000k</strong><br> &nbsp;<br> &nbsp;<br> &nbsp;<br> Looking for an experienced Senior Sous Chef to oversee a busy kitchen operation at a busy hotel. &nbsp; &nbsp; An amazing opportunity to join one of the UKs leading hotel resort companies situated in the South London. This reputable holiday hotel operator offers a high-quality lifestyle opportunity, wonderful working environment, access to a myriad of leisure and outdoor activities and is well connected to the national motorway network. You will be responsible for driving a great food experience guest service and maximising the potential of the Food &amp; Beverage in back of house departments and offerings on park. You will nurture an environment that allows your team to perform at their best through high performance and high fulfilment and creating memories for our guests and giving our team opportunities of a lifetime. &nbsp;<br> &nbsp;<br> <strong>&nbsp;Senior Sous Chef Role Responsibilities:</strong> &nbsp;<br> <ul> <li>Manage the kitchen in absence of head chef</li> <li>Manages service ensuring all food is always high quality</li> <li>Develop and mentor team members to get the best out of them</li> <li>High level of operational knowledge within kitchen operations</li> <li>Ensure health and safety is number priority and always compliant with legislation.</li> <li>&nbsp;Experienced in menu development in support of the Head Chef</li> </ul> <strong>Qualifications&nbsp;Experience Essential:</strong> &nbsp;<br> <ul> <li>High Level of operational knowledge within a kitchen environment and be available to share ideas to improve standards.</li> <li>Be able to lead from the front and communicate under pressure.</li> <li>Coach other team members and develop their skills, improving their performance</li> <li>Minimum level 2 food safety</li> <li>Up to date Allergens certificate</li> </ul>]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235621">Chefs</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235670">Sous Chef</Classification>
+      <Classification jid="19465" name="Location" vid="1223287">Surrey</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>michelle@boxhospitalityrecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/778826/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="778778" reference="554116f" datePosted="2025-12-22" dateUpdated="2025-12-22T13:31:15Z">
+    <Title>Maintenance Team Member</Title>
+    <Summary>Maintenance Team Member</Summary>
+    <Description><![CDATA[<strong>Box Leisure Recruitment "The Cutting Edge of Leisure Careers"</strong><br>&nbsp;<br><strong>HOLIDAY PARK MAINTENANCE &amp; GROUNDS TEAM MEMBER</strong><br>&nbsp;<br><strong>Holiday Park | Lancaster | Permanent | Full Time</strong><br><strong>Salary: &pound;25,396.80&nbsp;</strong><br>&nbsp;<br>We are seeking an active and enthusiastic Maintenance &amp; Grounds person to join the team on one of our client's beautiful holiday parks in the North West.<br>&nbsp;<br>Our client is an established holiday and lifestyle operator who offer a unique package to holiday makers and owners. Part of this package is the upkeep of the caravan and holiday home fleet, buildings, and grounds that the owners and holiday makers enjoy. You will be working with a team of Gardeners, Maintenance Professionals, Siting teams and Gas Engineers across the park.<br>&nbsp;<br>You will be involved with&nbsp;facilities on park and&nbsp;delivering&nbsp;all grounds maintenance and siting activity, in line with agreed plans, delivering an outstanding&nbsp;environment for our Guests, Owners and Team&nbsp;whilst ensuring&nbsp;all Health &amp; Safety Requirements are met.<br>&nbsp;<br><strong>Duties Include:</strong><br> <ul> <li>Supporting the Maintenance &amp; Grounds Team in maintaining the park, the grounds and delivering all planned and reactive park maintenance activity in line with agreed plans</li> <li>Following direction and working as part of a multi skilled maintenance team</li> <li>Ensuring all Health &amp; Safety Requirements are adhered to.</li> </ul> &nbsp;<br>&nbsp;<br><strong>Key Responsibilities for the Role:</strong><br>&nbsp;<br> <ul> <li>Confidently taking instruction on daily tasks from your Maintenance Manager</li> <li>Dealing with guest concerns with the ability to resolve problems, show empathy and understanding</li> <li>Reacting to Guest Feedback and works with the team to respond quickly to address areas for improvement</li> <li>Maintaining daily service and tasks, observing speed of service, arranging appropriate resources or support when needed</li> <li>Achieve and exceed targets and key performance indicators</li> <li>Completing any relevant administrative tasks including documenting works undertaken and job sheets</li> <li>Safety compliance checks and legislative compliance checks.</li> </ul> &nbsp;<br><strong>Role Requirements:</strong><br> <ul> <li>Hands on all round maintenance and grounds work skills</li> <li>Driving License Requirement</li> <li>Health &amp; Safety procedures followed and recorded accurately</li> </ul> &nbsp;<br>If you feel you have the skills for this role, please apply today or contact Stacey at abbie@boxleisurerecruitment.co.uk]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235626">Grounds and Maintenance</Classification>
+      <Classification jid="19465" name="Location" vid="1223271">Lancashire</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>abbie@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/778778/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="778776" reference="685582e" datePosted="2025-12-22" dateUpdated="2025-12-22T13:24:23Z">
+    <Title>Receptionist</Title>
+    <Summary>Receptionist</Summary>
+    <Description><![CDATA[Basic details are as follows.<br> <ul> <li>Golf &amp; Country Club</li> <li>Cottages, Villas &amp; Apartments</li> <li>Hours are 37.5 hours per week</li> <li>Salary is NMW</li> </ul> Location - Scotland - Perth and Kinross<br> &nbsp;<br> <span style="text-decoration:underline"><strong>Job Description&nbsp;</strong></span><br> &nbsp;<br> <strong>Duties will include:</strong><br> <ul> <li>Front of house checking in / out of our guests, creating great holiday memories for families</li> <li>Liaising with park teams, to provide the best holiday experience for our guests</li> <li>Dealing with enquiries from internal and external customers</li> <li>Reception duties, resolving guest queries and answering the telephone and online enquiries</li> <li>Ensuring all paperwork is managed and organised well</li> <li>Actively promoting future stays for current holidaymakers, ensuring you are aware of offers that are available to them</li> <li>Cash handling</li> <li>Processing payments</li> <li>To undergo specific training as indicated by the Manager as and when required</li> <li>Take all reasonable steps to protect the health, safety and welfare of all employees, patrons and visitors, by promoting safe working practices</li> <li>Comply with company policies, rules and procedures at all times</li> </ul> Any other duties as required by your line manager commensurate with your role<br> <strong>Key Requirements and Skills Required:</strong><br> <ul> <li>Previous experience in a similar environment would be a distinct advantage.</li> <li>An excellent telephone manner</li> <li>Good time management,</li> <li>Great customer service skills</li> <li>Computer literate</li> <li>A friendly and approachable personality</li> <li>Dependability</li> </ul> Job Type: Full-time<br> Benefits:<br> <ul> <li>On-site parking</li> </ul> Schedule:<br> <ul> <li>8 hour shift</li> </ul> Work Location: In person on Golf &amp; Country Estate&nbsp;<br> &nbsp;<br> Contact abbie@boxleisurerecruitment.co.uk]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235631">Reception</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235682">Team Members</Classification>
+      <Classification jid="19465" name="Location" vid="1223322">Perth and Kinross</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>abbie@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/778776/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="778773" reference="882929" datePosted="2025-12-22" dateUpdated="2025-12-22T13:14:40Z">
+    <Title>Holiday Home Sales Manager</Title>
+    <Summary>Holiday Home Sales Manager</Summary>
+    <Description><![CDATA[<strong>Box Leisure &ldquo;The cutting edge of leisure careers&rdquo;</strong><br> **&nbsp;**<br> <strong>HOLIDAY HOME SALES MANAGER</strong><br> **&nbsp;**<br> <strong>Holiday Park | Lancashire | Permanent | Full time</strong> <strong>&ndash; Accommodation Available</strong><br> <strong>Salary: TBC at interview stage</strong><br> <strong>Hours:</strong>&nbsp;**As business requires **<br> We have an excellent position available for an experienced Holiday Home Sales Manager at one of our clients stunning holiday resorts in the North West. Details of precise location and salary breakdown will be provided at interview stage should you be selected as having the correct skill set match for this role and live in accommodation can also be made available for that perfect candidate.<br> This position will see you maximising sales of holiday homes and managing a small team of sales advisors in order to create potential buyers with their dream holiday home. This is a fantastic environment and industry to work within and the role will see you working within one of our clients&rsquo; &nbsp;beautiful holiday home parks in the North West region.<br> <strong>Role Responsibilities:</strong><br> <ul> <li>Managing and motivating a small team of holiday home sales advisors</li> <li>Maximizing sales for the resort and selling luxury lodges and caravans</li> <li>Maintaining high standards of customer service and ensure your buyers are well looked after</li> <li>Adhere to and promoting the Company Values along with Company best practice and legal compliance</li> <li>Develop and maintain relationships with owners, holiday potential homeowners, internal and external customers</li> <li>Gain feedback from new buyers and act accordingly</li> <li>Resolving customer queries by using a positive approach and putting yourself in the customers&rsquo; shoes</li> <li>Deal effectively and efficiently with customer concerns and compliments following the company guidelines</li> <li>Maintain a continuous positive dialogue with customers to ensure the sale of holiday homes is supported from initial transaction to final delivery and handover including a full and final check on all relevant documentation</li> <li>Monitor and help proactively resolve any after sales complaints to ensure customer satisfaction</li> <li>Encouraging potential upgrades and upselling to potential buyers</li> <li>Must have holiday park experience</li> </ul> Please apply today or contact Abbie@boxleisurerecruitment.co.uk]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235616">Caravan Sales Managers</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235660">Experienced</Classification>
+      <Classification jid="19465" name="Location" vid="1223271">Lancashire</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>abbie@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/778773/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="778548" reference="649774k" datePosted="2025-12-19" dateUpdated="2025-12-19T12:01:58Z">
+    <Title>Sports and Leisure Manager</Title>
+    <Summary>Sports and Leisure Manager</Summary>
+    <Description><![CDATA[<strong>Sports and Leisure Manager</strong><br> <strong>Box Leisure "The cutting edge of leisure careers"</strong><br> <strong>Location: Kent</strong><br> <strong>Salary: &pound;29500</strong><br> <strong>Duration:</strong> Permanent<br> Do you want a career working for one of the most exciting and innovative holiday park brands in the UK?&nbsp;Do you have a passion for sports, games &amp; activities and have experience in organising leisure activities?&nbsp;Are you creative, fun and energetic? If so, this exciting new opportunity could be right for you.<br> This is a very large park with many leisure facilities, and we are looking for an innovative and organised individual to take control of managing and maintaining all of the leisure facilities and the activities.<br> &nbsp;<br> This new and exciting role will play a leading part in the execution of a new development for our client involving outdoor and indoor experiences. This role will oversee the operational delivery of all the Project activities and on park experience offering. The main goal of the role is to deliver an industry leading on park experience for all or customers whilst maximising revenue and profit.<br> &nbsp;<br> <strong>The Purpose of the role:</strong><br> <ul> <li>Day to day running and organising of the activities and leisure operations</li> <li>Provide ongoing support to all activities and leisure team members</li> <li>Managing and maintaining facilities and teams</li> <li>Ensuring yourself and the team are adhering to the general Health and Safety guidelines</li> <li>Opening, closing and maintenance check sheets are checked and completed daily and that all team members complete them appropriately</li> <li>Setting tasks and deadlines for the team - and ensure they follow through with them to the highest possible standard</li> <li>Developing new ideas for the new and existing customers and visitors&nbsp;</li> <li>Bringing new ideas and initiatives to the business and implementing them where possible</li> </ul> Tie ideal candidate will have:<br> &nbsp;<br> <ul> <li>Strong business and financial acumen, with a passion for customer focus.</li> <li>Experience of planning &amp; organising projects.</li> <li>Experience in leading and developing a team</li> <li>Have previous experience of successfully delivering a Activities, Leisure &amp; Entertainment programme.</li> <li>Pool Plant Operations qualification (Experience) Ability to learn and understand new products</li> </ul> For more information on this superb and exciting role apply today or speak to Abbie at Box Leisure for more information.]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235635">Marketing</Classification>
+      <Classification jid="19465" name="Location" vid="1223270">Kent</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>abbie@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/778548/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="778547" reference="869123v" datePosted="2025-12-19" dateUpdated="2025-12-19T12:00:04Z">
+    <Title>General Manager - Soft Play Centre</Title>
+    <Summary>General Manager - Soft Play Centre</Summary>
+    <Description><![CDATA[Box Leisure Recruitment - ''The cutting edge of leisure careers''<br> Role - General Manager - Soft Play Centre<br> Salary - &pound;35,541<br> Permanent - Essex<br> &nbsp;<br> Surrounded by beautiful scenery and open waters , Our Soft Play Centre is a large indoor play centre jammed pack with fun and adventurous activities for children.<br> The play centre is going through an exciting period of change and is looking&nbsp;for a dynamic General Manager who is&nbsp;willing to lead the business and team to success.<br> &nbsp;<strong>Job requirements:</strong><br> <ul> <li>To carry out day to day duties, including end of shift procedures.</li> <li>To grow the business and implement a revenue strategy.</li> <li>To manager staff to ensure the smooth running of the centre.</li> <li>To deal with complaints and incidents when they occur.</li> <li>To oversee Food and Beverage operations, ensuring quality, consistency, and compliance with food hygiene standards.</li> <li>To have a good understanding of IT systems to manage bookings, memberships, and sales.</li> <li>To ensure the venue is running to a high standard and to customer satisfaction.</li> </ul> &nbsp;<strong>Preferred requirements:</strong><br> <ul> <li>Previous experience of working within the hospitality industry.</li> <li>Previous experience of working within a customer facing role and play centres.</li> <li>Required to work outside normal hours, including evenings, weekends and public holidays.</li> <li>Responsible for maintaining all relevant qualifications and attending training sessions as part of normal working arrangements.</li> </ul> Apply today! if you have any questions, send me a email - abbie@boxleisurerecruitment.co.uk&nbsp;or call 01613596110]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235625">General Manager</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235675">Holiday Park</Classification>
+      <Classification jid="19465" name="Location" vid="1223262">Essex</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>abbie@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/778547/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="778544" reference="658223s" datePosted="2025-12-19" dateUpdated="2025-12-19T11:56:33Z">
+    <Title>Sports and Leisure Manager</Title>
+    <Summary>Sports and Leisure Manager</Summary>
+    <Description><![CDATA[<strong>Sports and Leisure Manager</strong><br><strong>Box Leisure "The cutting edge of leisure careers"</strong><br><strong>Location: Northumberland</strong><br><strong>Salary: &pound;34000</strong><br><strong>Duration:</strong>&nbsp;Permanent<br>Do you want a career working for one of the most exciting holiday park brands in the UK?&nbsp;Do you have a passion for sports, games &amp; activities and have experience in organising leisure activities?&nbsp;Are you creative, fun and energetic? If so, this exciting new opportunity could be right for you.<br>This is a very large park with many leisure facilities, and we are looking for an innovative and organised individual to take control of managing and maintaining all of the leisure facilities and the activities.<br>&nbsp;<br>This new and exciting role will play a leading part in the execution of a new development for our client involving outdoor and indoor experiences. This role will oversee the operational delivery of all the Project activities and on park experience offering. The main goal of the role is to deliver an industry leading on park experience for all or customers whilst maximising revenue and profit.<br>&nbsp;<br><strong>The Purpose of the role:</strong><br> <ul> <li>Day to day running and organising of the activities and leisure operations</li> <li>Provide ongoing support to all activities and leisure team members</li> <li>Managing and maintaining facilities and teams</li> <li>Ensuring yourself and the team are adhering to the general Health and Safety guidelines</li> <li>Opening, closing and maintenance check sheets are checked and completed daily and that all team members complete them appropriately</li> <li>Setting tasks and deadlines for the team - and ensure they follow through with them to the highest possible standard</li> <li>Developing new ideas for the new and existing customers and visitors&nbsp;</li> <li>Bringing new ideas and initiatives to the business and implementing them where possible</li> </ul> Tie ideal candidate will have:<br>&nbsp;<br> <ul> <li>Strong business and financial acumen, with a passion for customer focus.</li> <li>Experience of planning &amp; organising projects.</li> <li>Experience in leading and developing a team</li> <li>Have previous experience of successfully delivering a Activities, Leisure &amp; Entertainment programme.</li> <li>Pool Plant Operations qualification (Experience) Ability to learn and understand new products</li> </ul> For more information on this superb and exciting role apply today or speak to Abbie at Box Leisure for more information.]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235633">Sport and Leisure</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235683">Managers</Classification>
+      <Classification jid="19465" name="Location" vid="1223278">Northumberland</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>abbie@boxleisurerecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/778544/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+  <Job jid="777940" reference="881615" datePosted="2025-12-16" dateUpdated="2025-12-16T15:51:52Z">
+    <Title>Head Chef</Title>
+    <Summary>Head Chef within a great Luxury Hotel Group</Summary>
+    <Description><![CDATA[<strong>Box Leisure:</strong><br> <strong>"The Cutting Edge of Leisure Careers"</strong><br> <strong>Role: </strong><strong>Head Chef</strong><strong>&nbsp;</strong><br> <strong>Hotel | Sommerset | Permanent | Full time</strong> <strong>Salary: &pound;38,000 to &pound;40,000</strong><br><br> Looking for an experienced Head Chef to oversee a busy kitchen operation at a busy hotel. &nbsp;An amazing opportunity to join one of the UKs leading hotel resort companies situated in Sommerset. This reputable holiday hotel operator offers a high-quality lifestyle opportunity, wonderful working environment, access to a myriad of leisure and outdoor activities and is well connected to the national motorway network.&nbsp; &nbsp; You will be responsible for driving a great food experience guest service and maximising the potential of the Food &amp; Beverage in back of house departments and offerings on park. You will nurture an environment that allows your team to perform at their best through high performance and high fulfilment and creating memories for our guests and giving our team opportunities of a lifetime. &nbsp;&nbsp;<br> <strong>Head Chef</strong><br> <ul> <li>Ensuring that kitchen staff adhere to quality, hygiene and cleanliness standards</li> <li>Staying up to date with culinary trends and kitchen processes</li> <li>Dealing with suppliers and ensuring that they supply quality goods at affordable prices</li> <li>Managing the inventory and ordering stock as needed</li> <li>Overseeing the maintenance of kitchen equipment and organising repairs when needed</li> <li>Handling staff issues, such as sick leave and attendance, and taking disciplinary action when necessary</li> <li>Developing new dishes and overhauling menus to attract more clientele</li> <li>Ensuring that guests receive excellent service and enjoy their culinary experience</li> </ul> <strong>Qualifications&nbsp;Experience Essential:</strong> &nbsp;<br> <ul> <li>High Level of operational knowledge within a kitchen environment and be available to share ideas to improve standards.</li> <li>Be able to lead from the front and communicate under pressure.</li> <li>Coach other team members and develop their skills, improving their performance</li> <li>Minimum level 2 food safety</li> <li>Up to date Allergens certificate</li> <li>Experience managing a team and dealing with people management</li> </ul> If you have questions or would like to apply for this role, please contact: michelle@boxhospitalityrecruitment.co.uk or Call&nbsp; 0161 359 6110/ 0161 359 4660]]></Description>
+    <Classifications>
+      <Classification jid="19463" name="Category" vid="1235621">Chefs</Classification>
+      <Classification jid="19464" name="Sub Category" vid="1235669">Head Chef</Classification>
+      <Classification jid="19465" name="Location" vid="1223283">Somerset</Classification>
+      <Classification jid="19466" name="Work Type" vid="1223355">Permanent / Full Time</Classification>
+    </Classifications>
+    <Fields />
+    <Apply>
+      <EmailTo>michelle@boxhospitalityrecruitment.co.uk</EmailTo>
+      <Url>https://apply.jobadder.com/eu2/1286/777940/3pgjze45lgle3kkulh6ljkw5ra</Url>
+    </Apply>
+  </Job>
+</Jobs>

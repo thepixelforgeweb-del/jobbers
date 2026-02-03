@@ -19,6 +19,9 @@
 
 <script>
 
+    // Global variables for filtering
+    var currentFilter = '';
+
     var _jaJobsSettings = {
 
         key: "EU2_3pgjze45lgle3kkulh6ljkw5ra",
@@ -29,22 +32,18 @@
 
             searchButtonText: "SEARCH JOBS",
 
-            fields: ["category", "subCategory", "keywords"],
+            showCategoryFilter: false,
 
-            categories: [
-                { name: "Business", value: "Business" },
-                { name: "Healthcare", value: "Healthcare" },
-                { name: "Hospitality", value: "Hospitality" },
-                { name: "Leisure", value: "Leisure" },
-                { name: "Travel", value: "Travel" }
-            ],
+            categoryFilterLabel: "CATEGORY",
 
-            categoryLabel: "CATEGORY",
+            showSubCategoryFilter: false,
 
-            subCategoryLabel: "SECTION",
+            showWorkTypeFilter: false,
 
-	            keywordsLabel: "KEYWORDS"
-	
+            showKeywordSearch: true,
+
+            keywordSearchLabel: "KEYWORDS"
+
 	        },
 
 	        // Control how many jobs are shown per page in the list
@@ -65,6 +64,408 @@
         }
 
     };
+
+	    // Initialize custom filter
+	    function initializeFilter() {
+	        createCustomFilter();
+	        setupFilterListener();
+	    }
+	
+	    // Create custom filter/search bar OUTSIDE the widget container (so JobAdder won't overwrite it)
+	    function createCustomFilter() {
+	        if (document.getElementById('custom-filter-container')) {
+	            return; // Already created
+	        }
+	
+	        const mainContainer = document.querySelector('.body-container');
+	        if (!mainContainer) return;
+	
+		        // Styled to visually match the .ja-form search bar (VACANCIES + row of controls)
+		        const filterHtml = '' +
+		            '<div id="custom-filter-container" class="custom-ja-form">' +
+		                '<form class="custom-ja-search-form" onsubmit="return false;">' +
+		                    '<div class="custom-field-container custom-field-container-select">' +
+		                        '<select id="custom-category-filter">' +
+		                            '<option value="">All Sectors</option>' +
+		                            '<option value="Hospitality">HOSPITALITY</option>' +
+		                            '<option value="Healthcare">HEALTHCARE</option>' +
+		                            '<option value="Leisure">LEISURE</option>' +
+		                            '<option value="Solutions">SOLUTIONS</option>' +
+		                            '<option value="Travel">TRAVEL</option>' +
+		                        '</select>' +
+		                    '</div>' +
+		                    '<div class="custom-field-container">' +
+		                        '<input id="custom-keyword-filter" type="text" placeholder="KEYWORD" />' +
+		                    '</div>' +
+		                    '<div class="custom-submit">' +
+		                        '<button id="custom-search-button" class="custom-search-button" type="button">Search Jobs</button>' +
+		                    '</div>' +
+		                '</form>' +
+		            '</div>';
+	
+	        // Insert BEFORE the widget container so it won't be overwritten
+	        const widget = document.getElementById('ja-jobs-widget');
+	        widget.insertAdjacentHTML('beforebegin', filterHtml);
+	        console.log('Custom filter/search bar created outside widget');
+	    }
+	
+	    // Setup filter + search listeners
+	    function setupFilterListener() {
+	        const filterSelect = document.getElementById('custom-category-filter');
+	        const keywordInput = document.getElementById('custom-keyword-filter');
+	        const searchButton = document.getElementById('custom-search-button');
+	
+	        function applyFilterFromControls() {
+	            const selectedCategory = filterSelect ? filterSelect.value : '';
+	            const keyword = keywordInput ? keywordInput.value : '';
+	            filterJobCards(selectedCategory, keyword);
+	        }
+	
+	        if (filterSelect) {
+	            filterSelect.addEventListener('change', function() {
+	                applyFilterFromControls();
+	            });
+	        }
+	
+	        if (keywordInput) {
+	            keywordInput.addEventListener('keyup', function(e) {
+	                if (e.key === 'Enter') {
+	                    applyFilterFromControls();
+	                }
+	            });
+	        }
+	
+	        if (searchButton) {
+	            searchButton.addEventListener('click', function() {
+	                applyFilterFromControls();
+	            });
+	        }
+	    }
+
+	    // Determine category from job card using JobAdder classifications + title keywords
+	    // Rules are based on your Business / Hospitality / Leisure / Travel / Healthcare brief.
+	    function getCardCategory(card) {
+	        let sector = '';
+
+	        const classificationsEl = card.querySelector('.classifications');
+	        const classText = classificationsEl ? classificationsEl.textContent.toLowerCase() : '';
+
+	        const titleEl = card.querySelector('.title a, .title');
+	        const titleText = titleEl ? titleEl.textContent.toLowerCase() : '';
+
+	        const designationEl = card.querySelector('.designation p');
+	        const designationText = designationEl ? designationEl.textContent.toLowerCase() : '';
+
+	        const combinedText = (classText + ' ' + titleText + ' ' + designationText).trim();
+
+	        const containsAny = (haystack, keywords) => {
+	            if (!haystack) return false;
+	            return keywords.some(keyword => haystack.includes(keyword));
+	        };
+
+	        // 1) Primary mapping from JobAdder Category / classification text
+	        if (classText) {
+	            // ----- TRAVEL (holiday home / caravan sales roles) -----
+	            if (
+	                classText.includes('caravan sales managers') ||
+	                classText.includes('caravan sales')
+	            ) {
+	                sector = 'travel';
+	            }
+	            // ----- LEISURE (park wardens, sport & leisure, entertainment etc.) -----
+	            else if (
+	                classText.includes('park wardens') ||
+	                classText.includes('sport and leisure') ||
+	                classText.includes('multi skilled leisure professionals') ||
+	                classText.includes('owners experience') ||
+	                classText.includes('entertainment managers')
+	            ) {
+	                sector = 'leisure';
+	            }
+	            // ----- HOSPITALITY (chefs, F&B, restaurant, park/hotel GMs, complex managers) -----
+	            else if (
+	                classText.includes('chefs') ||
+	                classText.includes('head of food and beverage') ||
+	                classText.includes('restaurant') ||
+	                classText.includes('complex manager') ||
+	                classText.includes('general manager') ||
+	                classText.includes('management couple')
+	            ) {
+	                sector = 'hospitality';
+	            }
+	            // ----- HEALTHCARE (future-ready – direct care / clinical classifications) -----
+	            else if (
+	                containsAny(classText, [
+	                    'nurse',
+	                    'nursing',
+	                    'doctor',
+	                    'gp ',
+	                    'physio',
+	                    'physiotherapist',
+	                    'dentist',
+	                    'pharmacist',
+	                    'therapy',
+	                    'therapist',
+	                    'psychologist',
+	                    'counsellor',
+	                    'counselor',
+	                    'mental health',
+	                    'care assistant',
+	                    'support worker',
+	                    'home care',
+	                    'elderly care',
+	                    'lab technician',
+	                    'laboratory technician',
+	                    'medical technologist'
+	                ])
+	            ) {
+	                sector = 'healthcare';
+	            }
+	            // ----- BUSINESS / SOLUTIONS (sales, marketing, engineering, corporate etc.) -----
+	            else if (
+	                classText.includes('sales') ||
+	                classText.includes('marketing') ||
+	                classText.includes('engineering') ||
+	                classText.includes('engineer') ||
+	                classText.includes('it ') ||
+	                classText.includes('software') ||
+	                classText.includes('digital') ||
+	                classText.includes('tech') ||
+	                classText.includes('solutions') ||
+	                classText.includes('finance') ||
+	                classText.includes('accounts') ||
+	                classText.includes('hr') ||
+	                classText.includes('operations') ||
+	                classText.includes('business development')
+	            ) {
+	                sector = 'solutions';
+	            }
+	        }
+
+	        // 2) If still undecided, look at job title / designation text using your rules
+	        if (!sector && combinedText) {
+	            // HEALTHCARE – only if it's clearly a direct care / clinical role
+	            if (
+	                containsAny(combinedText, [
+	                    'nurse',
+	                    'nursing',
+	                    'doctor',
+	                    'physio',
+	                    'physiotherapist',
+	                    'dentist',
+	                    'paramedic',
+	                    'therapist',
+	                    'psychologist',
+	                    'counsellor',
+	                    'counselor',
+	                    'mental health',
+	                    'support worker',
+	                    'care assistant',
+	                    'home care',
+	                    'elderly care',
+	                    'pharmacist',
+	                    'lab technician',
+	                    'laboratory technician',
+	                    'medical technologist'
+	                ])
+	            ) {
+	                const adminLike = [
+	                    'admin',
+	                    'administrator',
+	                    'reception',
+	                    'marketing',
+	                    'it ',
+	                    ' it-',
+	                    ' it/',
+	                    'finance',
+	                    'accounts',
+	                    'hr',
+	                    'human resources'
+	                ];
+	                if (!containsAny(combinedText, adminLike)) {
+	                    sector = 'healthcare';
+	                }
+	            }
+	        }
+
+	        if (!sector && combinedText) {
+	            // HOSPITALITY – guest experience, food, accommodation
+	            if (
+	                containsAny(combinedText, [
+	                    'chef',
+	                    'chefs',
+	                    'kitchen',
+	                    'cook',
+	                    'food and beverage',
+	                    'food & beverage',
+	                    'f&b',
+	                    'f & b',
+	                    'restaurant',
+	                    'bar manager',
+	                    'bar & grill',
+	                    'bartender',
+	                    'mixologist',
+	                    'housekeeping',
+	                    'housekeeper',
+	                    'front desk',
+	                    'receptionist',
+	                    'reception',
+	                    'guest relations',
+	                    'guest experience',
+	                    'hotel',
+	                    'resort'
+	                ])
+	            ) {
+	                sector = 'hospitality';
+	            }
+	        }
+
+	        if (!sector && combinedText) {
+	            // LEISURE – parks, activities, grounds, facilities
+	            if (
+	                containsAny(combinedText, [
+	                    'park warden',
+	                    'warden',
+	                    'padel',
+	                    'activity coordinator',
+	                    'activities coordinator',
+	                    'activities manager',
+	                    'activities',
+	                    'sports and leisure manager',
+	                    'sports & leisure manager',
+	                    'leisure manager',
+	                    'sports manager',
+	                    'grounds and maintenance',
+	                    'grounds & maintenance',
+	                    'maintenance team member',
+	                    'entertainment team',
+	                    'entertainment manager',
+	                    'facilities'
+	                ])
+	            ) {
+	                sector = 'leisure';
+	            }
+	        }
+
+	        // We deliberately keep Travel narrowly focused on caravan / holiday home sales
+	        // so that generic "Travel Consultant" style roles remain in Business / Solutions.
+	        if (!sector && classText) {
+	            if (
+	                classText.includes('caravan sales managers') ||
+	                classText.includes('caravan sales')
+	            ) {
+	                sector = 'travel';
+	            }
+	        }
+
+	        // 3) Final fallback – anything not matched above is Business (Solutions included)
+	        if (!sector) {
+	            sector = 'solutions';
+	        }
+
+	        return sector.charAt(0).toUpperCase() + sector.slice(1);
+	    }
+
+	    // Filter job cards based on selected category and optional keyword
+	    function filterJobCards(selectedCategory, keyword) {
+	        const jobCards = document.querySelectorAll('.ja-job-list .job');
+	        let visibleCount = 0;
+	        const normalizedKeyword = keyword ? keyword.toLowerCase().trim() : '';
+	
+	        if (jobCards.length === 0) {
+	            console.log('No job cards found yet');
+	            return;
+	        }
+	
+	        console.log('Filtering ' + jobCards.length + ' job cards by category: ' + selectedCategory + ' and keyword: ' + normalizedKeyword);
+	
+	        jobCards.forEach((card, index) => {
+		            const cardCategory = getCardCategory(card);
+	
+		            // Cache original display so we can restore it correctly
+		            if (!card.dataset.originalDisplay) {
+		                const computedDisplay = window.getComputedStyle(card).display || 'block';
+		                card.dataset.originalDisplay = computedDisplay;
+		            }
+	
+		            if (index === 0) {
+		                console.log('First card category: ' + cardCategory + ', original display: ' + card.dataset.originalDisplay);
+		            }
+	
+		            const matchesCategory = !selectedCategory || cardCategory === selectedCategory;
+		            let matchesKeyword = true;
+		            if (normalizedKeyword) {
+		                const cardText = card.textContent.toLowerCase();
+		                matchesKeyword = cardText.indexOf(normalizedKeyword) !== -1;
+		            }
+	
+		            if (matchesCategory && matchesKeyword) {
+		                // Show jobs that match both sector and keyword
+		                card.style.setProperty('display', card.dataset.originalDisplay, 'important');
+		                visibleCount++;
+		            } else {
+		                // Hide jobs that do not match the filters (force override JobAdder CSS)
+		                card.style.setProperty('display', 'none', 'important');
+		            }
+	        });
+	
+	        console.log('Filter applied: ' + selectedCategory + ', keyword: ' + normalizedKeyword + ', visible jobs: ' + visibleCount + ' out of ' + jobCards.length);
+	    }
+
+    // Watch for JobAdder widget rendering and apply filter
+    function watchForJobCards() {
+        let debounceTimer;
+        const observer = new MutationObserver(function(mutations) {
+            // Check if job cards were added/modified
+            let hasJobCards = false;
+            mutations.forEach(mutation => {
+                if (mutation.addedNodes.length > 0) {
+                    mutation.addedNodes.forEach(node => {
+                        if (node.classList && (node.classList.contains('job') || node.classList.contains('ja-job-list'))) {
+                            hasJobCards = true;
+                        }
+                    });
+                }
+            });
+
+            if (hasJobCards) {
+                // Debounce to avoid excessive filtering
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(function() {
+		                    const filterSelect = document.getElementById('custom-category-filter');
+		                    const keywordInput = document.getElementById('custom-keyword-filter');
+		                    const selectedCategory = filterSelect ? filterSelect.value : '';
+		                    const keyword = keywordInput ? keywordInput.value : '';
+		                    console.log('JobAdder widget updated, applying filter: ' + selectedCategory + ' and keyword: ' + keyword);
+		                    filterJobCards(selectedCategory, keyword);
+                }, 100);
+            }
+        });
+
+        const widget = document.getElementById('ja-jobs-widget');
+        if (widget) {
+            observer.observe(widget, { childList: true, subtree: true });
+            console.log('Watching for JobAdder widget changes');
+        }
+    }
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM Content Loaded - initializing custom filter');
+        // Initialize filter UI
+        setTimeout(initializeFilter, 300);
+        // Watch for JobAdder widget rendering
+        setTimeout(watchForJobCards, 300);
+        // Apply initial filter after widget renders
+        setTimeout(function() {
+	            const filterSelect = document.getElementById('custom-category-filter');
+	            const keywordInput = document.getElementById('custom-keyword-filter');
+	            const selectedCategory = filterSelect ? filterSelect.value : '';
+	            const keyword = keywordInput ? keywordInput.value : '';
+	            console.log('Applying initial filter with category: ' + selectedCategory + ' and keyword: ' + keyword);
+	            filterJobCards(selectedCategory, keyword);
+        }, 1500);
+    });
     
 	    function enhanceJobCard(job, capitalisedSector) {
 	        var meta = job.querySelector('.meta');
@@ -93,14 +494,18 @@
 	        var viewDetailsEl = meta.querySelector('.view-details') || job.querySelector('.view-details');
 	        var salaryEl = meta.querySelector('.salary');
 	        var salaryText = salaryEl ? salaryEl.textContent.trim() : '';
+		    // For now, keep using "Business" in localStorage for Solutions so that
+		    // existing details / apply page styling that relies on Business continues
+		    // to work. We can switch those over to Solutions later.
+		    var sectorForStorage = (capitalisedSector === 'Solutions') ? 'Business' : capitalisedSector;
 
 	        // Update title to show SECTOR name instead of job title
 	        if (titleLink && capitalisedSector) {
 	            titleLink.textContent = capitalisedSector.toUpperCase();
 	            // Store sector in localStorage so details page can access it
 	            titleLink.addEventListener('click', function(e) {
-	                localStorage.setItem('jobSector', capitalisedSector);
-	                console.log('Title link clicked - Storing sector in localStorage:', capitalisedSector);
+		            localStorage.setItem('jobSector', sectorForStorage);
+		            console.log('Title link clicked - Storing sector in localStorage:', sectorForStorage);
 	            });
 	        }
 
@@ -183,14 +588,14 @@
 	            if (viewDetailsEl.href) {
 	                // For links, add click handler to store sector in localStorage
 	                viewDetailsEl.addEventListener('click', function(e) {
-	                    localStorage.setItem('jobSector', capitalisedSector);
-	                    console.log('View details link clicked - Storing sector in localStorage:', capitalisedSector);
+		                    localStorage.setItem('jobSector', sectorForStorage);
+		                    console.log('View details link clicked - Storing sector in localStorage:', sectorForStorage);
 	                });
 	            } else if (viewDetailsEl.tagName === 'BUTTON') {
 	                // For button elements, add click handler to store sector in localStorage
 	                viewDetailsEl.addEventListener('click', function(e) {
-	                    localStorage.setItem('jobSector', capitalisedSector);
-	                    console.log('View details button clicked - Storing sector in localStorage:', capitalisedSector);
+		                    localStorage.setItem('jobSector', sectorForStorage);
+		                    console.log('View details button clicked - Storing sector in localStorage:', sectorForStorage);
 	                });
 	            }
 
@@ -206,8 +611,8 @@
 	            fallbackLink.target = '_blank';
 	            // Store sector in localStorage when clicked
 	            fallbackLink.addEventListener('click', function(e) {
-	                localStorage.setItem('jobSector', capitalisedSector);
-	                console.log('Fallback link clicked - Storing sector in localStorage:', capitalisedSector);
+		                localStorage.setItem('jobSector', sectorForStorage);
+		                console.log('Fallback link clicked - Storing sector in localStorage:', sectorForStorage);
 	            });
 	            fallbackDiv.appendChild(fallbackLink);
 	            meta.appendChild(fallbackDiv);
@@ -217,113 +622,34 @@
 	    }
 
 	    function styleJobCards() {
-	        var jobs = document.querySelectorAll('.ja-job-list .job');
-	        var sectors = ['Leisure', 'Healthcare', 'Hospitality', 'Travel', 'Business'];
-	        var sectorIndex = 0;
-
-	        // Try to get the selected category from the search form
-	        var selectedCategory = '';
-	        var categorySelect = document.querySelector('.ja-form select[name="category"]');
-	        if (categorySelect && categorySelect.value) {
-	            selectedCategory = categorySelect.value.toLowerCase();
-	        }
-
-	        jobs.forEach(function (job, index) {
-	            var sector = '';
-
-	            // FIRST: Use the selected category from the search form if available
-	            if (selectedCategory) {
-	                sector = selectedCategory;
-	            }
-
-	            // SECOND: Try to extract category from the job's link URL
-	            if (!sector) {
-	                var titleLink = job.querySelector('.title a');
-	                if (titleLink && titleLink.href) {
-	                    var url = titleLink.href.toLowerCase();
-	                    if (url.includes('healthcare') || url.includes('health')) {
-	                        sector = 'healthcare';
-	                    } else if (url.includes('hospitality')) {
-	                        sector = 'hospitality';
-	                    } else if (url.includes('leisure')) {
-	                        sector = 'leisure';
-	                    } else if (url.includes('travel')) {
-	                        sector = 'travel';
-	                    } else if (url.includes('business')) {
-	                        sector = 'business';
-	                    }
-	                }
-	            }
-
-	            // THIRD: Fallback to classifications text
-	            if (!sector) {
-	                var classifications = job.querySelector('.classifications');
-	                if (classifications) {
-	                    var classText = classifications.textContent.toLowerCase();
-	                    if (classText.includes('healthcare') || classText.includes('health')) {
-	                        sector = 'healthcare';
-	                    } else if (classText.includes('hospitality')) {
-	                        sector = 'hospitality';
-	                    } else if (classText.includes('leisure')) {
-	                        sector = 'leisure';
-	                    } else if (classText.includes('travel')) {
-	                        sector = 'travel';
-	                    } else if (classText.includes('business')) {
-	                        sector = 'business';
-	                    }
-	                }
-	            }
-
-	            // FOURTH: try job title text if we still don't have a sector
-	            if (!sector) {
-	                var titleLink = job.querySelector('.title a');
-	                if (titleLink) {
-	                    var titleText = titleLink.textContent.toLowerCase();
-	                    if (titleText.includes('healthcare') || titleText.includes('health')) {
-	                        sector = 'healthcare';
-	                    } else if (titleText.includes('hospitality')) {
-	                        sector = 'hospitality';
-	                    } else if (titleText.includes('leisure')) {
-	                        sector = 'leisure';
-	                    } else if (titleText.includes('travel')) {
-	                        sector = 'travel';
-	                    } else if (titleText.includes('business')) {
-	                        sector = 'business';
-	                    }
-	                }
-	            }
-
-	            // FIFTH: Final fallback - check entire job element text
-	            if (!sector) {
-	                var jobText = job.textContent.toLowerCase();
-	                if (jobText.includes('healthcare') || jobText.includes('health')) {
-	                    sector = 'healthcare';
-	                } else if (jobText.includes('hospitality')) {
-	                    sector = 'hospitality';
-	                } else if (jobText.includes('leisure')) {
-	                    sector = 'leisure';
-	                } else if (jobText.includes('travel')) {
-	                    sector = 'travel';
-	                } else if (jobText.includes('business')) {
-	                    sector = 'business';
-	                }
-	            }
-
-	            // SIXTH: If still no sector detected, default to hospitality
-	            if (!sector) {
-	                sector = 'hospitality';
-	            }
-
-	            if (sector) {
-	                // Capitalised value so it matches the CSS selectors like [data-category="Business"]
-	                var capitalised = sector.charAt(0).toUpperCase() + sector.slice(1);
-	                job.setAttribute('data-category', capitalised);
-	                job.setAttribute('data-sector', capitalised);
-	                job.classList.add(sector.toLowerCase());
-
-	                enhanceJobCard(job, capitalised);
-	            }
-	        });
+		        var jobs = document.querySelectorAll('.ja-job-list .job');
+		
+		        jobs.forEach(function (job) {
+		            // If this card is already enhanced and has a sector, skip it
+		            var meta = job.querySelector('.meta');
+		            if (meta && meta.getAttribute('data-enhanced') === 'true' && job.hasAttribute('data-sector')) {
+		                return;
+		            }
+		
+		            // Use the same logic as the custom filter so cards + filter always agree
+		            var capitalised = getCardCategory(job); // "Hospitality", "Healthcare", "Leisure", "Travel", "Solutions"
+		            var sectorLower = capitalised.toLowerCase();
+		
+		            // Attach attributes used by CSS and other scripts
+		            job.setAttribute('data-category', capitalised);
+		            job.setAttribute('data-sector', capitalised);
+		
+		            // Add sector class (.hospitality, .healthcare, .leisure, .travel, .solutions)
+		            job.classList.add(sectorLower);
+		
+		            // Maintain compatibility with existing Business styling rules for Solutions
+		            if (sectorLower === 'solutions') {
+		                job.classList.add('business');
+		            }
+		
+		            // Build the meta/header UI and wire title/call-to-action
+		            enhanceJobCard(job, capitalised);
+		        });
 	    }
 
 	    function styleJobDetails() {
@@ -340,12 +666,17 @@
 	        // FIRST: Check localStorage for sector (set when job card was clicked)
 	        var storedSector = localStorage.getItem('jobSector');
 	        if (storedSector) {
-	            sector = storedSector.toLowerCase();
+	    	            sector = storedSector.toLowerCase();
+	    	            // Normalise any legacy "solutions" value to Business styling
+	    	            if (sector === 'solutions') {
+	    	                sector = 'business';
+	    	            }
 	        }
 
 	        // Prefer classifications text inside the details meta block
-	        var classifications = details.querySelector('.meta .classifications');
-	        if (classifications) {
+	    	        var classifications = details.querySelector('.meta .classifications');
+	    	        // Only use classifications if we didn't already get a sector from localStorage
+	    	        if (!sector && classifications) {
 	            var classText = classifications.textContent.toLowerCase();
 	            if (classText.includes('healthcare') || classText.includes('health')) {
 	                sector = 'healthcare';
@@ -355,8 +686,9 @@
 	                sector = 'leisure';
 	            } else if (classText.includes('travel')) {
 	                sector = 'travel';
-	            } else if (classText.includes('business')) {
-	                sector = 'business';
+		            } else if (classText.includes('business') || classText.includes('solutions')) {
+		                // Treat any "Solutions" classifications as Business for styling
+		                sector = 'business';
 	            }
 	        }
 
@@ -373,8 +705,9 @@
 	                    sector = 'leisure';
 	                } else if (titleText.includes('travel')) {
 	                    sector = 'travel';
-	                } else if (titleText.includes('business')) {
-	                    sector = 'business';
+		                } else if (titleText.includes('business') || titleText.includes('solutions')) {
+		                    // Titles mentioning Solutions should also use Business colours
+		                    sector = 'business';
 	                }
 	            }
 	        }
@@ -390,8 +723,9 @@
 	                sector = 'leisure';
 	            } else if (detailsText.includes('travel')) {
 	                sector = 'travel';
-	            } else if (detailsText.includes('business')) {
-	                sector = 'business';
+		            } else if (detailsText.includes('business') || detailsText.includes('solutions')) {
+		                // Any remaining Solutions references fall back to Business
+		                sector = 'business';
 	            }
 	        }
 
@@ -422,63 +756,49 @@
 	    function filterCategoryDropdown() {
 	        var categorySelect = document.querySelector('.ja-form select[name="category"]');
 	        if (categorySelect && !categorySelect.getAttribute('data-filtered')) {
-	            console.log('Found category select, normalising options...');
-	
-	            // Map our 5 display categories to keywords that may appear
-	            // in JobAdder's option text/value. This way labels become
-	            // exactly Business / Healthcare / Hospitality / Leisure / Travel
-	            // while underlying values from JobAdder stay intact.
-	            var categoryMap = {
-	                'Business': ['business'],
-	                'Healthcare': ['healthcare', 'health'],
-	                'Hospitality': ['hospitality'],
-	                'Leisure': ['leisure'],
-	                'Travel': ['travel']
-	            };
-	
-	            var seenLabels = {};
+	            console.log('Found category select, filtering to 5 categories...');
+
+	            // Our 5 categories
+	            var ourCategories = ['Business', 'Healthcare', 'Hospitality', 'Leisure', 'Travel'];
 	            var options = Array.prototype.slice.call(categorySelect.options);
-	
+	            var foundCategories = {};
+
 	            options.forEach(function (option, index) {
 	                var optionText = (option.textContent || '').trim();
 	                var optionValue = (option.value || '').trim();
 	                var textLower = optionText.toLowerCase();
 	                var valueLower = optionValue.toLowerCase();
-	
+
 	                // Keep the first option (usually "All" / placeholder)
 	                if (index === 0 || optionValue === '' || textLower === 'sector' || textLower === 'all') {
 	                    return;
 	                }
-	
-	                var matchedLabel = null;
-	                Object.keys(categoryMap).some(function (label) {
-	                    var keywords = categoryMap[label];
-	                    var found = keywords.some(function (kw) {
-	                        return textLower.indexOf(kw) !== -1 || valueLower.indexOf(kw) !== -1;
-	                    });
-	                    if (found) {
-	                        matchedLabel = label;
-	                        return true;
+
+	                // Check if this option matches any of our 5 categories
+	                var matchedCategory = null;
+	                ourCategories.forEach(function (cat) {
+	                    var catLower = cat.toLowerCase();
+	                    if (textLower.indexOf(catLower) !== -1 || valueLower.indexOf(catLower) !== -1) {
+	                        matchedCategory = cat;
 	                    }
-	                    return false;
 	                });
-	
-	                if (matchedLabel) {
-	                    // Only keep one option per label
-	                    if (seenLabels[matchedLabel]) {
-	                        option.remove();
+
+	                if (matchedCategory) {
+	                    // Only keep the first occurrence of each category
+	                    if (!foundCategories[matchedCategory]) {
+	                        option.textContent = matchedCategory;
+	                        foundCategories[matchedCategory] = true;
+	                        console.log('Keeping category:', matchedCategory, 'with value:', optionValue);
 	                    } else {
-	                        option.textContent = matchedLabel;
-	                        // Leave option.value as-is so JobAdder receives
-	                        // the real underlying category value.
-	                        seenLabels[matchedLabel] = true;
+	                        option.remove();
 	                    }
 	                } else {
+	                    // Remove options that don't match our 5 categories
 	                    option.remove();
-	                    console.log('Removed non-mapped option:', optionText);
+	                    console.log('Removed non-matching option:', optionText);
 	                }
 	            });
-	
+
 	            categorySelect.setAttribute('data-filtered', 'true');
 	        }
 	    }
@@ -546,7 +866,11 @@
 	        // FIRST: Check localStorage for sector (set when job card was clicked)
 	        var storedSector = localStorage.getItem('jobSector');
 	        if (storedSector) {
-	            sector = storedSector.toLowerCase();
+	    	            sector = storedSector.toLowerCase();
+	    	            // Normalise any legacy "solutions" value to Business styling
+	    	            if (sector === 'solutions') {
+	    	                sector = 'business';
+	    	            }
 	        }
 
 	        // THIRD: Try to detect sector from the job details that should be visible
@@ -594,8 +918,9 @@
 	                sector = 'leisure';
 	            } else if (containerText.includes('travel')) {
 	                sector = 'travel';
-	            } else if (containerText.includes('business')) {
-	                sector = 'business';
+		            } else if (containerText.includes('business') || containerText.includes('solutions')) {
+		                // Treat Solutions wording as Business for apply form styling too
+		                sector = 'business';
 	            }
 	        }
 
@@ -614,21 +939,40 @@
 	        iframeContainer.setAttribute('data-enhanced', 'true');
 	    }
 
-	    setInterval(function () {
-	        var myClasses = document.getElementsByClassName("view-details");
-
-	        for (var i = 0; i < myClasses.length; i++) {
-	            if (myClasses[i].innerText !== "READ MORE") {
-	                myClasses[i].innerText = "READ MORE";
-	            }
-	        }
-	        styleJobCards();
-	        styleJobDetails();
-	        styleApplicationForm();
-	        filterCategoryDropdown();
-	        setKeywordPlaceholder();
-	        hideUnwantedFormFields();
-	    }, 1);
+		    setInterval(function () {
+		        // Only run enhancement logic when there is something new to enhance.
+		        var hasUnstyledJob = document.querySelector('.ja-job-list .job:not([data-sector])');
+		        var hasUnenhancedDetails = document.querySelector('.ja-job-details:not([data-enhanced="true"])');
+		        var hasUnenhancedApply = document.querySelector('.ja-apply-iframe:not([data-enhanced="true"])');
+		        var needsCategoryFilter = document.querySelector('.ja-form select[name="category"]:not([data-filtered="true"])');
+		
+		        var needsKeywordPlaceholder = (function () {
+		            var form = document.querySelector('.ja-form');
+		            if (!form) return false;
+		            var input = form.querySelector('.ja-field-container input[type="text"], .ja-field-container input[type="search"]');
+		            return input && !input.getAttribute('data-placeholder-set');
+		        })();
+		
+		        if (!hasUnstyledJob && !hasUnenhancedDetails && !hasUnenhancedApply && !needsCategoryFilter && !needsKeywordPlaceholder) {
+		            return; // Nothing to do right now
+		        }
+		
+		        // Normalise the READ MORE label on any new detail links
+		        var myClasses = document.getElementsByClassName("view-details");
+		        for (var i = 0; i < myClasses.length; i++) {
+		            if (myClasses[i].innerText !== "READ MORE") {
+		                myClasses[i].innerText = "READ MORE";
+		            }
+		        }
+		
+		        // Apply styling / filters to any new widget content
+		        styleJobCards();
+		        styleJobDetails();
+		        styleApplicationForm();
+		        filterCategoryDropdown();
+		        setKeywordPlaceholder();
+		        hideUnwantedFormFields();
+		    }, 500);
 
 </script>
 
@@ -1890,20 +2234,159 @@
         padding: 4rem 4rem;
     }
 
-    /* ===== FORM STYLING ===== */
-
-    .ja-form {
-	        display: block !important;
-	        margin-top: 6rem !important;
-	        margin-bottom: 6rem !important;
-	        padding: 2.5rem 3rem !important;
-	        text-align: center !important;
-	        max-width: 1200px !important;
-	        margin-left: auto !important;
-	        margin-right: auto !important;
-	        background-color: #f8f8f8 !important;
-	        border-radius: 1.5rem !important;
-    }
+	    /* ===== FORM STYLING ===== */
+	
+	    /* Hide JobAdder's built-in filter form inside the widget; we use our own custom sector filter instead */
+	    #ja-jobs-widget .ja-form {
+		        display: none !important;
+	    }
+	
+	    /* Custom external filter/search bar styled similarly to the JobAdder form */
+	    #custom-filter-container.custom-ja-form {
+	        display: block;
+	        margin-top: 6rem;
+	        margin-bottom: 2rem;
+	        padding: 2.5rem 3rem;
+	        text-align: center;
+	        max-width: 1200px;
+	        margin-left: auto;
+	        margin-right: auto;
+	        background-color: #f8f8f8;
+	        border-radius: 1.5rem;
+	    }
+	
+	    #custom-filter-container.custom-ja-form::before {
+	        content: "VACANCIES";
+	        color: var(--color-healthcare);
+	        font-size: 4rem;
+	        font-weight: 700;
+	        text-transform: uppercase;
+	        text-align: center;
+	        display: block;
+	        margin-bottom: 4.5rem;
+	        letter-spacing: 0.1rem;
+	    }
+	
+	    #custom-filter-container .custom-ja-search-form {
+	        display: flex;
+	        flex-direction: row;
+	        justify-content: center;
+	        align-items: stretch;
+	        gap: 1.8rem;
+	        flex-wrap: wrap;
+	        width: 100%;
+	        row-gap: 1.5rem;
+	    }
+	
+	    #custom-filter-container .custom-field-container {
+	        display: inline-flex;
+	        margin-bottom: 0;
+	        position: relative;
+	        vertical-align: middle;
+	        flex: 0 1 250px;
+	        align-items: stretch;
+	    }
+	
+		    #custom-filter-container .custom-field-container select,
+		    #custom-filter-container .custom-field-container input[type="text"] {
+		        border: 2px solid #000;
+		        font-weight: bold;
+		        padding: 1rem 3rem;
+		        padding-right: 4rem;
+		        text-transform: uppercase;
+		        font-family: "Inter", sans-serif;
+		        font-size: 1.4rem;
+		        color: #000;
+		        background: #fff;
+		        width: 100%;
+		        min-width: 0;
+		    }
+		
+		    /* Match JobAdder select appearance and arrow behaviour */
+		    #custom-filter-container .custom-field-container select {
+		        appearance: none;
+		        -webkit-appearance: none;
+		        -moz-appearance: none;
+		        cursor: pointer;
+		        text-align: center;
+		        transition: all 0.3s ease;
+		    }
+		
+		    #custom-filter-container .custom-field-container select:hover {
+		        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+		    }
+		
+		    #custom-filter-container .custom-field-container select:focus-visible {
+		        outline: none;
+		        box-shadow: 0 0 0 3px rgba(84, 43, 116, 0.2);
+		    }
+		
+		    #custom-filter-container .custom-field-container input[type="text"] {
+		        text-align: center;
+		        transition: all 0.3s ease;
+		    }
+		
+		    #custom-filter-container .custom-field-container input[type="text"]:hover {
+		        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+		    }
+		
+		    #custom-filter-container .custom-field-container input[type="text"]:focus-visible {
+		        outline: none;
+		        box-shadow: 0 0 0 3px rgba(84, 43, 116, 0.2);
+		    }
+	
+	    #custom-filter-container .custom-field-container-select::after {
+	        content: "";
+	        position: absolute;
+	        top: 50%;
+	        right: 1.5rem;
+	        width: 8px;
+	        height: 8px;
+	        border-right: 2px solid #000;
+	        border-bottom: 2px solid #000;
+	        transform: translateY(-50%) rotate(45deg);
+	        pointer-events: none;
+	    }
+	
+	    #custom-filter-container .custom-field-container input[type="text"]::placeholder {
+	        color: #999;
+	    }
+	
+	    #custom-filter-container .custom-submit {
+	        margin-top: 0;
+	        margin-left: 0;
+	        width: auto;
+	        display: inline-flex;
+	        justify-content: center;
+	        align-items: stretch;
+	        flex: 0 1 250px;
+	    }
+	
+	    #custom-filter-container .custom-submit .custom-search-button {
+	        border: 2px solid #000;
+	        font-weight: bold;
+	        padding: 1rem 3.5rem;
+	        text-transform: uppercase;
+	        background-color: #fff;
+	        font-family: "Inter", sans-serif;
+	        font-size: 1.4rem;
+	        color: #000;
+	        width: 100%;
+	        min-width: 0;
+	        transition: all 0.3s ease;
+	        cursor: pointer;
+	    }
+	
+	    #custom-filter-container .custom-submit .custom-search-button:hover {
+	        background-color: var(--color-healthcare);
+	        color: white;
+	        border-color: var(--color-healthcare);
+	        box-shadow: 0 4px 12px rgba(84, 43, 116, 0.3);
+	    }
+	
+	    #custom-filter-container .custom-submit .custom-search-button:active {
+	        transform: translateY(1px);
+	    }
 
     .ja-form::before {
         content: "VACANCIES" !important;
@@ -2963,7 +3446,7 @@
         }
 
         .ja-job-list .job {
-            aspect-ratio: auto !important;
+            aspect-ratio: 1 / 1 !important;
         }
 
         .ja-job-list .job .title {
